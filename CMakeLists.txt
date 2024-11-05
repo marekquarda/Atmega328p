@@ -59,7 +59,7 @@ add_compile_options(
     #-fdata-sections 
     #-fno-split-wide-types 
     #-fno-tree-scev-cprop 
-    -rdynamic
+    -Wrdynamic
 )   
 
 # Load all files in src folder
