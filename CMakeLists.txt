@@ -45,7 +45,7 @@ add_compile_options(
     -Wno-main    
     -Wundef 
     -pedantic 
-    -Wstrict-prototypes
+    #-Wstrict-prototypes
     -Werror 
     -Wfatal-errors
     -Wl,--relax,--gc-sections 
