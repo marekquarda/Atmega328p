@@ -79,11 +79,14 @@ add_custom_target(hex ALL avr-objcopy -R .eeprom -O ihex ${PRODUCT_NAME}.elf ${P
 # Transform binary into hex file, this is the eeprom part (empty if you don't use eeprom static variable)
 add_custom_target(eeprom avr-objcopy -j .eeprom --set-section-flags=.eeprom="alloc,load" --change-section-lma .eeprom=0 -O ihex ${PRODUCT_NAME}.elf ${PRODUCT_NAME}.eep DEPENDS strip)
 
+# Erase chip
+add_custom_target(erase sudo avrdude - ${PROG_TYPE} -p ${MCU} -e)
+
 # Upload the firmware with avrdude
-add_custom_target(upload sudo avrdude -c ${PROG_TYPE} -p ${MCU} -U flash:w:${PRODUCT_NAME}.hex DEPENDS hex)
+add_custom_target(upload sudo avrdude -c ${PROG_TYPE} -p ${MCU} -U flash:w:${PRODUCT_NAME}.hex DEPENDS hex erase)
 
 # Upload the eeprom with avrdude
-add_custom_target(upload_eeprom sudo avrdude -c ${PROG_TYPE} -p ${MCU} -U eeprom:w:${PRODUCT_NAME}.eep DEPENDS eeprom)
+add_custom_target(upload_eeprom sudo avrdude -c ${PROG_TYPE} -p ${MCU} -U eeprom:w:${PRODUCT_NAME}.eep DEPENDS eeprom erase)
 
 # Burn fuses 
 add_custom_target(fuses sudo avrdude -c ${PROG_TYPE} -p ${MCU} -U lfuse:w:${L_FUSE}:m -U hfuse:w:${H_FUSE}:m -U efuse:w:${E_FUSE} -U lock:w:${LOCK_BIT}:m)
