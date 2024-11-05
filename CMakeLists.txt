@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.11)
+cmake_minimum_required(VERSION 3.1)
 
 ## Project name
 project("Atmega32 Firmware")
