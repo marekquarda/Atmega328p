@@ -80,7 +80,7 @@ add_custom_target(hex ALL avr-objcopy -R .eeprom -O ihex ${PRODUCT_NAME}.elf ${P
 add_custom_target(eeprom avr-objcopy -j .eeprom --set-section-flags=.eeprom="alloc,load" --change-section-lma .eeprom=0 -O ihex ${PRODUCT_NAME}.elf ${PRODUCT_NAME}.eep DEPENDS strip)
 
 # Erase chip
-add_custom_target(erase sudo avrdude - ${PROG_TYPE} -p ${MCU} -e)
+add_custom_target(erase sudo avrdude -c ${PROG_TYPE} -p ${MCU} -e)
 
 # Upload the firmware with avrdude
 add_custom_target(upload sudo avrdude -c ${PROG_TYPE} -p ${MCU} -U flash:w:${PRODUCT_NAME}.hex DEPENDS hex erase)
