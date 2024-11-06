@@ -22,6 +22,8 @@ void start()
 	command(0x06);	// Entry mode-increment cursor by 1
 	command(0x01);	// Clear screen
 	command(0x80);	// Sets cursor to (0,0)
+	PORTD = k;
+	PORTB = vdd;
 }
 
 
