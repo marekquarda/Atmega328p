@@ -17,11 +17,11 @@ void start()
 {
 	DDRD = 0xE0;    // PB0 and PB1 declared as output // RS, EN 
 	DDRB = 0x1F;    // PB0,PB1,PB2,PB3 declared as output
-	command(0x28);	// To initialize LCD in 2 lines, 5X8 dots and 4bit mode.
-	command(0x0C);	// Display ON cursor OFF. E for cursor ON and C for cursor OFF
-	command(0x06);	// Entry mode-increment cursor by 1
-	command(0x01);	// Clear screen
-	command(0x80);	// Sets cursor to (0,0)
+	// command(0x28);	// To initialize LCD in 2 lines, 5X8 dots and 4bit mode.
+	// command(0x0C);	// Display ON cursor OFF. E for cursor ON and C for cursor OFF
+	// command(0x06);	// Entry mode-increment cursor by 1
+	// command(0x01);	// Clear screen
+	// command(0x80);	// Sets cursor to (0,0)
 	PORTD = k;
 	PORTB = vdd;
 }
