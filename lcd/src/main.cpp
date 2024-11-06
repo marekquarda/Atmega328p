@@ -13,8 +13,6 @@
 #define rs PD7    //pin11 
 #define en PD6    //pin10
 
-
-
 /**** Decimal Values to Display Special Characters ****/
 unsigned int s1[]={10,21,17,17,17,10,4,0};
 unsigned int s2[]={0,10,0,4,4,17,10,4};
