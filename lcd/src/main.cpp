@@ -10,8 +10,8 @@
 #include "lcd.h"
 //D4-D7 connected to D4-D7
 
-#define rs PB0    //pin8 
-#define en PB1    //pin9
+#define rs PD7    //pin11 
+#define en PD6    //pin10
 
 
 

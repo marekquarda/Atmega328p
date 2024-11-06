@@ -6,8 +6,8 @@
 #include "lcd.h"
 //D4-D7 connected to D4-D7
 
-#define rs PB0    //pin8 
-#define en PB1    //pin9
+#define rs PD7    //pin11 
+#define en PD6    //pin10
 
 
 
@@ -15,8 +15,8 @@ int base_address[8]={64,72,80,88,96,104,112,120};
 
 void start()  
 {
-	DDRB = 0x03;    // PB0 and PB1 declared as output
-	DDRD = 0xF0;    // PD4,PD5,PD6,PD7 declared as output
+	DDRD = 0xC0;    // PB0 and PB1 declared as output // RS, EN 
+	DDRB = 0x0F;    // PB0,PB1,PB2,PB3 declared as output
 	command(0x28);	// To initialize LCD in 2 lines, 5X8 dots and 4bit mode.
 	command(0x0C);	// Display ON cursor OFF. E for cursor ON and C for cursor OFF
 	command(0x06);	// Entry mode-increment cursor by 1
@@ -31,22 +31,22 @@ void command(char LcdCommand)  // Basic function used in giving command
 {                              // to LCD
 	char UpperHalf, LowerHalf;
 	
-	UpperHalf = LcdCommand & 0xF0;	// upper 4 bits of command
-	PORTD &= 0x0F;                  // flushes upper half of PortD to 0, but retains lower half of PortD
-	PORTD |= UpperHalf;
-	PORTB &= ~(1<<rs);
-	PORTB |= (1<<en);
+	UpperHalf = (LcdCommand>>4) & 0x0F;	// upper 4 bits of command
+	PORTB &= 0x0F;                  // flushes upper half of PortD to 0, but retains lower half of PortD
+	PORTB |= UpperHalf;
+	PORTD &= ~(1<<rs);
+	PORTD |= (1<<en);
 	_delay_ms(10);
-	PORTB &= ~(1<<en);
+	PORTD &= ~(1<<en);
 	_delay_ms(10);
 	
-	LowerHalf = ((LcdCommand<<4) & 0xF0); //lower 4 bits of command
-	PORTD &= 0x0F;                  // flushes upper half of PortD to 0, but retains lower half of PortD
-	PORTD |= LowerHalf;
-	PORTB &= ~(1<<rs);
-	PORTB |= (1<<en);
+	LowerHalf = ((LcdCommand) & 0x0F); //lower 4 bits of command
+	PORTB &= 0x0F;                  // flushes upper half of PortD to 0, but retains lower half of PortD
+	PORTB |= LowerHalf;
+	PORTD &= ~(1<<rs);
+	PORTD |= (1<<en);
 	_delay_ms(10);
-	PORTB &= ~(1<<en);
+	PORTD &= ~(1<<en);
 	_delay_ms(10);
 }
 	 
@@ -54,22 +54,22 @@ void data(char AsciiChar)    // Basic function used in giving data
 {                            // to LCD
 	char UpperHalf, LowerHalf;
 	
-	UpperHalf = AsciiChar & 0xF0;	// upper 4 bits of data
-	PORTD &= 0x0F;       // flushes upper half of PortD to 0, but retains lower half of PortD
-	PORTD |= UpperHalf;
-	PORTB |= (1<<rs);
-	PORTB |= (1<<en);
+	UpperHalf = (AsciiChar>>4) & 0x0F;	// upper 4 bits of data
+	PORTB &= 0x0F;       // flushes upper half of PortD to 0, but retains lower half of PortD
+	PORTB |= UpperHalf;
+	PORTD |= (1<<rs);
+	PORTD |= (1<<en);
 	_delay_ms(10);
-	PORTB &= ~(1<<en);
+	PORTD &= ~(1<<en);
 	_delay_us(400);
 	
-	LowerHalf = ((AsciiChar<<4) & 0xF0); //lower 4 bits of data
-	PORTD &= 0x0F;       // flushes upper half of PortD to 0, but retains lower half of PortD
-	PORTD |= LowerHalf;
-	PORTB |= (1<<rs);
-	PORTB |= (1<<en);
+	LowerHalf = ((AsciiChar) & 0x0F); //lower 4 bits of data
+	PORTB &= 0x0F;       // flushes upper half of PortD to 0, but retains lower half of PortD
+	PORTB |= LowerHalf;
+	PORTD |= (1<<rs);
+	PORTD |= (1<<en);
 	_delay_ms(10);
-	PORTB &= ~(1<<en);
+	PORTD &= ~(1<<en);
 	_delay_us(400);	
 }
 
