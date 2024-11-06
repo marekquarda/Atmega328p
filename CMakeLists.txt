@@ -19,7 +19,7 @@ set(PROG_TYPE linuxgpio)
 # AVR Fuses
 set(E_FUSE 0xff)
 set(H_FUSE 0xd9)
-set(L_FUSE 0x62)
+set(L_FUSE 0xe2)
 set(LOCK_BIT 0xff)
 
 ## Use AVR GCC toolchain
