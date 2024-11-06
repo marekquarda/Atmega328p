@@ -27,8 +27,8 @@ unsigned int s8[]={0,10,0,31,17,14,0,0};
 int main()
 {
 	int i;
-	DDRB = 0x03;
-	DDRD = 0xF0;
+	//DDRB = 0x03;
+	//DDRD = 0xF0;
 	
 	_delay_ms(200);
 	start();
