@@ -42,23 +42,23 @@ add_compile_options(
     #-std=gnu99   # C99 standard
     -Os          # optimize
     -Wall        # enable warnings
-    -Wno-main    
-    -Wundef 
-    -pedantic 
+    #-Wno-main    
+    #-Wundef 
+    #-pedantic 
     #-Wstrict-prototypes
     -Werror 
     -Wfatal-errors
-    -Wl,--relax,--gc-sections 
-    -g 
-    -gdwarf-2 
-    -funsigned-char  # a few optimizations
-    -funsigned-bitfields 
-    -fpack-struct 
-    -fshort-enums 
-    -ffunction-sections 
-    -fdata-sections 
-    -fno-split-wide-types 
-    -fno-tree-scev-cprop 
+    #-Wl,--relax,--gc-sections 
+    #-g 
+    #-gdwarf-2 
+    #-funsigned-char  # a few optimizations
+    #-funsigned-bitfields 
+    #-fpack-struct 
+    #-fshort-enums 
+    #-ffunction-sections 
+    #-fdata-sections 
+    #-fno-split-wide-types 
+    #-fno-tree-scev-cprop 
 )   
 
 # Load all files in src folder
