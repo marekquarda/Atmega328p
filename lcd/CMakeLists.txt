@@ -46,8 +46,8 @@ add_compile_options(
     #-Wundef 
     #-pedantic 
     #-Wstrict-prototypes
-    -Werror 
-    -Wfatal-errors
+    #-Werror 
+    #-Wfatal-errors
     #-Wl,--relax,--gc-sections 
     #-g 
     #-gdwarf-2 
