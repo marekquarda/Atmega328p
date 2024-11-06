@@ -89,7 +89,7 @@ add_custom_target(upload sudo avrdude -c ${PROG_TYPE} -p ${MCU} -U flash:w:${PRO
 add_custom_target(upload_eeprom sudo avrdude -c ${PROG_TYPE} -p ${MCU} -U eeprom:w:${PRODUCT_NAME}.eep DEPENDS eeprom erase)
 
 # Burn fuses 
-add_custom_target(fuses sudo avrdude -c ${PROG_TYPE} -p ${MCU} -U lfuse:w:${L_FUSE}:m -U hfuse:w:${H_FUSE}:m -U efuse:w:${E_FUSE} -U lock:w:${LOCK_BIT}:m)
+add_custom_target(fuses sudo avrdude -c ${PROG_TYPE} -p ${MCU} -U lfuse:w:${L_FUSE}:m -U hfuse:w:${H_FUSE}:m -U efuse:w:${E_FUSE}:m -U lock:w:${LOCK_BIT}:m)
 
 ## clean extra files
 set_directory_properties(PROPERTIES ADDITIONAL_MAKE_CLEAN_FILES "${PRODUCT_NAME}.hex;${PRODUCT_NAME}.eeprom;${PRODUCT_NAME}.lst;${PRODUCT_NAME}.eep")
