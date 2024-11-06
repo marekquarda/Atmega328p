@@ -4,7 +4,7 @@ cmake_minimum_required(VERSION 3.09)
 project("Atmega32 Firmware")
 
 ## Product filename
-set(PRODUCT_NAME samson)
+set(PRODUCT_NAME blick)
 
 ## AVR Chip Configuration ##
 # 8Mhz, this sould match the crystal on board
