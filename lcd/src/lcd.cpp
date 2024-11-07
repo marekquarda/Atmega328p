@@ -19,9 +19,9 @@ void lcd_init(void)
 	CTL_BUS &=~(1<<LCD_EN);
 	 _delay_ms(1);
 	
-	//lcd_send_command(LCD_FUNCTION_4BIT_2LINES); 
-	lcd_send_command(0x02);   
-	lcd_send_command(0x08);
+	lcd_send_command(LCD_FUNCTION_4BIT_2LINES); 
+	//lcd_send_command(0x02);   
+	//lcd_send_command(0x08);
 	_delay_ms(1);
 	lcd_send_command(LCD_DISP_ON_CURSOR_BLINK);
 	_delay_ms(1);
@@ -58,7 +58,7 @@ void lcd_write_word(char* word)
 void lcd_write_character(char character)
 {
 	// high value
-	DATA_BUS=((character>>4) & 0b00001111);
+	DATA_BUS=((character & 0b00001111)>>4);
 	CTL_BUS|=(1<<LCD_RS);
 	CTL_BUS |=(1<<LCD_EN);
 	_delay_ms(2);
