@@ -14,7 +14,7 @@ int main(void)
 {
 	
 	lcd_init();
-	//lcd_send_command(LCD_MOVE_CURSOR_RIGHT);
+	lcd_send_command(LCD_MOVE_CURSOR_RIGHT);
 	// lcd_write_character('h');
 	// lcd_write_character('o');
 	// lcd_write_character('j');
