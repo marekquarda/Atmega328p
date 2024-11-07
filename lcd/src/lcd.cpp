@@ -23,7 +23,7 @@ void lcd_init(void)
 	_delay_ms(1);
 	lcd_send_command(LCD_CMD_DISPLAY_CURSOR_BLINK);
 	_delay_ms(1);
-	//lcd_send_command(0x80);
+	lcd_send_command(0x80);
 }
 
 void lcd_send_command (uint8_t command)
