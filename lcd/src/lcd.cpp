@@ -21,7 +21,7 @@ void lcd_init(void)
 	
 	lcd_send_command(LCD_FUNCTION_4BIT_2LINES);
 	_delay_ms(1);
-	lcd_send_command(LCD_CMD_DISPLAY_CURSOR_BLINK);
+	lcd_send_command(LCD_DISP_ON_CURSOR_BLINK);
 	_delay_ms(1);
 	lcd_send_command(0x80);
 }
