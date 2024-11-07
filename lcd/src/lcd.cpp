@@ -54,14 +54,15 @@ void lcd_write_word(uint8_t word[20])
 }
 void lcd_write_character(uint8_t character)
 {
-	
-	DATA_BUS=(character & 0b11110000);
+	// high value
+	DATA_BUS=((character>>4) & 0b00001111);
 	CTL_BUS|=(1<<LCD_RS);
 	CTL_BUS |=(1<<LCD_EN);
 	_delay_ms(2);
 	CTL_BUS &=~(1<<LCD_EN);
 	_delay_ms(2);
-	DATA_BUS=((character & 0b00001111)<<4);
+	// low value
+	DATA_BUS=((character & 0b00001111));
 	CTL_BUS |=(1<<LCD_EN);
 	_delay_ms(2);
 	CTL_BUS &=~(1<<LCD_EN);
