@@ -17,9 +17,11 @@
 #define LCD_CMD_DISPLAY_CURSOR_NO_BLINK    0x0E
 #define LCD_CMD_DISPLAY_CURSOR_BLINK       0x0F
 
-// Function set
-#define LCD_CMD_4BIT_2ROW_5X7              0x28   // 4 bits, dual line
-#define LCD_CMD_8BIT_2ROW_5X7              0x38
+/* Function set: set interface data length and number of display lines */
+#define LCD_FUNCTION_4BIT_1LINE  0x20   /* 4-bit interface, single line, 5x7 dots */
+#define LCD_FUNCTION_4BIT_2LINES 0x28   /* 4-bit interface, dual line,   5x7 dots */
+#define LCD_FUNCTION_8BIT_1LINE  0x30   /* 8-bit interface, single line, 5x7 dots */
+#define LCD_FUNCTION_8BIT_2LINES 0x38   /* 8-bit interface, dual line,   5x7 dots */
 
 //functions prototype
 void lcd_init(void);
