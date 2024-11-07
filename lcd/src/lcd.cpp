@@ -43,7 +43,7 @@ void lcd_send_command (uint8_t command)
 	CTL_BUS &=~(1<<LCD_EN);
 	_delay_ms(1);
 }
-void lcd_write_word(uint8_t word[20])
+void lcd_write_word(char* word)
 {
 	int i=0;
 	while(word[i]!='\0')
@@ -52,7 +52,7 @@ void lcd_write_word(uint8_t word[20])
 		i++;
 	}
 }
-void lcd_write_character(uint8_t character)
+void lcd_write_character(char character)
 {
 	// high value
 	DATA_BUS=((character>>4) & 0b00001111);
