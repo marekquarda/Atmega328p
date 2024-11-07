@@ -19,12 +19,11 @@ void lcd_init(void)
 	CTL_BUS &=~(1<<LCD_EN);
 	 _delay_ms(1);
 	
-	lcd_send_command(LCD_CMD_8BIT_2ROW_5X7);
+	lcd_send_command(LCD_CMD_4BIT_2ROW_5X7);
 	_delay_ms(1);
 	lcd_send_command(LCD_CMD_DISPLAY_CURSOR_BLINK);
 	_delay_ms(1);
-	lcd_send_command(0x80);
-	
+	//lcd_send_command(0x80);
 }
 
 void lcd_send_command (uint8_t command)

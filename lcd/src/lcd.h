@@ -18,7 +18,7 @@
 #define LCD_CMD_DISPLAY_CURSOR_BLINK       0x0F
 
 // Function set
-#define LCD_CMD_4BIT_2ROW_5X7              0x28
+#define LCD_CMD_4BIT_2ROW_5X7              0x28   // 4 bits, dual line
 #define LCD_CMD_8BIT_2ROW_5X7              0x38
 
 //functions prototype
