@@ -15,15 +15,15 @@ void lcd_init(void)
 
 	DATA_BUS = (0<<LCD_D7)|(0<<LCD_D6)|(1<<LCD_D5)|(0<<LCD_D4)|(1<<LCD_VCC);
 	CTL_BUS|= (1<<LCD_EN)|(0<<LCD_RS)||(1<<LCD_K);
-	_delay_ms(1);
-	CTL_BUS &=~(1<<LCD_EN);
-	_delay_ms(1);
+	// _delay_ms(1);
+	// CTL_BUS &=~(1<<LCD_EN);
+	// _delay_ms(1);
 	
-	lcd_send_command(LCD_CMD_4BIT_2ROW_5X7);
-	_delay_ms(1);
-	lcd_send_command(LCD_CMD_DISPLAY_CURSOR_BLINK);
-	_delay_ms(1);
-	lcd_send_command(0x80);
+	// lcd_send_command(LCD_CMD_4BIT_2ROW_5X7);
+	// _delay_ms(1);
+	// lcd_send_command(LCD_CMD_DISPLAY_CURSOR_BLINK);
+	// _delay_ms(1);
+	// lcd_send_command(0x80);
 	
 }
 
