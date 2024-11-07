@@ -29,12 +29,12 @@ void lcd_init(void)
 void lcd_send_command (uint8_t command)
 {
 	// high value
-	DATA_BUS=((command>>4)&0b00001111); 
-	CTL_BUS &=~(1<<LCD_RS);
-	CTL_BUS |=(1<<LCD_EN);
-	_delay_ms(1);
-	CTL_BUS &=~(1<<LCD_EN);
-	_delay_ms(1);
+	// DATA_BUS=((command>>4)&0b00001111); 
+	// CTL_BUS &=~(1<<LCD_RS);
+	// CTL_BUS |=(1<<LCD_EN);
+	// _delay_ms(1);
+	// CTL_BUS &=~(1<<LCD_EN);
+	// _delay_ms(1);
 	// low value
 	DATA_BUS=((command&0b00001111));
 	CTL_BUS |=(1<<LCD_EN);
