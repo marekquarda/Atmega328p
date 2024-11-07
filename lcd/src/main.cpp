@@ -20,7 +20,7 @@ int main(void)
 	// lcd_write_character('j');
 	//lcd_write_word("Hello, World!");
 	lcd_goto_xy(1,0);
-	lcd_write_character(1);
+	//lcd_write_character(1);
 	//lcd_write_word("LCD is working");
  
 }
