@@ -34,7 +34,7 @@
 #define LCD_MOVE_CURSOR_LEFT     0x10   /* move cursor left  (decrement)          */
 #define LCD_MOVE_CURSOR_RIGHT    0x14   /* move cursor right (increment)          */
 #define LCD_MOVE_DISP_LEFT       0x18   /* shift display left                     */
-#define LCD_MOVE_DISP_RIGHT      0x1C   /* shift display right 
+#define LCD_MOVE_DISP_RIGHT      0x1C   /* shift display right                    */ 
 
 /* Function set: set interface data length and number of display lines */
 #define LCD_FUNCTION_4BIT_1LINE  0x20   /* 4-bit interface, single line, 5x7 dots */
