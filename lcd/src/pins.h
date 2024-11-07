@@ -13,15 +13,15 @@
 #define CTL_BUS		PORTD
 #define DATA_DDR	DDRB
 #define CTL_DDR		DDRD
-#define LCD_D4			0x01
-#define LCD_D5			0x02
-#define LCD_D6			0x03
-#define LCD_D7			0x04
-#define LCD_EN			0x06
-#define	LCD_RW			0x04  // GND
-#define	LCD_RS			0x07
-#define LCD_K           0x05
-#define LCD_VCC         0x04
+#define LCD_D4			0b00000001  // 0
+#define LCD_D5			0b00000010  // 1
+#define LCD_D6			0b00000100  // 2 
+#define LCD_D7			0b00001000  // 3
+#define LCD_EN			0b01000000  // 6
+//#define	LCD_RW	    0b00010000  // 4  // GND
+#define	LCD_RS			0b10000000  // 7
+#define LCD_K           0b00100000  // 5
+#define LCD_VCC         0x00010000  // 4
 
 
 
