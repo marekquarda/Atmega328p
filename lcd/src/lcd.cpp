@@ -10,10 +10,10 @@
 void lcd_init(void)
 {	
 	
-	DATA_DDR = (LCD_D7) | (LCD_D6) | (LCD_D5)| (LCD_D4) | (LCD_VCC);
-	CTL_DDR = (LCD_EN)|(LCD_RS)|(LCD_K);
+	DATA_DDR |= (LCD_D7) | (LCD_D6) | (LCD_D5)| (LCD_D4) | (LCD_VCC);
+	CTL_DDR |= (LCD_EN)|(LCD_RS)|(LCD_K);
 
-	DATA_BUS = (LCD_D7)|(LCD_D6)|(LCD_D5)|(LCD_D4)|(LCD_VCC);
+	DATA_BUS |= (LCD_D7)|(LCD_D6)|(LCD_D5)|(LCD_D4)|(LCD_VCC);
 	CTL_BUS|= (LCD_EN)|(LCD_RS)|(LCD_K);
 	_delay_ms(1);
 	CTL_BUS &=~(LCD_EN);
