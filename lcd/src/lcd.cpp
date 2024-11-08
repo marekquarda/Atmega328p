@@ -13,7 +13,7 @@ void lcd_init(void)
 	DATA_DDR = (1<<LCD_D7) | (1<<LCD_D6) | (1<<LCD_D5)| (1<<LCD_D4) | (1<<LCD_VCC);
 	CTL_DDR |= (1<<LCD_EN)|(1<<LCD_RS)|(1<<LCD_K);
 
-	DATA_BUS = (0<<LCD_D7)|(0<<LCD_D6)|(1<<LCD_D5)|(0<<LCD_D4)|(1<<LCD_VCC);
+	DATA_BUS = (0<<LCD_D7)|(0<<LCD_D6)|(0<<LCD_D5)|(0<<LCD_D4)|(1<<LCD_VCC);
 	CTL_BUS|= (1<<LCD_EN)|(0<<LCD_RS)|(1<<LCD_K);
 
 	_delay_ms(1);
@@ -24,7 +24,7 @@ void lcd_init(void)
 	_delay_ms(1);
 	lcd_send_command(LCD_DISP_ON_CURSOR_BLINK);
 	_delay_ms(1);
-	lcd_send_command(0x80);
+	//lcd_send_command(0x80);
 }
 
 void lcd_send_command (uint8_t command)
