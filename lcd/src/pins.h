@@ -22,8 +22,9 @@
 // define port D
 #define LCD_K           PD5  // 5
 //#define	LCD_RW	    // GND
-#define LCD_EN			PD6  // 6
-#define	LCD_RS			PD7  // 7
+#define	LCD_RS			PD6  // 6
+#define LCD_EN			PD7  // 7
+
 
 
 
