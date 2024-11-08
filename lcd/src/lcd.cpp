@@ -14,7 +14,7 @@ void lcd_init(void)
 	CTL_DDR = (1<<LCD_EN)|(1<<LCD_RS)|(1<<LCD_K);
 
 	DATA_BUS = (0<<LCD_D7)|(0<<LCD_D6)|(0<<LCD_D5)|(0<<LCD_D4)|(0<<LCD_VCC);
-	CTL_BUS = (1<<LCD_EN)|(0<<LCD_RS)|(0<<LCD_K);
+	CTL_BUS = (0<<LCD_EN)|(0<<LCD_RS)|(1<<LCD_K);
 
 	_delay_ms(1);
 	CTL_BUS &=~(1<<LCD_EN);
