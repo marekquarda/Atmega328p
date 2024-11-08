@@ -74,7 +74,7 @@ void lcd_write_character(char character)
 {
 	// high value
 	DATA_BUS=(DATA_BUS&0xF0) | ((character>>4)&0x0F); 
-	CTL_BUS &=~(1<<LCD_RS);
+	CTL_BUS |=~(1<<LCD_RS);	/* RS=1, data reg. */
 	CTL_BUS |=(1<<LCD_EN);
 	_delay_ms(1);
 	CTL_BUS &=~(1<<LCD_EN);
@@ -82,7 +82,7 @@ void lcd_write_character(char character)
 	// low value
 	DATA_BUS=(DATA_BUS&0xF0) | (character&0x0F);
 	CTL_BUS |=(1<<LCD_EN);
-	_delay_ms(2);
+	_delay_ms(1);
 	CTL_BUS &=~(1<<LCD_EN);
 	_delay_ms(2);
 }
