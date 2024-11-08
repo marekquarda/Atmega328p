@@ -23,7 +23,7 @@ void lcd_init(void)
 	// _delay_ms(1);
 	// lcd_clear();
 	_delay_ms(1);
-	lcd_send_command(LCD_MOVE_CURSOR_LEFT);
+	lcd_send_command(LCD_ENTRY_INC_);
 	_delay_ms(1);
 	lcd_send_command(LCD_DISP_ON_CURSOR_BLINK);
 	_delay_ms(100);
