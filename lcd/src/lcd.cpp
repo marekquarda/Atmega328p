@@ -33,6 +33,7 @@ void lcd_init(void)
 void lcd_send_command (uint8_t command)
 {
 	// high value
+	MIRROR_BYTE(command);
 	DATA_BUS=(4>>(command&0b11110000)); 
 	CTL_BUS &=~(1<<LCD_RS);
 	CTL_BUS |=(1<<LCD_EN);

@@ -11,11 +11,7 @@
 #define LCD_CMD_CLEAR_DISPLAY	          0x01
 #define LCD_CMD_CURSOR_HOME		          0x02
 
-// // Display control
-// #define LCD_CMD_DISPLAY_OFF                0x08
-// #define LCD_CMD_DISPLAY_NO_CURSOR          0x0c
-// #define LCD_CMD_DISPLAY_CURSOR_NO_BLINK    0x0E
-// #define LCD_CMD_DISPLAY_CURSOR_BLINK       0x0F
+#define MIRROR_BYTE(x)	(x<<1&0x10)|(x>>1&0x08)|(x<<3&0x20)|(x>>3&0x04)|(x<<5&0x40)|(x>>5&0x02)|(x<<7&0x80)|(x>>7&0x01)
 
 /* set entry mode: display shift on/off, dec/inc cursor move direction */
 #define LCD_ENTRY_DEC            0x04   /* display shift off, dec cursor move dir */
