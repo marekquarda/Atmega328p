@@ -23,7 +23,7 @@ void lcd_init(void)
 	lcd_send_command(LCD_FUNCTION_4BIT_2LINES);     /* Use 2 line and initialize 5*7 matrix in (4-bit mode)*/
 	lcd_send_command(LCD_DISP_ON_CURSOR);     /* Display on cursor off*/
 	lcd_send_command(LCD_MOVE_CURSOR_RIGHT);              	/* Increment cursor (shift cursor to right)*/
-	//lcd_send_command(LCD_CMD_CLEAR_DISPLAY);      	/* Clear display screen*/
+	lcd_send_command(LCD_CMD_CLEAR_DISPLAY);      	/* Clear display screen*/
 	_delay_ms(2);
 	lcd_send_command(0x80);							/* Cursor 1st row 0th position */
 }
