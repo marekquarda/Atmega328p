@@ -20,12 +20,12 @@ void lcd_init(void)
 	CTL_BUS &=~(1<<LCD_EN);
 	_delay_ms(20);						/* LCD Power ON delay always >15ms */
 	
-	lcd_send_command(0x33);
-	lcd_send_command(0x32);		    		/* send for 4 bit initialization of LCD  */
-	lcd_send_command(0x28);              	/* Use 2 line and initialize 5*7 matrix in (4-bit mode)*/
+	//lcd_send_command(0x33);
+	//lcd_send_command(0x32);		    		/* send for 4 bit initialization of LCD  */
+	lcd_send_command(LCD_FUNCTION_4BIT_2LINES);              	/* Use 2 line and initialize 5*7 matrix in (4-bit mode)*/
 	lcd_send_command(LCD_DISP_ON_CURSOR_BLINK);              	/* Display on cursor off*/
-	lcd_send_command(0x06);              	/* Increment cursor (shift cursor to right)*/
-	lcd_send_command(0x01);              	/* Clear display screen*/
+	//lcd_send_command(0x06);              	/* Increment cursor (shift cursor to right)*/
+	//lcd_send_command(0x01);              	/* Clear display screen*/
 	_delay_ms(2);
 	lcd_send_command(0x80);					/* Cursor 1st row 0th position */
 
