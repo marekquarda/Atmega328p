@@ -13,17 +13,17 @@
 #define CTL_BUS		PORTD
 #define DATA_DDR	DDRB
 #define CTL_DDR		DDRD
-// define port b
-#define LCD_D4			0b00000001  // 0
-#define LCD_D5			0b00000010  // 1
-#define LCD_D6			0b00000100  // 2 
-#define LCD_D7			0b00001000  // 3
-#define LCD_VCC         0x00010000  // 4
-// define port d
-#define LCD_K           0b00100000  // 5
-//#define	LCD_RW	    0b00010000  // 4  // GND
-#define LCD_EN			0b01000000  // 6
-#define	LCD_RS			0b10000000  // 7
+// define port B
+#define LCD_D4			PB0  // 0
+#define LCD_D5			PB1  // 1
+#define LCD_D6			PB2  // 2 
+#define LCD_D7			PB3  // 3
+#define LCD_VCC         PB4  // 4
+// define port D
+#define LCD_K           PD5  // 5
+//#define	LCD_RW	    // GND
+#define LCD_EN			PD6  // 6
+#define	LCD_RS			PD7  // 7
 
 
 
