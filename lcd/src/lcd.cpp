@@ -30,7 +30,7 @@ void lcd_init(void)
 void lcd_send_command (uint8_t command)
 {
 	// high value
-	DATA_BUS=((command&0b11110000)>>4); 
+	DATA_BUS=(4>>(command&0b11110000)); 
 	CTL_BUS &=~(1<<LCD_RS);
 	CTL_BUS |=(1<<LCD_EN);
 	_delay_ms(1);
@@ -57,7 +57,7 @@ void lcd_write_word(char* word)
 void lcd_write_character(char character)
 {
 	// high value
-	DATA_BUS=((character & 0b11110000)>>4);
+	DATA_BUS=(4>>(character & 0b11110000));
 	CTL_BUS &=~(1<<LCD_RS);
 	CTL_BUS |=(1<<LCD_EN);
 	_delay_ms(1);
