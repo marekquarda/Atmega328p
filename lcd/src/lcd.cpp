@@ -14,16 +14,23 @@ void lcd_init(void)
 	CTL_DDR |= (1<<LCD_EN)|(1<<LCD_RS)|(1<<LCD_K);
 
 	DATA_BUS = (0<<LCD_D7)|(0<<LCD_D6)|(0<<LCD_D5)|(0<<LCD_D4)|(1<<LCD_VCC);
-	CTL_BUS|= (0<<LCD_EN)|(0<<LCD_RS)|(1<<LCD_K);
+	CTL_BUS|= (1<<LCD_EN)|(0<<LCD_RS)|(1<<LCD_K);
 
 	_delay_ms(1);
 	CTL_BUS &=~(1<<LCD_EN);
-	_delay_ms(100);
-	lcd_send_command(LCD_FUNCTION_4BIT_2LINES); 
-	_delay_ms(1);
-	lcd_send_command(LCD_DISP_ON_CURSOR_BLINK);
-	_delay_ms(100);
-	lcd_send_command(0x80);
+	_delay_ms(20);
+	lcd_send_command(0x33);
+	lcd_send_command(0x32);	/* Send for 4 bit initialization of LCD  */
+	lcd_send_command(0x28); /* 2 line, 5*7 matrix in 4-bit mode */
+	lcd_send_command(0x0c);	/* Display on cursor off */
+	lcd_send_command(0x06);	/* Increment cursor (shift cursor to right) */
+	lcd_send_command(0x01);	/* Clear display screen */
+
+	// lcd_send_command(LCD_FUNCTION_4BIT_2LINES); 
+	// _delay_ms(1);
+	// lcd_send_command(LCD_DISP_ON_CURSOR_BLINK);
+	// _delay_ms(100);
+	// lcd_send_command(0x80);
 }
 
 void lcd_send_command (uint8_t command)
