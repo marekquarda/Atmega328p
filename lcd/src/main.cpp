@@ -15,7 +15,7 @@ int main(void)
 	//lcd_write_character('h');
 	//lcd_write_character('o');
 	//lcd_write_character('j');
-	lcd_write_word("Hello, World!");
+	//lcd_write_word("Hello, World!");
 	//lcd_goto_xy(0,0);
 	//lcd_write_character(1);
 	//lcd_write_word("LCD is working");
