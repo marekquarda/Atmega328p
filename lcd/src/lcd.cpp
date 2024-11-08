@@ -18,12 +18,15 @@ void lcd_init(void)
 
 	_delay_ms(1);
 	CTL_BUS &=~(1<<LCD_EN);
-	_delay_ms(1);
-	
+	_delay_ms(100);
 	lcd_send_command(LCD_FUNCTION_4BIT_2LINES); 
+	// _delay_ms(1);
+	// lcd_clear();
+	_delay_ms(1);
+	lcd_send_command(LCD_MOVE_CURSOR_LEFT);
 	_delay_ms(1);
 	lcd_send_command(LCD_DISP_ON_CURSOR_BLINK);
-	_delay_ms(1);
+	_delay_ms(100);
 	//lcd_send_command(0x80);
 }
 
