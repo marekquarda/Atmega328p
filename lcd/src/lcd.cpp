@@ -19,18 +19,18 @@ void lcd_init(void)
 	_delay_ms(1);
 	CTL_BUS &=~(1<<LCD_EN);
 	_delay_ms(20);
-	lcd_send_command(0x33);
-	lcd_send_command(0x32);	/* Send for 4 bit initialization of LCD  */
-	lcd_send_command(LCD_FUNCTION_4BIT_2LINES); /* 2 line, 5*7 matrix in 4-bit mode */
-	lcd_send_command(LCD_DISP_ON_CURSOR_BLINK);	/* Display on cursor off */
-	lcd_send_command(0x06);	/* Increment cursor (shift cursor to right) */
-	lcd_send_command(0x01);	/* Clear display screen */
+	// lcd_send_command(0x33);
+	// lcd_send_command(0x32);	/* Send for 4 bit initialization of LCD  */
+	// lcd_send_command(LCD_FUNCTION_4BIT_2LINES); /* 2 line, 5*7 matrix in 4-bit mode */
+	// lcd_send_command(LCD_DISP_ON_CURSOR_BLINK);	/* Display on cursor off */
+	// lcd_send_command(0x06);	/* Increment cursor (shift cursor to right) */
+	// lcd_send_command(0x01);	/* Clear display screen */
 
-	// lcd_send_command(LCD_FUNCTION_4BIT_2LINES); 
-	// _delay_ms(1);
-	// lcd_send_command(LCD_DISP_ON_CURSOR_BLINK);
-	// _delay_ms(100);
-	// lcd_send_command(0x80);
+	lcd_send_command(LCD_FUNCTION_4BIT_2LINES); 
+	_delay_ms(1);
+	lcd_send_command(LCD_DISP_ON_CURSOR_BLINK);
+	_delay_ms(100);
+	lcd_send_command(0x80);
 }
 
 void lcd_send_command (uint8_t command)
@@ -48,18 +48,6 @@ void lcd_send_command (uint8_t command)
 	_delay_ms(1);
 	CTL_BUS &=~(1<<LCD_EN);
 	_delay_ms(1);
-
-	// LCD_Port = (LCD_Port & 0x0F) | (cmnd & 0xF0);/* Sending upper nibble */
-	// LCD_Port &= ~ (1<<RS);		/* RS=0, command reg. */
-	// LCD_Port |= (1<<EN);		/* Enable pulse */
-	// _delay_us(1);
-	// LCD_Port &= ~ (1<<EN);
-	// _delay_us(200);
-	// LCD_Port = (LCD_Port & 0x0F) | (cmnd << 4);/* Sending lower nibble */
-	// LCD_Port |= (1<<EN);
-	// _delay_us(1);
-	// LCD_Port &= ~ (1<<EN);
-	// _delay_ms(2);
 }
 
 void lcd_write_word(char* word)
