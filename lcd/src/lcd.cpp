@@ -36,20 +36,30 @@ void lcd_init(void)
 void lcd_send_command (uint8_t command)
 {
 	// high value
-	//DATA_BUS=(4>>(command&0b11110000)); 
-	DATA_BUS=((command&0b00001111));
+	DATA_BUS=((4>>command)&0b00001111); 
 	CTL_BUS &=~(1<<LCD_RS);
 	CTL_BUS |=(1<<LCD_EN);
 	_delay_ms(1);
 	CTL_BUS &=~(1<<LCD_EN);
-	_delay_ms(1);
+	_delay_ms(200);
 	//low value
-	DATA_BUS=(4>>(command&0b11110000)); 
-	//DATA_BUS=((command&0b00001111));
+	DATA_BUS=((command&0b00001111));
 	CTL_BUS |=(1<<LCD_EN);
 	_delay_ms(1);
 	CTL_BUS &=~(1<<LCD_EN);
 	_delay_ms(1);
+
+	// LCD_Port = (LCD_Port & 0x0F) | (cmnd & 0xF0);/* Sending upper nibble */
+	// LCD_Port &= ~ (1<<RS);		/* RS=0, command reg. */
+	// LCD_Port |= (1<<EN);		/* Enable pulse */
+	// _delay_us(1);
+	// LCD_Port &= ~ (1<<EN);
+	// _delay_us(200);
+	// LCD_Port = (LCD_Port & 0x0F) | (cmnd << 4);/* Sending lower nibble */
+	// LCD_Port |= (1<<EN);
+	// _delay_us(1);
+	// LCD_Port &= ~ (1<<EN);
+	// _delay_ms(2);
 }
 
 void lcd_write_word(char* word)
@@ -65,23 +75,18 @@ void lcd_write_word(char* word)
 void lcd_write_character(char character)
 {
 	// high value
-	//MIRROR_BYTE(character);
-	//DATA_BUS=(4>>(character & 0b11110000));
-	DATA_BUS=((character & 0b00001111));
+	DATA_BUS=((4>>character) & 0b00001111);
 	CTL_BUS &=~(1<<LCD_RS);
 	CTL_BUS |=(1<<LCD_EN);
 	_delay_ms(1);
 	CTL_BUS &=~(1<<LCD_EN);
-	_delay_ms(1);
+	_delay_ms(200);
 	// low value
-	DATA_BUS=(4>>(character & 0b11110000));
-	//DATA_BUS=((character & 0b00001111));
+	DATA_BUS=((character & 0b00001111));
 	CTL_BUS |=(1<<LCD_EN);
 	_delay_ms(2);
 	CTL_BUS &=~(1<<LCD_EN);
 	_delay_ms(2);
-
-	
 }
 
 void lcd_clear(void)
