@@ -42,6 +42,8 @@ void lcd_init(void)
 	_delay_ms(20);	
 	//lcd_send_command(LCD_ENTRY_INC_SHIFT);     		/* Increment cursor (shift cursor to right)*/
 	lcd_send_command(LCD_CMD_CLEAR_DISPLAY);      	/* Clear display screen*/
+
+	lcd_send_command(LCD_CMD_CURSOR_HOME);
 	_delay_ms(20);
 	lcd_send_command(0x80);							/* Cursor 1st row 0th position */
 }
