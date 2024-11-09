@@ -32,7 +32,6 @@ void lcd_send_command (unsigned char command)
 	// High value
 	DATA_BUS=((DATA_BUS & 0xF0) | ((command & 0xF0)>>4)); 
 	RS_DISABLE;
-	//CTL_BUS &=~(1<<LCD_RS);
 	LCD_ENABLE;
 	_delay_ms(1);
 	LCD_DISABLE;
@@ -55,25 +54,20 @@ void lcd_write_word(char* str)
 	}
 }
 
-void lcd_write_character(char character)
+void lcd_write_character(unsigned char data)
 {
 	// high value
-	DATA_BUS=((DATA_BUS & 0xF0) | ((character & 0xF0)>>4)); 
+	DATA_BUS=((DATA_BUS & 0xF0) | ((data & 0xF0)>>4)); 
 	RS_ENABLE;
-	//CTL_BUS |=~(1<<LCD_RS);	/* RS=1, data reg. */
 	LCD_ENABLE;
-	//CTL_BUS |=(1<<LCD_EN);
 	_delay_ms(1);
 	LCD_DISABLE;
-	//CTL_BUS &=~(1<<LCD_EN);
-	_delay_ms(2);
+	_delay_ms(200);
 	// low value
-	DATA_BUS=((DATA_BUS & 0xF0) | (character & 0x0F));
+	DATA_BUS=((DATA_BUS & 0xF0) | (data & 0x0F));
 	LCD_ENABLE;
-	//CTL_BUS |=(1<<LCD_EN);
 	_delay_ms(1);
 	LCD_DISABLE;
-	//CTL_BUS &=~(1<<LCD_EN);
 	_delay_ms(2);
 }
 
