@@ -47,6 +47,9 @@
 #define K_ENABLE 	CTL_BUS|=(1<<LCD_K)	
 #define K_DISABLE   CTL_BUS&=~(1<<LCD_K)
 
+#define PWR_ENABLE  CTL_BUS|=(1<<PWR_C)	
+#define PWR_DISABLE CTL_BUS&=~(1<<PWR_C)
+
 //functions prototype
 void lcd_init(void);
 void lcd_send_command (unsigned char cmnd);

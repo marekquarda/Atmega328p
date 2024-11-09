@@ -20,7 +20,9 @@
 #define LCD_D7			PB3  // 3
 #define LCD_VCC         PB4  // 4
 // define port D
+#define PWR_C           PD3  // 3
 #define LCD_K           PD5  // 5
+
 //#define	LCD_RW	    // GND
 #define	LCD_RS			PD6  // 6
 #define LCD_EN			PD7  // 7
