@@ -32,9 +32,9 @@ void lcd_init(void)
 
 	lcd_send_command(LCD_FUNCTION_4BIT_2LINES);     /* Use 2 line and initialize 5*7 matrix in (4-bit mode)*/
 	_delay_ms(20);	
-	lcd_send_command(0x33);
+	//lcd_send_command(0x33);
 	_delay_ms(20);	
-	lcd_send_command(0x32);	/* Send for 4 bit initialization of LCD  */
+	//lcd_send_command(0x32);	/* Send for 4 bit initialization of LCD  */
 	_delay_ms(20);	
 	lcd_send_command(LCD_DISP_ON);    				/* Display on cursor off*/
 	_delay_ms(20);	
