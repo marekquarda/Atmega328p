@@ -17,7 +17,7 @@ void lcd_init(void)
 
 	_delay_ms(1);
 	K_ENABLE;
-	VCC_DISABLE;
+	VCC_ENABLE;
 	LCD_DISABLE;
 	PWR_DISABLE;
 
