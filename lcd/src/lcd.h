@@ -40,7 +40,7 @@
 
 //functions prototype
 void lcd_init(void);
-void lcd_send_command (uint8_t );
+void lcd_send_command (unsigned char);
 void lcd_write_character(char);
 void lcd_write_word(char*);
 void lcd_clear(void);

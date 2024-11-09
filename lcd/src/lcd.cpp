@@ -27,7 +27,7 @@ void lcd_init(void)
 	lcd_send_command(0x80);							/* Cursor 1st row 0th position */
 }
 
-void lcd_send_command (uint8_t command)
+void lcd_send_command (unsigned char command)
 {
 	// High value
 	DATA_BUS=((DATA_BUS & 0xF0) | ((command & 0xF0)>>4)); 
