@@ -21,7 +21,13 @@ void lcd_init(void)
 	LCD_DISABLE;
 	PWR_DISABLE;
 
-	_delay_ms(20);			
+	_delay_ms(20);	
+	lcd_send_command(0x30);		
+	_delay_ms(20);	
+	lcd_send_command(0x30);		
+	_delay_ms(20);	
+	lcd_send_command(0x30);		
+	_delay_ms(20);	
 	/* LCD Power ON delay always >15ms */
 	lcd_send_command(LCD_CMD_CURSOR_HOME);		    /* send for 4 bit initialization of LCD  */
 	lcd_send_command(LCD_FUNCTION_4BIT_2LINES);     /* Use 2 line and initialize 5*7 matrix in (4-bit mode)*/
