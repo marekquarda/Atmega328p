@@ -44,12 +44,12 @@ void lcd_send_command (unsigned char command)
 	_delay_ms(1);
 }
 
-void lcd_write_word(char* word)
+void lcd_write_word(char* str)
 {
 	int i=0;
-	while(word[i]!='\0')
+	while(str[i]!='\0')
 	{
-		lcd_write_character(word[i]);
+		lcd_write_character(str[i]);
 		i++;
 	}
 }
