@@ -17,10 +17,12 @@ int main(void)
 	//lcd_write_word("Hello World");	/* Write string on 2nd line*/
 	while(1) {
 		lcd_clear();
-		lcd_write_word("Ahoj Marku.     ");
+		//lcd_write_word("Ahoj Marku.     ");
+		lcd_write_word("ABCDEFGHIJKLMNOP");
 		_delay_ms(2000);
 		lcd_clear();
-		lcd_write_word("Jak se mas?     ");
+		lcd_write_word("QRSTWXYZ12345678");
+		//lcd_write_word("Jak se mas?     ");
 		_delay_ms(2000);
 		//lcd_write_word("ABCDEFGHIJKLMNOP");
 		//lcd_goto_xy(1,0);
