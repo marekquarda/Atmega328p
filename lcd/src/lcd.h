@@ -49,9 +49,9 @@
 
 //functions prototype
 void lcd_init(void);
-void lcd_send_command (unsigned char);
-void lcd_write_character(unsigned char);
-void lcd_write_word(char*);
+void lcd_send_command (unsigned char cmnd);
+void lcd_write_character(unsigned char data);
+void lcd_write_word(char* str);
 void lcd_clear(void);
 void lcd_set_courser(uint8_t,uint8_t);
 void lcd_goto_xy (uint8_t , uint8_t );
