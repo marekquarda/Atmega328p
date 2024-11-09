@@ -9,7 +9,6 @@
 
 void lcd_init(void)
 {	
-	
 	DATA_DDR = (1<<LCD_VCC) | (1<<LCD_D7) | (1<<LCD_D6) | (1<<LCD_D5)| (1<<LCD_D4);
 	CTL_DDR = (1<<LCD_EN) | (1<<LCD_RS) | (1<<LCD_K);
 
@@ -31,14 +30,14 @@ void lcd_init(void)
 void lcd_send_command (uint8_t command)
 {
 	// High value
-	DATA_BUS=(DATA_BUS & 0xF0) | ((command>>4) & 0x0F); 
+	DATA_BUS=((DATA_BUS & 0xF0) | ((command & 0xF0)>>4)); 
 	CTL_BUS &=~(1<<LCD_RS);
 	CTL_BUS |=(1<<LCD_EN);
 	_delay_ms(1);
 	CTL_BUS &=~(1<<LCD_EN);
-	_delay_ms(200);
+	_delay_ms(2);
 	//low value
-	DATA_BUS=(DATA_BUS & 0xF0) | (command & 0x0F);
+	DATA_BUS=((DATA_BUS & 0xF0) | (command & 0x0F));
 	CTL_BUS |=(1<<LCD_EN);
 	_delay_ms(1);
 	CTL_BUS &=~(1<<LCD_EN);
@@ -58,14 +57,14 @@ void lcd_write_word(char* word)
 void lcd_write_character(char character)
 {
 	// high value
-	DATA_BUS=(DATA_BUS & 0xF0) | ((character>>4) & 0x0F); 
+	DATA_BUS=((DATA_BUS & 0xF0) | ((character & 0xF0)>>4)); 
 	CTL_BUS |=~(1<<LCD_RS);	/* RS=1, data reg. */
 	CTL_BUS |=(1<<LCD_EN);
 	_delay_ms(1);
 	CTL_BUS &=~(1<<LCD_EN);
-	_delay_ms(200);
+	_delay_ms(2);
 	// low value
-	DATA_BUS=(DATA_BUS&0xF0) | (character&0x0F);
+	DATA_BUS=((DATA_BUS & 0xF0) | (character & 0x0F));
 	CTL_BUS |=(1<<LCD_EN);
 	_delay_ms(1);
 	CTL_BUS &=~(1<<LCD_EN);
