@@ -82,8 +82,8 @@ void lcd_write_character(unsigned char data)
 void lcd_clear(void)
 {
 	lcd_send_command(LCD_CMD_CLEAR_DISPLAY); 	/* Clear display */
-	_delay_ms(2);
-	lcd_send_command(LCD_CMD_CURSOR_HOME);		/* Cursor at home position */
+	_delay_ms(5);
+	//lcd_send_command(LCD_CMD_CURSOR_HOME);		/* Cursor at home position */
 }
 
 void lcd_goto_xy (uint8_t line,uint8_t pos)				//line = 0 or 1
