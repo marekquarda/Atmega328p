@@ -10,8 +10,13 @@
 
 int main(void)
 {
-	lcd_init();
-	//lcd_send_command(LCD_MOVE_CURSOR_RIGHT);
+	lcd_init(); /* Initialization of LCD*/
+
+	lcd_write_word("ElectronicWINGS");	/* Write string on 1st line of LCD*/
+	lcd_send_command(0xC0);		/* Go to 2nd line*/
+	lcd_write_word("Hello World");	/* Write string on 2nd line*/
+	while(1);
+	
 	//lcd_write_character('h');
 	//lcd_write_character(1);
 	//lcd_write_character('j');

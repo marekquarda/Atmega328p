@@ -31,14 +31,14 @@ void lcd_init(void)
 void lcd_send_command (uint8_t command)
 {
 	// High value
-	DATA_BUS=(DATA_BUS&0xF0) | ((command>>4)&0x0F); 
+	DATA_BUS=(DATA_BUS & 0xF0) | ((command>>4) & 0x0F); 
 	CTL_BUS &=~(1<<LCD_RS);
 	CTL_BUS |=(1<<LCD_EN);
 	_delay_ms(1);
 	CTL_BUS &=~(1<<LCD_EN);
 	_delay_ms(200);
 	//low value
-	DATA_BUS=(DATA_BUS&0xF0) | (command&0x0F);
+	DATA_BUS=(DATA_BUS & 0xF0) | (command & 0x0F);
 	CTL_BUS |=(1<<LCD_EN);
 	_delay_ms(1);
 	CTL_BUS &=~(1<<LCD_EN);
@@ -58,7 +58,7 @@ void lcd_write_word(char* word)
 void lcd_write_character(char character)
 {
 	// high value
-	DATA_BUS=(DATA_BUS&0xF0) | ((character>>4)&0x0F); 
+	DATA_BUS=(DATA_BUS & 0xF0) | ((character>>4) & 0x0F); 
 	CTL_BUS |=~(1<<LCD_RS);	/* RS=1, data reg. */
 	CTL_BUS |=(1<<LCD_EN);
 	_delay_ms(1);
@@ -80,6 +80,12 @@ void lcd_clear(void)
 
 void lcd_goto_xy (uint8_t line,uint8_t pos)				//line = 0 or 1
 {
-	lcd_send_command((0x80|(line<<6))+pos);
+	if (line == 0 && pos<16)
+		lcd_send_command((pos & 0x0F) | 0x80);	/* Command of first row and required position<16 */
+	else if (line == 1 && pos<16)
+		lcd_send_command((pos & 0x0F) | 0xC0);	/* Command of first row and required position<16 */
+	//	LCD_String(str);		/* Call LCD string function */
+
+	//	lcd_send_command((0x80|(line<<6))+pos);
 	_delay_us (50);
 }
