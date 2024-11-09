@@ -17,7 +17,6 @@ void lcd_init(void)
 
 	_delay_ms(1);
 	LCD_DISABLE;
-	//CTL_BUS &=~(1<<LCD_EN);
 	_delay_ms(20);									/* LCD Power ON delay always >15ms */
 	lcd_send_command(LCD_CMD_CURSOR_HOME);		    /* send for 4 bit initialization of LCD  */
 	lcd_send_command(LCD_FUNCTION_4BIT_2LINES);     /* Use 2 line and initialize 5*7 matrix in (4-bit mode)*/
@@ -32,7 +31,8 @@ void lcd_send_command (unsigned char command)
 {
 	// High value
 	DATA_BUS=((DATA_BUS & 0xF0) | ((command & 0xF0)>>4)); 
-	CTL_BUS &=~(1<<LCD_RS);
+	RS_DISABLE;
+	//CTL_BUS &=~(1<<LCD_RS);
 	LCD_ENABLE;
 	_delay_ms(1);
 	LCD_DISABLE;
@@ -59,16 +59,21 @@ void lcd_write_character(char character)
 {
 	// high value
 	DATA_BUS=((DATA_BUS & 0xF0) | ((character & 0xF0)>>4)); 
-	CTL_BUS |=~(1<<LCD_RS);	/* RS=1, data reg. */
-	CTL_BUS |=(1<<LCD_EN);
+	RS_ENABLE;
+	//CTL_BUS |=~(1<<LCD_RS);	/* RS=1, data reg. */
+	LCD_ENABLE;
+	//CTL_BUS |=(1<<LCD_EN);
 	_delay_ms(1);
-	CTL_BUS &=~(1<<LCD_EN);
+	LCD_DISABLE;
+	//CTL_BUS &=~(1<<LCD_EN);
 	_delay_ms(2);
 	// low value
 	DATA_BUS=((DATA_BUS & 0xF0) | (character & 0x0F));
-	CTL_BUS |=(1<<LCD_EN);
+	LCD_ENABLE;
+	//CTL_BUS |=(1<<LCD_EN);
 	_delay_ms(1);
-	CTL_BUS &=~(1<<LCD_EN);
+	LCD_DISABLE;
+	//CTL_BUS &=~(1<<LCD_EN);
 	_delay_ms(2);
 }
 
