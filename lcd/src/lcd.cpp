@@ -19,7 +19,7 @@ void lcd_init(void)
 	K_ENABLE;
 	VCC_DISABLE;
 	LCD_DISABLE;
-	PWR_ENABLE;
+	PWR_DISABLE;
 
 	_delay_ms(20);			
 	/* LCD Power ON delay always >15ms */
