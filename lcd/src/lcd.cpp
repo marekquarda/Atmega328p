@@ -68,13 +68,13 @@ void lcd_write_character(unsigned char data)
 	DATA_BUS=((DATA_BUS & 0xF0) | ((data & 0xF0)>>4)); 
 	RS_ENABLE;
 	LCD_ENABLE;
-	_delay_ms(1);
+	_delay_ms(2);
 	LCD_DISABLE;
-	_delay_ms(200);
+	_delay_ms(2);
 	// low value
 	DATA_BUS=((DATA_BUS & 0xF0) | (data & 0x0F));
 	LCD_ENABLE;
-	_delay_ms(1);
+	_delay_ms(2);
 	LCD_DISABLE;
 	_delay_ms(2);
 }
