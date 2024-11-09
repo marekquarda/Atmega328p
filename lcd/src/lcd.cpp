@@ -24,7 +24,7 @@ void lcd_init(void)
 	_delay_ms(1);	
 	lcd_send_command(LCD_CMD_CURSOR_HOME);			/* send for 4 bit initialization of LCD  */
 	_delay_ms(1);	
-	lcd_send_command(0x2c);     /* Use 2 line and initialize 5*7 matrix in (4-bit mode)*/
+	lcd_send_command(0x09);     /* Use 2 line and initialize 5*7 matrix in (4-bit mode)*/
 	_delay_ms(1);	
 	lcd_send_command(LCD_DISP_ON);    				/* Display on cursor off*/
 	_delay_ms(1);	
