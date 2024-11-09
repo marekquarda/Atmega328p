@@ -16,7 +16,7 @@ void lcd_init(void)
 	CTL_BUS = (1<<LCD_EN) | (0<<LCD_RS);
 
 	_delay_ms(1);
-	K_DISABLE;
+	K_ENABLE;
 	VCC_ENABLE;
 	LCD_DISABLE;
 	PWR_DISABLE;
