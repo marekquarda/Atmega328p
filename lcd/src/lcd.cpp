@@ -23,7 +23,7 @@ void lcd_init(void)
 
 	_delay_ms(20);			
 	/* LCD Power ON delay always >15ms */
-	//lcd_send_command(LCD_CMD_CURSOR_HOME);		    /* send for 4 bit initialization of LCD  */
+	lcd_send_command(LCD_CMD_CURSOR_HOME);		    /* send for 4 bit initialization of LCD  */
 	lcd_send_command(LCD_FUNCTION_4BIT_2LINES);     /* Use 2 line and initialize 5*7 matrix in (4-bit mode)*/
 	lcd_send_command(LCD_DISP_ON);     /* Display on cursor off*/
 	//lcd_send_command(LCD_ENTRY_INC_);     			/* Increment cursor (shift cursor to right)*/
