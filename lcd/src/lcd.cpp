@@ -21,18 +21,18 @@ void lcd_init(void)
 	LCD_DISABLE;
 	PWR_DISABLE;
 
-	_delay_ms(2);	
+	_delay_ms(1);	
 	lcd_send_command(LCD_CMD_CURSOR_HOME);			/* send for 4 bit initialization of LCD  */
-	_delay_ms(2);	
+	_delay_ms(1);	
 	lcd_send_command(LCD_FUNCTION_4BIT_2LINES);     /* Use 2 line and initialize 5*7 matrix in (4-bit mode)*/
-	_delay_ms(2);	
+	_delay_ms(1);	
 	lcd_send_command(LCD_DISP_ON);    				/* Display on cursor off*/
-	_delay_ms(2);	
+	_delay_ms(1);	
 	lcd_send_command(LCD_ENTRY_INC_);		    	/* Increment cursor (shift cursor to right)*/
-	_delay_ms(2);	
+	_delay_ms(1);	
 	//lcd_send_command(LCD_ENTRY_INC_SHIFT);     	/* Increment cursor (shift cursor to right)*/
 	lcd_send_command(LCD_CMD_CLEAR_DISPLAY);      	/* Clear display screen*/
-	_delay_ms(20);
+	_delay_ms(1);
 	//lcd_send_command(0x80);							/* Cursor 1st row 0th position */
 }
 
@@ -42,13 +42,13 @@ void lcd_send_command (unsigned char cmnd)
 	DATA_BUS=((DATA_BUS & 0xF0) | ((cmnd & 0xF0)>>4)); 
 	RS_DISABLE;
 	LCD_ENABLE;
-	_delay_ms(2);
+	_delay_ms(1);
 	LCD_DISABLE;
-	_delay_ms(2);
+	_delay_ms(1);
 	//low value
 	DATA_BUS=((DATA_BUS & 0xF0) | (cmnd & 0x0F));
 	LCD_ENABLE;
-	_delay_ms(2);
+	_delay_ms(1);
 	LCD_DISABLE;
 	_delay_ms(2);
 }
@@ -68,13 +68,13 @@ void lcd_write_character(unsigned char data)
 	DATA_BUS=((DATA_BUS & 0xF0) | ((data & 0xF0)>>4)); 
 	RS_ENABLE;
 	LCD_ENABLE;
-	_delay_ms(2);
+	_delay_ms(1);
 	LCD_DISABLE;
-	_delay_ms(2);
+	_delay_ms(1);
 	// low value
 	DATA_BUS=((DATA_BUS & 0xF0) | (data & 0x0F));
 	LCD_ENABLE;
-	_delay_ms(2);
+	_delay_ms(1);
 	LCD_DISABLE;
 	_delay_ms(2);
 }
