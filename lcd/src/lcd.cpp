@@ -16,6 +16,8 @@ void lcd_init(void)
 	CTL_BUS = (1<<LCD_EN) | (0<<LCD_RS) | (1<<LCD_K);
 
 	_delay_ms(1);
+	K_ENABLE;
+	VCC_DISABLE;
 	LCD_DISABLE;
 	_delay_ms(20);			
 	/* LCD Power ON delay always >15ms */

@@ -41,7 +41,11 @@
 #define	LCD_ENABLE	CTL_BUS|=(1<<LCD_EN)	
 #define	LCD_DISABLE	CTL_BUS&=~(1<<LCD_EN)
 #define RS_ENABLE   CTL_BUS|=(1<<LCD_RS)	
-#define RS_DISABLE  CTL_BUS&=~(1<<LCD_RS)	
+#define RS_DISABLE  CTL_BUS&=~(1<<LCD_RS)
+#define VCC_ENABLE  CTL_BUS|=(1<<LCD_VCC)	
+#define VCC_DISABLE CTL_BUS&=~(1<<LCD_VCC)
+#define K_ENABLE 	CTL_BUS|=(1<<LCD_K)	
+#define K_DISABLE   CTL_BUS&=~(1<<LCD_K)
 
 //functions prototype
 void lcd_init(void);
