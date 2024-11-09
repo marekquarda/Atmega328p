@@ -42,15 +42,15 @@ void lcd_send_command (unsigned char cmnd)
 	DATA_BUS=((DATA_BUS & 0xF0) | ((cmnd & 0xF0)>>4)); 
 	RS_DISABLE;
 	LCD_ENABLE;
-	_delay_ms(1);
+	_delay_ms(2);
 	LCD_DISABLE;
-	_delay_ms(200);
+	_delay_ms(2);
 	//low value
 	DATA_BUS=((DATA_BUS & 0xF0) | (cmnd & 0x0F));
 	LCD_ENABLE;
-	_delay_ms(1);
+	_delay_ms(2);
 	LCD_DISABLE;
-	_delay_ms(1);
+	_delay_ms(2);
 }
 
 void lcd_write_word(char *str)
