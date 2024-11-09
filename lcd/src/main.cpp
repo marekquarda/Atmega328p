@@ -20,8 +20,9 @@ int main(void)
 		lcd_write_word("ABCDEFGHIJKLMNOP");
 		lcd_goto_xy(1,0);
 		lcd_write_word("QRSTWXYZ12345678");
-		lcd_goto_xy(0,0);
-		lcd_write_word("90!@#$%&*)@#@##@");
+		_delay_ms(500);
+		// lcd_goto_xy(0,0);
+		// lcd_write_word("90!@#$%&*)@#@##@");
 		// lcd_goto_xy(1,0);
 		// lcd_write_word("ElectronicWINGS@");	/* Write string on 1st line of LCD*/
 		// //lcd_send_command(0xC0);		/* Go to 2nd line*/
