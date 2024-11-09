@@ -17,8 +17,8 @@ int main(void)
 	//lcd_write_word("Hello World");	/* Write string on 2nd line*/
 	while(1);
 	
-	//lcd_write_character('h');
-	//lcd_write_character(1);
+	lcd_write_character('h');
+	lcd_write_character(1);
 	//lcd_write_character('j');
 	//lcd_write_word("Hello, World!");
 	//lcd_goto_xy(1,1);
