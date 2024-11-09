@@ -38,6 +38,9 @@
 #define LCD_FUNCTION_8BIT_1LINE  0x30   /* 8-bit interface, single line, 5x7 dots */
 #define LCD_FUNCTION_8BIT_2LINES 0x38   /* 8-bit interface, dual line,   5x7 dots */
 
+#define	LCD_ENABLE	CTL_BUS|=(1<<LCD_EN)	
+#define	LCD_DISABLE	CTL_BUS&=~(1<<LCD_EN)
+
 //functions prototype
 void lcd_init(void);
 void lcd_send_command (unsigned char);

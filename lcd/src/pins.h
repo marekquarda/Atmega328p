@@ -25,10 +25,4 @@
 #define	LCD_RS			PD6  // 6
 #define LCD_EN			PD7  // 7
 
-
-
-
-
-
-
 #endif /* PIN_CONFIG_H_ */
