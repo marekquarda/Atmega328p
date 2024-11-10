@@ -4,6 +4,7 @@
  * Created: 2024-11-01 20:00:00
  *  Author: Marek Xara Quarda
  */ 
+#include "pins.h"
 
 #ifndef CLOCK_H_
 #define CLOCK_H_
@@ -31,6 +32,8 @@
 
 #define PCF_DISABLE_ALARM				80
 
+#define INT_ENABLE   PORTC|=(1<<INT_CLOCK)	
+#define INT_DISABLE  PORTC&=~(1<<INT_CLOCK)
 
 typedef struct {
 	uint8_t minute;
