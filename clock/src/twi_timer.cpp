@@ -209,6 +209,8 @@ void twi_init(void) {
     gen_t = (((F_CPU/I2C_SPEED)-16)/2) & 0xFF;
     TWBR = gen_t & 0xFF;
     TWCR = (1 <<TWEN) | (1<<TWIE);
+    // pullup 
+    PORTC |= (1 << PORTC5 | 1 << PORTC4);
 }
 
 
