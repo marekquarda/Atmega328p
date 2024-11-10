@@ -7,7 +7,7 @@
 #include "lcd.h"
 #include <avr/io.h>
 #include <util/delay.h>
-#include "clock.h"
+//#include "clock.h"
 
 
 int main(void)
