@@ -22,7 +22,7 @@ int main(void)
 	// 	lcd_write_word("Error communication");
 	// } else {
 		lcd_write_word("Year: ");
-		lcd_write_character(rtc_data[0]);
+		lcd_write_character(rtc_data[0]+'0');
 		 //+ rtc_data[0]);
 //	}
 	
