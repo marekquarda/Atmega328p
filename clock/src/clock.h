@@ -1,8 +1,8 @@
 /*
  * clock.h
  *
- * Created: 2014-11-18 20:00:42
- *  Author: Jakub Pachciarek
+ * Created: 2024-11-01 20:00:00
+ *  Author: Marek Xara Quarda
  */ 
 
 #ifndef CLOCK_H_
