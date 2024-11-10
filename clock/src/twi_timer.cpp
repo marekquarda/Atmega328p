@@ -208,7 +208,7 @@ void twi_init(uint32_t speed) {
     uint32_t gen_t = 0;
     gen_t = (((F_CPU/speed)-16)/2) & 0xFF;
     TWBR = gen_t & 0xFF;
-    TWCR = (1 <<TWEN) | (TWIE);
+    TWCR = (1 <<TWEN) | (1<<TWIE);
 }
 
 
