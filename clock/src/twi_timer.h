@@ -15,6 +15,7 @@
 #include <avr/interrupt.h>
 
 #define TWI_TIMEOUT         1600
+#define I2C_SPEED           100000
 
 #define TWI_START           0x08
 #define TWI_RSTART          0x10
@@ -40,7 +41,7 @@ enum{
 
 
 
-void twi_init(uint32_t speed);
+void twi_init(void);
 uint8_t twi_wire(uint8_t addr, uint8_t reg, uint8_t *data, uint16_t len);
 uint8_t twi_read(uint8_t addr, uint8_t reg, uint8_t *data, uint16_t len);
 

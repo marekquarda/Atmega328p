@@ -15,13 +15,15 @@ int main(void)
 {
 	lcd_init(); /* Initialization of LCD*/
 	lcd_clear();
-	twi_init(100000);	// 100khz 
+	twi_init();	// 100khz 
 	uint8_t rtc_data[7];
 	uint8_t err = twi_read(RTC_READ_ADDR, 0x08,rtc_data,1);
 	if (err != TWI_OK) {
 		lcd_write_word("Error communication");
 	} else {
-		lcd_write_word("Year: " + rtc_data[0]);
+		lcd_write_word("Year: ");
+		lcd_write_character(rtc_data[0]);
+		 //+ rtc_data[0]);
 	}
 	
 

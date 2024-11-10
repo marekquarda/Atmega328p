@@ -204,9 +204,9 @@ uint8_t twi_wire(uint8_t addr, uint8_t reg, uint8_t *data, uint16_t len) {
     return err;
 }
 
-void twi_init(uint32_t speed) {
+void twi_init(void) {
     uint32_t gen_t = 0;
-    gen_t = (((F_CPU/speed)-16)/2) & 0xFF;
+    gen_t = (((F_CPU/I2C_SPEED)-16)/2) & 0xFF;
     TWBR = gen_t & 0xFF;
     TWCR = (1 <<TWEN) | (1<<TWIE);
 }
