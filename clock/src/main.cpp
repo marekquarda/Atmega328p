@@ -7,24 +7,29 @@
 #include "lcd.h"
 #include <avr/io.h>
 #include <util/delay.h>
-#include "twi_timer.h"
+#include "clock.h"
 
-#define RTC_READ_ADDR (0xA3)
+//#define RTC_READ_ADDR (0xA3)
 
 int main(void)
 {
 	lcd_init(); /* Initialization of LCD*/
 	lcd_clear();
-	twi_init();	// 100khz 
+	PCF_Init(0);
+	//twi_init();	// 100khz 
 	uint8_t rtc_data[7];
-	uint8_t err = twi_read(RTC_READ_ADDR, 0x08,rtc_data,1);
-	// if (err != TWI_OK) {
-	// 	lcd_write_word("Error communication");
-	// } else {
+	PCF_DateTime datetime;
+	uint8_t err = PCF_GetDateTime(&datetime);
+
+	//uint8_t err = twi_read(RTC_READ_ADDR, 0x08,rtc_data,1);
+	 if (err != 0) {
+	 	lcd_write_word("Error communication");
+	 } else {
+
 		lcd_write_word("Year: ");
-		lcd_write_character(rtc_data[0]+'0');
+		lcd_write_character(datetime.year +'0');
 		 //+ rtc_data[0]);
-//	}
+	}
 	
 
 	//lcd_clear();
