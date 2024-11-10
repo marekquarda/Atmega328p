@@ -15,7 +15,7 @@ int main(void)
 {
 	lcd_init(); /* Initialization of LCD*/
 	lcd_clear();
-	PCF_Init(0);
+	PCF_Init(1);
 	//twi_init();	// 100khz 
 	uint8_t rtc_data[7];
 	PCF_DateTime datetime;
