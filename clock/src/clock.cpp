@@ -19,7 +19,7 @@
 void TWI_Init()
 {
 	DDRC = (1<<INT_CLOCK);
-	INT_DISABLE;
+	INT_ENABLE;
 	//About 100kHz for 1.6MHz clock
 	TWBR = 0;										//Set bitrate factor to 0
 	TWSR &= ~((1<<TWPS1) | (1<<TWPS0));				//Set prescaler to 1
