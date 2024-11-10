@@ -11,7 +11,7 @@
 void lcd_init(void)
 {	
 	DATA_DDR = (1<<LCD_VCC) | (1<<LCD_D7) | (1<<LCD_D6) | (1<<LCD_D5)| (1<<LCD_D4);
-	CTL_DDR = (1<<LCD_EN) | (1<<LCD_RS) | (1<<LCD_K) | (1<<PWR_C);
+	CTL_DDR = (1<<LCD_EN) | (1<<LCD_RS) | (1<<LCD_K);// | (1<<PWR_C);
 
 	DATA_BUS = (0<<LCD_D7) | (0<<LCD_D6) | (0<<LCD_D5) | (0<<LCD_D4);
 	CTL_BUS = (1<<LCD_EN) | (0<<LCD_RS);
@@ -20,7 +20,7 @@ void lcd_init(void)
 	K_ENABLE;
 	VCC_ENABLE;
 	LCD_DISABLE;
-	PWR_DISABLE;
+	//PWR_DISABLE;
 
 	_delay_ms(1);	
 	lcd_send_command(LCD_CMD_CURSOR_HOME);			/* send for 4 bit initialization of LCD  */
