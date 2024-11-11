@@ -206,9 +206,11 @@ uint8_t twi_wire(uint8_t addr, uint8_t reg, uint8_t *data, uint16_t len) {
 
 void twi_init(void) {
     uint32_t gen_t = 0;
+    TWSR &= ~((1<<TWPS1) | (1<<TWPS0));   // set prescaler to 1
     gen_t = (((F_CPU/I2C_SPEED)-16)/2) & 0xFF;
     TWBR = gen_t & 0xFF;
     TWCR = (1 <<TWEN) | (1<<TWIE);
+    
     // pullup 
     //PORTC |= (1 << PORTC5 | 1 << PORTC4);
 }
