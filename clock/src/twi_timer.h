@@ -15,7 +15,7 @@
 #include <avr/interrupt.h>
 
 #define TWI_TIMEOUT         1600
-#define I2C_SPEED           100000
+#define I2C_SPEED           10000
 
 #define TWI_START           0x08
 #define TWI_RSTART          0x10
