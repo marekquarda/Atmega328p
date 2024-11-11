@@ -14,10 +14,17 @@
 #include "pins.h"
 
 
+void TWI_Pullups() {
+	I2C_CONFIG_DDR &= ~(_BV(I2C_CONFIG_SDA) | _BV(I2C_CONFIG_SCL));
+	I2C_CONFIG_PORT |= _BV(I2C_CONFIG_SDA) | _BV(I2C_CONFIG_SCL);
+}
+
 //PHYSICAL LAYER
 
 void TWI_Init()
 {
+	TWI_Pullups();
+	
 	DDRC = (1<<INT_CLOCK);
 	INT_ENABLE;
 	//About 100kHz for 1.6MHz clock

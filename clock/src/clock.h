@@ -32,8 +32,14 @@
 
 #define PCF_DISABLE_ALARM				80
 
-#define INT_ENABLE   PORTC|=(1<<INT_CLOCK)	
-#define INT_DISABLE  PORTC&=~(1<<INT_CLOCK)
+#define I2C_CONFIG_F_SCL				100000
+#define I2C_CONFIG_DDR					DDRC
+#define I2C_CONFIG_PORT					PORTC
+#define I2C_CONFIG_SDA					PC4
+#define I2C_CONFIG_SCL					PC5
+
+#define INT_ENABLE   I2C_CONFIG_PORT|=(1<<INT_CLOCK)	
+#define INT_DISABLE  I2C_CONFIG_PORT&=~(1<<INT_CLOCK)
 
 typedef struct {
 	uint8_t minute;
