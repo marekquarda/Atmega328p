@@ -210,7 +210,7 @@ void twi_init(void) {
     TWBR = gen_t & 0xFF;
     TWCR = (1 <<TWEN) | (1<<TWIE);
     // pullup 
-    PORTC |= (1 << PORTC5 | 1 << PORTC4);
+    //PORTC |= (1 << PORTC5 | 1 << PORTC4);
 }
 
 
