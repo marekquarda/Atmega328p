@@ -8,6 +8,7 @@
 #include <avr/io.h>
 #include <util/delay.h>
 #include "clock.h"
+#include "timer0_hal.h"
 
 //#define RTC_READ_ADDR (0xA3)
 
@@ -15,7 +16,8 @@ int main(void)
 {
 	lcd_init(); /* Initialization of LCD*/
 	lcd_clear();
-	PCF_Init(1);
+	timer0_init();
+	PCF_Init(0);
 	//twi_init();	// 100khz 
 	uint8_t rtc_data[7];
 	PCF_DateTime datetime;
