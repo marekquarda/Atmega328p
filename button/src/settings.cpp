@@ -15,35 +15,31 @@ ISR(PCINT1_vect) {
     // Button Up
     if (PINC & 0b00000001) {
         while ((bit_is_clear(PINC, PC0))) { // button hold down
-        timer++;
-        _delay_ms(1);
-    }
-    if (timer > BTN_DEBOUCE) {
-        if (timer < 500UL) {// unsigned long
-            // sigle click
-        } else {
-            // button hold
+            timer++;
+            _delay_ms(1);
         }
-    }
+        if (timer > BTN_DEBOUCE) {
+            if (timer < 500UL) {// unsigned long
+                // sigle click
+            } else {
+                // button hold
+            }
+        }
     }
     // Button Set
     if (PINC & 0b00000100) {
         while ((bit_is_clear(PINC, PC2))) { // button hold down
-        timer++;
-        _delay_ms(1);
-    }
-    if (timer > BTN_DEBOUCE) {
-        if (timer < 500UL) {// unsigned long
-            // sigle click
-        } else {
-            // button hold
+            timer++;
+            _delay_ms(1);
+        }
+        if (timer > BTN_DEBOUCE) {
+            if (timer < 500UL) {// unsigned long
+                // sigle click
+            } else {
+                // button hold
+            }
         }
     }
-    }
-    
-    
-    // Button Up 
-    
 }
 
 
