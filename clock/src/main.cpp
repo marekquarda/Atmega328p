@@ -38,9 +38,9 @@ int main(void)
 		char str[5];
 		itoa(datetime.day, str, 1);
 		//lcd_write_word(sprintf(print_buffer,"\r20%.2f/%.2f/%.2f", datetime.year, datetime.month, datetime.day));
-		lcd_write_word(itoa(datetime.day, str, 1));
-		lcd_write_word(itoa(datetime.month, str, 1));
-		lcd_write_word(itoa(datetime.year, str, 1));
+		lcd_write_word(itoa(datetime.day, str, 10));
+		lcd_write_word(itoa(datetime.month, str, 10));
+		lcd_write_word(itoa(datetime.year, str, 10));
 			
 		//	(char*)datetime.day);
 		//lcd_write_character((char)datetime.day);
