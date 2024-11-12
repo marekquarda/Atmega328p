@@ -9,6 +9,7 @@
 
 // ISR for port B
 ISR(PCINT1_vect) {
+    cli();
     uint16_t timer = 0;
     // Execute instruction for PCINT8 to PCINT14
     // Pins C0 - C7 
@@ -44,6 +45,7 @@ ISR(PCINT1_vect) {
             }
         }
     }
+    sei();
 }
 
 void initInterruptSettings(void) {
