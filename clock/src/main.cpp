@@ -34,9 +34,9 @@ int main(void)
 	//  } else {
 
 		lcd_write_word("Date: ");
-		memset(print_buffer, 0, sizeof(print_buffer));
+		//memset(print_buffer, 0, sizeof(print_buffer));
 		char str[5];
-		itoa(datetime.day, str, 1);
+		//itoa(datetime.day, str, 1);
 		//lcd_write_word(sprintf(print_buffer,"\r20%.2f/%.2f/%.2f", datetime.year, datetime.month, datetime.day));
 		lcd_write_word(itoa(datetime.day, str, 10));
 		lcd_write_word(itoa(datetime.month, str, 10));
