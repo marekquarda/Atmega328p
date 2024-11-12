@@ -52,11 +52,11 @@ void initInterruptSettings(void) {
     PCMSK1 |= 0b0000001;
     // Button Setting
     // red led
-    DDRD =  0b00000010;
-    PORTD = 0b00000000;
+    DDRD |=  0b00000010;
+    PORTD |= 0b00000000;
     // green led
-    DDRB =  0b00100000;
-    PORTB = 0b00000000;
+    DDRB |=  0b00100000;
+    PORTB |= 0b00000000;
 }
 
 void shortButtonUp() {
