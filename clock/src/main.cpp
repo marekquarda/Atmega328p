@@ -20,7 +20,7 @@ int main(void)
 	lcd_init(); /* Initialization of LCD*/
 	lcd_clear();
 	timer0_init();
-	PCF_Init(0);
+	PCF_Init(1);
 	//twi_init();	// 100khz 
 	//uint8_t rtc_data[7];
 	

@@ -114,11 +114,11 @@ void PCF_Init(uint8_t mode)
 {
 	TWI_Init();
 
-	// uint8_t tmp = 0b00000000;
-	// PCF_Write(0x00, &tmp, 1);				//Control_status_1
+	 uint8_t tmp = 0b00000000;
+	 PCF_Write(0x00, &tmp, 1);				//Control_status_1
 
-	// mode &= 0b00010011;						//Mask unnecessary bits
-	// PCF_Write(0x01, &mode, 1);				//Control_status_2
+	 mode &= 0b00010011;						//Mask unnecessary bits
+	 PCF_Write(0x01, &mode, 1);				//Control_status_2
 }
 
 uint8_t PCF_GetAndClearFlags()
