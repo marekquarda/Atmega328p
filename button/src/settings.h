@@ -15,5 +15,9 @@
 #define BTN_DEBOUCE 20 //ms
 
 void initInterruptSettings(void);
+void shortButtonUp(void);
+void longButtonUp(void);
+void shortButtonSet(void);
+void longButtonSet(void);
 
 #endif // SETTINGS_H_
