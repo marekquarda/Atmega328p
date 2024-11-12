@@ -22,26 +22,31 @@ int main(void)
 	timer0_init();
 	PCF_Init(0);
 	//twi_init();	// 100khz 
-	uint8_t rtc_data[7];
+	//uint8_t rtc_data[7];
 	PCF_DateTime datetime;
-	uint8_t err = PCF_GetDateTime(&datetime);
+	while (1)
+	{
+		uint8_t err = PCF_GetDateTime(&datetime);
 
-	static char print_buffer[64];// = {0};
+	//static char print_buffer[64];// = {0};
 
 	//uint8_t err = twi_read(RTC_READ_ADDR, 0x08,rtc_data,1);
 	//  if (err != 0) {
 	//  	lcd_write_word("Error communication");
 	//  } else {
 
-		lcd_write_word("Date: ");
+		lcd_write_word("Time: ");
 		//memset(print_buffer, 0, sizeof(print_buffer));
 		char str[5];
 		//itoa(datetime.day, str, 1);
 		//lcd_write_word(sprintf(print_buffer,"\r20%.2f/%.2f/%.2f", datetime.year, datetime.month, datetime.day));
-		lcd_write_word(itoa(datetime.day, str, 10));
-		lcd_write_word(itoa(datetime.month, str, 10));
-		lcd_write_word(itoa(datetime.year, str, 10));
-			
+		lcd_write_word(itoa(datetime.hour, str, 10));
+		lcd_write_word(itoa(datetime.minute, str, 10));
+		lcd_write_word(itoa(datetime.second, str, 10));
+		_delay_ms(1000);			
+	}
+	
+	
 		//	(char*)datetime.day);
 		//lcd_write_character((char)datetime.day);
 		// lcd_write_character(',');
