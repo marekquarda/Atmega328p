@@ -23,6 +23,15 @@ int main(void)
 	PCF_Init(1);
 	//twi_init();	// 100khz 
 	//uint8_t rtc_data[7];
+	PCF_DateTime senddatetime;
+	senddatetime.day = 6;
+	senddatetime.month = 3;
+	senddatetime.year = 2022;
+	senddatetime.hour = 4;
+	senddatetime.minute = 2;
+	senddatetime.second = 3;
+//	senddatetime.
+	PCF_SetDateTime(&senddatetime);
 	
 	while (1)
 	{
