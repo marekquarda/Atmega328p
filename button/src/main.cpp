@@ -12,6 +12,7 @@
 #include <stdlib.h>
 #include "clock.h"
 #include "timer0_hal.h"
+#include "settings.h"
 
 //#define RTC_READ_ADDR (0xA3)
 
@@ -21,6 +22,7 @@ int main(void)
 	lcd_clear();
 	timer0_init();
 	PCF_Init(1);
+	initInterruptSettings();
 	//twi_init();	// 100khz 
 	//uint8_t rtc_data[7];
 	PCF_DateTime senddatetime;
