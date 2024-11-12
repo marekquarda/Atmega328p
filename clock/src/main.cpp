@@ -52,12 +52,16 @@ int main(void)
 		char sec[4];
 		//itoa(datetime.day, str, 1);
 		//lcd_write_word(sprintf(print_buffer,"\r20%.2f/%.2f/%.2f", datetime.year, datetime.month, datetime.day));
+		lcd_write_word("Time: ");
 		lcd_write_word(itoa(datetime.hour, ho, 10));
 		lcd_write_character(':');
 		lcd_write_word(itoa(datetime.minute, min, 10));
 		lcd_write_character(':');
 		lcd_write_word(itoa(datetime.second, sec, 10));
-		lcd_write_character(' ');
+		//lcd_write_character(' ');
+
+		lcd_goto_xy(1,0);
+		lcd_write_word("Date: ");
 		lcd_write_word(itoa(datetime.day, sec, 10));
 		lcd_write_character('/');
 		lcd_write_word(itoa(datetime.month, sec, 10));
