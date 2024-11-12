@@ -7,6 +7,9 @@
 #include "lcd.h"
 #include <avr/io.h>
 #include <util/delay.h>
+#include <string.h>
+#include <stdio.h>
+#include <stdlib.h>
 #include "clock.h"
 #include "timer0_hal.h"
 
@@ -23,18 +26,28 @@ int main(void)
 	PCF_DateTime datetime;
 	uint8_t err = PCF_GetDateTime(&datetime);
 
+	static char print_buffer[64];// = {0};
+
 	//uint8_t err = twi_read(RTC_READ_ADDR, 0x08,rtc_data,1);
 	//  if (err != 0) {
 	//  	lcd_write_word("Error communication");
 	//  } else {
 
 		lcd_write_word("Date: ");
-		lcd_write_word((char*)datetime.day);
+		memset(print_buffer, 0, sizeof(print_buffer));
+		char str[5];
+		itoa(datetime.day, str, 1);
+		//lcd_write_word(sprintf(print_buffer,"\r20%.2f/%.2f/%.2f", datetime.year, datetime.month, datetime.day));
+		lcd_write_word(itoa(datetime.day, str, 1));
+		lcd_write_word(itoa(datetime.month, str, 1));
+		lcd_write_word(itoa(datetime.year, str, 1));
+			
+		//	(char*)datetime.day);
 		//lcd_write_character((char)datetime.day);
-		lcd_write_character(',');
-		lcd_write_word((char*)datetime.month);
-		lcd_write_character(',');
-		lcd_write_word((char*)datetime.year);
+		// lcd_write_character(',');
+		// lcd_write_word((char*)datetime.month);
+		// lcd_write_character(',');
+		// lcd_write_word((char*)datetime.year);
 		 //+ rtc_data[0]);
 //	}
 	
