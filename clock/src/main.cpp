@@ -23,9 +23,10 @@ int main(void)
 	PCF_Init(0);
 	//twi_init();	// 100khz 
 	//uint8_t rtc_data[7];
-	PCF_DateTime datetime;
+	
 	while (1)
 	{
+		PCF_DateTime datetime;
 		uint8_t err = PCF_GetDateTime(&datetime);
 
 	//static char print_buffer[64];// = {0};
