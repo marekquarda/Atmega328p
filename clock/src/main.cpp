@@ -34,7 +34,7 @@ int main(void)
 	//  if (err != 0) {
 	//  	lcd_write_word("Error communication");
 	//  } else {
-
+		lcd_clear();
 		lcd_write_word("Time: ");
 		//memset(print_buffer, 0, sizeof(print_buffer));
 		char str[5];
