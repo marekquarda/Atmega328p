@@ -24,12 +24,12 @@ int main(void)
 	//twi_init();	// 100khz 
 	//uint8_t rtc_data[7];
 	PCF_DateTime senddatetime;
-	senddatetime.day = 6;
-	senddatetime.month = 3;
-	senddatetime.year = 2022;
-	senddatetime.hour = 4;
-	senddatetime.minute = 2;
-	senddatetime.second = 3;
+	senddatetime.day = 12;
+	senddatetime.month = 11;
+	senddatetime.year = 2024;
+	senddatetime.hour = 2;
+	senddatetime.minute = 42;
+	senddatetime.second = 30;
 //	senddatetime.
 	PCF_SetDateTime(&senddatetime);
 	
@@ -45,7 +45,7 @@ int main(void)
 	//  	lcd_write_word("Error communication");
 	//  } else {
 		lcd_clear();
-		lcd_write_word("Time: ");
+//		lcd_write_word("Time: ");
 		//memset(print_buffer, 0, sizeof(print_buffer));
 		char ho[4];
 		char min[4];
@@ -57,6 +57,13 @@ int main(void)
 		lcd_write_word(itoa(datetime.minute, min, 10));
 		lcd_write_character(':');
 		lcd_write_word(itoa(datetime.second, sec, 10));
+		lcd_write_character(' ');
+		lcd_write_word(itoa(datetime.day, sec, 10));
+		lcd_write_character('/');
+		lcd_write_word(itoa(datetime.month, sec, 10));
+		lcd_write_character('/');
+		lcd_write_word(itoa(datetime.year, sec, 10));
+
 		_delay_ms(1000);			
 	}
 	
