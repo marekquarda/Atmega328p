@@ -29,11 +29,12 @@ int main(void)
 	//  } else {
 
 		lcd_write_word("Date: ");
-		lcd_write_character((char)datetime.day);
+		lcd_write_word((char*)datetime.day);
+		//lcd_write_character((char)datetime.day);
 		lcd_write_character(',');
-		lcd_write_character((char)datetime.month);
+		lcd_write_word((char*)datetime.month);
 		lcd_write_character(',');
-		lcd_write_character((char)datetime.year);
+		lcd_write_word((char*)datetime.year);
 		 //+ rtc_data[0]);
 //	}
 	
