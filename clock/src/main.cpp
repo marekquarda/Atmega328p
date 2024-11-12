@@ -37,12 +37,16 @@ int main(void)
 		lcd_clear();
 		lcd_write_word("Time: ");
 		//memset(print_buffer, 0, sizeof(print_buffer));
-		char str[5];
+		char ho[4];
+		char min[4];
+		char sec[4];
 		//itoa(datetime.day, str, 1);
 		//lcd_write_word(sprintf(print_buffer,"\r20%.2f/%.2f/%.2f", datetime.year, datetime.month, datetime.day));
-		lcd_write_word(itoa(datetime.hour, str, 10));
-		lcd_write_word(itoa(datetime.minute, str, 10));
-		lcd_write_word(itoa(datetime.second, str, 10));
+		lcd_write_word(itoa(datetime.hour, ho, 10));
+		lcd_write_character(':');
+		lcd_write_word(itoa(datetime.minute, min, 10));
+		lcd_write_character(':');
+		lcd_write_word(itoa(datetime.second, sec, 10));
 		_delay_ms(1000);			
 	}
 	
