@@ -24,14 +24,14 @@ int main(void)
 	uint8_t err = PCF_GetDateTime(&datetime);
 
 	//uint8_t err = twi_read(RTC_READ_ADDR, 0x08,rtc_data,1);
-	 if (err != 0) {
-	 	lcd_write_word("Error communication");
-	 } else {
+	//  if (err != 0) {
+	//  	lcd_write_word("Error communication");
+	//  } else {
 
 		lcd_write_word("Year: ");
 		lcd_write_character(datetime.year +'0');
 		 //+ rtc_data[0]);
-	}
+//	}
 	
 
 	//lcd_clear();
