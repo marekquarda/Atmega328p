@@ -57,7 +57,7 @@ void initInterruptSettings(void) {
     // Enable PCMSK1 (Group 1: PCINT8 to PCINT14)
     PCICR |= _BV(PCIE1);
     //PCICR |= 0b00000010;
-    PCMSK1 |= _BV(PCINT1);
+    PCMSK1 |= (1<<PCINT8) | (1<<PCINT10);
     //PCMSK1 |= 0b0000001;
     // Button Setting
     // red led
