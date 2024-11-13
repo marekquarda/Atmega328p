@@ -19,7 +19,7 @@ ISR(PCINT1_vect) {
     // Button Up
     if ((PINC & (1<<PINC0))==0) {
         lcd_write_word("Pin C0 ...");
-        while ((bit_is_clear(PINC, PINC0))) { // button hold down
+        while ((bit_is_clear(PINC, PC0))) { // button hold down
             timer++;
             _delay_ms(1);
         }
@@ -36,7 +36,7 @@ ISR(PCINT1_vect) {
     // Button Set
     if ((PINC & (1<<PINC2))== 0) {
         lcd_write_word("Pin C2 ...");
-        while ((bit_is_clear(PINC, PINC2))) { // button hold down
+        while ((bit_is_clear(PINC, PC2))) { // button hold down
             timer++;
             _delay_ms(1);
         }
