@@ -37,51 +37,51 @@ int main(void)
 	
 	while (1)
 	{
-		PCF_DateTime datetime;
-		uint8_t err = PCF_GetDateTime(&datetime);
+// 		PCF_DateTime datetime;
+// 		uint8_t err = PCF_GetDateTime(&datetime);
 
-	//static char print_buffer[64];// = {0};
+// 	//static char print_buffer[64];// = {0};
 
-	//uint8_t err = twi_read(RTC_READ_ADDR, 0x08,rtc_data,1);
-	//  if (err != 0) {
-	//  	lcd_write_word("Error communication");
-	//  } else {
-		lcd_clear();
-//		lcd_write_word("Time: ");
-		//memset(print_buffer, 0, sizeof(print_buffer));
-		char ho[4];
-		char min[4];
-		char sec[4];
-		//itoa(datetime.day, str, 1);
-		//lcd_write_word(sprintf(print_buffer,"\r20%.2f/%.2f/%.2f", datetime.year, datetime.month, datetime.day));
-		lcd_write_word("Time: ");
-		lcd_write_word(itoa(datetime.hour, ho, 10));
-		lcd_write_character(':');
-		lcd_write_word(itoa(datetime.minute, min, 10));
-		lcd_write_character(':');
-		lcd_write_word(itoa(datetime.second, sec, 10));
-		//lcd_write_character(' ');
+// 	//uint8_t err = twi_read(RTC_READ_ADDR, 0x08,rtc_data,1);
+// 	//  if (err != 0) {
+// 	//  	lcd_write_word("Error communication");
+// 	//  } else {
+// 		lcd_clear();
+// //		lcd_write_word("Time: ");
+// 		//memset(print_buffer, 0, sizeof(print_buffer));
+// 		char ho[4];
+// 		char min[4];
+// 		char sec[4];
+// 		//itoa(datetime.day, str, 1);
+// 		//lcd_write_word(sprintf(print_buffer,"\r20%.2f/%.2f/%.2f", datetime.year, datetime.month, datetime.day));
+// 		lcd_write_word("Time: ");
+// 		lcd_write_word(itoa(datetime.hour, ho, 10));
+// 		lcd_write_character(':');
+// 		lcd_write_word(itoa(datetime.minute, min, 10));
+// 		lcd_write_character(':');
+// 		lcd_write_word(itoa(datetime.second, sec, 10));
+// 		//lcd_write_character(' ');
 
-		lcd_goto_xy(1,0);
-		lcd_write_word("Date: ");
-		lcd_write_word(itoa(datetime.day, sec, 10));
-		lcd_write_character('/');
-		lcd_write_word(itoa(datetime.month, sec, 10));
-		lcd_write_character('/');
-		lcd_write_word(itoa(datetime.year, sec, 10));
+// 		lcd_goto_xy(1,0);
+// 		lcd_write_word("Date: ");
+// 		lcd_write_word(itoa(datetime.day, sec, 10));
+// 		lcd_write_character('/');
+// 		lcd_write_word(itoa(datetime.month, sec, 10));
+// 		lcd_write_character('/');
+// 		lcd_write_word(itoa(datetime.year, sec, 10));
 
-		_delay_ms(1000);			
+// 		_delay_ms(1000);			
 	}
 	
 	
-		//	(char*)datetime.day);
-		//lcd_write_character((char)datetime.day);
-		// lcd_write_character(',');
-		// lcd_write_word((char*)datetime.month);
-		// lcd_write_character(',');
-		// lcd_write_word((char*)datetime.year);
-		 //+ rtc_data[0]);
-//	}
+// 		//	(char*)datetime.day);
+// 		//lcd_write_character((char)datetime.day);
+// 		// lcd_write_character(',');
+// 		// lcd_write_word((char*)datetime.month);
+// 		// lcd_write_character(',');
+// 		// lcd_write_word((char*)datetime.year);
+// 		 //+ rtc_data[0]);
+// //	}
 	
 
 	//lcd_clear();
