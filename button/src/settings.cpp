@@ -52,24 +52,26 @@ ISR(PCINT1_vect) {
 }
 
 void initInterruptSettings(void) {
+    // Button Settings
     // Pins as input
-    DDRC &= 0b11111010;
+    DDRC &= ~(1<<PC0);
+    DDRC &= ~(1<<PC2);
     // Pulup pins
-    PORTC = 0b00000101;
+    PORTC |= (1<<PC0) | (1<<PC2);
 
     // Enable PCMSK1 (Group 1: PCINT8 to PCINT14)
     PCICR |= _BV(PCIE1);
     //PCICR |= 0b00000010;
     PCMSK1 |= (1<<PCINT8) | (1<<PCINT10);
     //PCMSK1 |= 0b0000001;
-    // Button Setting
+    
     // red led
     DDRD |=  0b00000010;
     PORTD |= 0b00000000;
     // green led
     DDRB |=  0b00100000;
     PORTB |= 0b00000000;
-    sei();
+    sei();          // Global Interrupts
 }
 
 void shortButtonUp() {
