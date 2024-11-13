@@ -54,10 +54,10 @@ ISR(PCINT1_vect) {
 void initInterruptSettings(void) {
     // Button Settings
     // Pins as input
-    DDRC &= ~(1<<PC0);
-    DDRC &= ~(1<<PC2);
+    DDRC &= ~(1<<PORTC0);
+    DDRC &= ~(1<<PORTC2);
     // Pulup pins
-    PORTC |= (1<<PC0) | (1<<PC2);
+    PORTC |= (1<<PORTC0) | (1<<PORTC2);
 
     // Enable PCMSK1 (Group 1: PCINT8 to PCINT14)
     PCICR |= _BV(PCIE1);
