@@ -79,23 +79,23 @@ void shortButtonUp() {
     lcd_write_word("Short Up");
   //  PORTB = 0b00000000;
   // _delay_ms(500);
-   PORTB = 0b00100000;
+  // PORTB = 0b00100000;
   // _delay_ms(500);
 }
 
 void longButtonUp() {
     lcd_clear();
     lcd_write_word("Long Up");
-    PORTB = 0b00000000;
-    _delay_ms(5);
-    PORTB = 0b00100000;
-    _delay_ms(5);
+    // PORTB = 0b00000000;
+    // _delay_ms(5);
+    // PORTB = 0b00100000;
+    // _delay_ms(5);
 }
 
 void shortButtonSet() {
     lcd_clear();
     lcd_write_word("Short Set");
-    PORTD = 0b00000010;
+ //   PORTD = 0b00000010;
 // _delay_ms(5);
 // PORTD = 0b00000000;
 // _delay_ms(5);
@@ -104,10 +104,10 @@ void shortButtonSet() {
 void longButtonSet() {
     lcd_clear();
     lcd_write_word("Long Set");
-    PORTD = 0b00000010;
-    _delay_ms(5);
-    PORTD = 0b00000000;
-    _delay_ms(5);
+    // PORTD = 0b00000010;
+    // _delay_ms(5);
+    // PORTD = 0b00000000;
+    // _delay_ms(5);
 }
 
 
