@@ -17,7 +17,7 @@ ISR(PCINT1_vect) {
     // Execute instruction for PCINT8 to PCINT14
     // Pins C0 - C7 
     // Button Up
-    if (PORTC & (1<<PC0)) {
+    if (PINC & (1<<PC0)) {
         while ((bit_is_clear(PINC, PC0))) { // button hold down
             timer++;
             _delay_ms(1);
@@ -33,7 +33,7 @@ ISR(PCINT1_vect) {
         }
     }
     // Button Set
-    if (PORTC & (1<<PC2)) {
+    if (PINC & (1<<PC2)) {
         while ((bit_is_clear(PINC, PC2))) { // button hold down
             timer++;
             _delay_ms(1);
