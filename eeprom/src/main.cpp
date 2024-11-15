@@ -20,7 +20,7 @@ int main(void)
 		char text[] = "Start count: ";
 		lcd_write_word(text);
 //		lcd_write_word("ABCDEFGHIJKLMNOP");
-//		_delay_ms(2000);
+		_delay_ms(2000);
 //		lcd_clear();
 //		lcd_write_word("QRSTWXYZ12345678");
 		//lcd_write_word("Jak se mas?     ");
