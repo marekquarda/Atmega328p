@@ -4,21 +4,29 @@
  * Author : Hossam Elbahrawy
  */ 
 #include "lcd.h"
-#include <avr/io.h>
-#include <util/delay.h>
+#include "eeprom.h"
 
 
 int main(void)
 {
 	lcd_init(); /* Initialization of LCD*/
-	//lcd_clear();
-	//lcd_write_word("ElectronicWINGS");	/* Write string on 1st line of LCD*/
-	//lcd_send_command(0xC0);		/* Go to 2nd line*/
-	//lcd_write_word("Hello World");	/* Write string on 2nd line*/
+	uint8_t run = 0;
+	uint8_t err = 0;
+
+	err = EEPROM_read(96, &run);
+	uint8_t c = run+1;
+	err = EEPROM_update(96,c);
+
 	while(1) {
 		lcd_clear();
-		char text[] = "Start count: ";
-		lcd_write_word(text);
+		if (err != EEPROM_OK) {
+			lcd_write_word("EEPROM Error");	
+		} else {
+			char text[] = "Start count: ";
+			lcd_write_word(text);
+			lcd_write_character((char)c);
+		}
+		
 //		lcd_write_word("ABCDEFGHIJKLMNOP");
 		_delay_ms(2000);
 //		lcd_clear();
