@@ -7,6 +7,9 @@
  */
 #include <avr/io.h>
 #include <string.h>
+#include <stdio.h>
+#include <stdlib.h>
+
 #include <avr/interrupt.h>
 
 #ifndef EEPROM_H_

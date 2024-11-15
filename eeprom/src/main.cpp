@@ -23,7 +23,9 @@ int main(void)
 			lcd_write_word("EEPROM Error");	
 		} else {
 			char text[] = "Start count: ";
+			char ho[2];
 			lcd_write_word(text);
+			lcd_write_word(itoa(c, ho, 10));
 			lcd_write_character((char)c);
 		}
 		
