@@ -75,12 +75,12 @@ void initInterruptSettings(void) {
 
 void shortButtonUp() {
     lcd_write_word("Short Up");
-    _delay_ms(2000);
+   // _delay_ms(2000);
 }
 
 void longButtonUp() {
     lcd_write_word("Long Up");
-    _delay_ms(2000);
+   // _delay_ms(2000);
 }
 
 void shortButtonSet() {
