@@ -19,7 +19,17 @@ ISR(PCINT1_vect) {
     // Button Up
     if ((PINC & (1<<PINC0))==0) {
         lcd_write_word("Pin C0,");
-
+        while((PINC & (1<<PINC0))==0) {
+            _delay_ms(1);
+            timer++;
+        }
+        if (timer < 500UL) {// unsigned long
+                // sigle click
+                shortButtonSet();
+        } else {
+                // button hold
+                longButtonSet();
+        }
         // while ((bit_is_set(PINC, PC0))) { // button hold down
         //     timer++;
         //     _delay_ms(1);
@@ -85,6 +95,7 @@ void initInterruptSettings(void) {
 void shortButtonUp() {
    // lcd_clear();
     lcd_write_word("Short Up");
+    _delay_ms(2000);
   //  PORTB = 0b00000000;
   // _delay_ms(500);
   // PORTB = 0b00100000;
@@ -94,6 +105,7 @@ void shortButtonUp() {
 void longButtonUp() {
     //lcd_clear();
     lcd_write_word("Long Up");
+    _delay_ms(2000);
     // PORTB = 0b00000000;
     // _delay_ms(5);
     // PORTB = 0b00100000;
