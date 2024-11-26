@@ -24,10 +24,10 @@ ISR(PCINT1_vect) {
         }
         if (timer < 500UL) {// unsigned long
                 // sigle click
-                shortButtonSet();
+                shortButtonUp();
         } else {
                 // button hold
-                longButtonSet();
+                longButtonUp();
         }
     }
     // Button Set
