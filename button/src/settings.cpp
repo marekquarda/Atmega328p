@@ -12,7 +12,6 @@
 ISR(PCINT1_vect) {
     cli();
     lcd_clear();
-   // lcd_write_word("Interrupt ...");
     uint16_t timer = 0;
     // Execute instruction for PCINT8 to PCINT14
     // Pins C0 - C7 
@@ -30,29 +29,11 @@ ISR(PCINT1_vect) {
                 // button hold
                 longButtonSet();
         }
-        // while ((bit_is_set(PINC, PC0))) { // button hold down
-        //     timer++;
-        //     _delay_ms(1);
-        // }
-        _delay_ms(2000);
-         longButtonUp();
-        // if((PINC & (1<<PINC0)) {
-
-        // }
-        // if (timer > BTN_DEBOUCE) {
-        //     if (timer < 500UL) {// unsigned long
-        //         // sigle click
-        //         shortButtonUp();
-        //     } else {
-        //         // button hold
-        //         longButtonUp();
-        //     }
-        // }
     }
     // Button Set
     if ((PINC & (1<<PINC2))== 0) {
-        lcd_write_word("Pin C2,");
-        while ((bit_is_set(PINC, PC2))) { // button hold down
+//        lcd_write_word("Pin C2,");
+        while((PINC & (1<<PINC2))==0) {
             timer++;
             _delay_ms(1);
         }
@@ -93,41 +74,23 @@ void initInterruptSettings(void) {
 }
 
 void shortButtonUp() {
-   // lcd_clear();
     lcd_write_word("Short Up");
     _delay_ms(2000);
-  //  PORTB = 0b00000000;
-  // _delay_ms(500);
-  // PORTB = 0b00100000;
-  // _delay_ms(500);
 }
 
 void longButtonUp() {
-    //lcd_clear();
     lcd_write_word("Long Up");
     _delay_ms(2000);
-    // PORTB = 0b00000000;
-    // _delay_ms(5);
-    // PORTB = 0b00100000;
-    // _delay_ms(5);
 }
 
 void shortButtonSet() {
-    //lcd_clear();
     lcd_write_word("Short Set");
- //   PORTD = 0b00000010;
-// _delay_ms(5);
-// PORTD = 0b00000000;
-// _delay_ms(5);
+    _delay_ms(2000);
 }
 
 void longButtonSet() {
-    //lcd_clear();
     lcd_write_word("Long Set");
-    // PORTD = 0b00000010;
-    // _delay_ms(5);
-    // PORTD = 0b00000000;
-    // _delay_ms(5);
+    _delay_ms(2000);
 }
 
 
