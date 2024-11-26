@@ -18,7 +18,7 @@ ISR(PCINT1_vect) {
     // Pins C0 - C7 
     // Button Up
     if ((PINC & (1<<PINC0))==0) {
-        lcd_write_word("Pin C0,");
+       // lcd_write_word("Pin C0,");
         while((PINC & (1<<PINC0))==0) {
             _delay_ms(1);
             timer++;
