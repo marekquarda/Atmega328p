@@ -14,6 +14,9 @@
 
 #define BTN_DEBOUCE 20 //ms
 
+//bool btnUp = false;
+//bool btnDown = false;
+
 void initInterruptSettings(void);
 void shortButtonUp(void);
 void longButtonUp(void);

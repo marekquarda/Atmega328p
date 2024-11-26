@@ -19,19 +19,25 @@ ISR(PCINT1_vect) {
     // Button Up
     if ((PINC & (1<<PINC0))==0) {
         lcd_write_word("Pin C0,");
-        while ((bit_is_set(PINC, PC0))) { // button hold down
-            timer++;
-            _delay_ms(1);
-        }
-        if (timer > BTN_DEBOUCE) {
-            if (timer < 500UL) {// unsigned long
-                // sigle click
-                shortButtonUp();
-            } else {
-                // button hold
-                longButtonUp();
-            }
-        }
+
+        // while ((bit_is_set(PINC, PC0))) { // button hold down
+        //     timer++;
+        //     _delay_ms(1);
+        // }
+        _delay_ms(2000);
+         longButtonUp();
+        // if((PINC & (1<<PINC0)) {
+
+        // }
+        // if (timer > BTN_DEBOUCE) {
+        //     if (timer < 500UL) {// unsigned long
+        //         // sigle click
+        //         shortButtonUp();
+        //     } else {
+        //         // button hold
+        //         longButtonUp();
+        //     }
+        // }
     }
     // Button Set
     if ((PINC & (1<<PINC2))== 0) {
