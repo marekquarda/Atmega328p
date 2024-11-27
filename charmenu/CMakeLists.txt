@@ -4,7 +4,7 @@ cmake_minimum_required(VERSION 3.09)
 project("Atmega32 Firmware")
 
 ## Product filename
-set(PRODUCT_NAME menu)
+set(PRODUCT_NAME charmenu)
 
 ## AVR Chip Configuration ##
 # 8Mhz, this sould match the crystal on board
@@ -42,7 +42,6 @@ add_compile_options(
     #-std=gnu99   # C99 standard
     -Os          # optimize
     -Wall        # enable warnings
-    -fpermissive
     #-Wno-main    
     #-Wundef 
     #-pedantic 
