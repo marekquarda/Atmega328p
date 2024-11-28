@@ -38,6 +38,17 @@
 #define LCD_FUNCTION_8BIT_1LINE  0x30   /* 8-bit interface, single line, 5x7 dots */
 #define LCD_FUNCTION_8BIT_2LINES 0x38   /* 8-bit interface, dual line,   5x7 dots */
 
+#define LCD_CGRAM           6	//DB6: set CG RAM address
+#define LCD_DDRAM           7	//DB7: set DD RAM address
+
+// cursor position to DDRAM mapping
+#define LCD_LINE0_DDRAMADDR		0x00
+#define LCD_LINE1_DDRAMADDR		0x40
+#define LCD_LINE2_DDRAMADDR		0x14
+#define LCD_LINE3_DDRAMADDR		0x54
+// progress bar defines
+#define PROGRESSPIXELS_PER_CHAR	6
+
 #define	LCD_ENABLE	CTL_BUS|=(1<<LCD_EN)	
 #define	LCD_DISABLE	CTL_BUS&=~(1<<LCD_EN)
 #define RS_ENABLE   CTL_BUS|=(1<<LCD_RS)	
@@ -50,14 +61,51 @@
 #define PWR_ENABLE  CTL_BUS|=(1<<PWR_C)	
 #define PWR_DISABLE CTL_BUS&=~(1<<PWR_C)
 
+const uint8_t LcdCustomChar[] PROGMEM=//define 8 custom LCD chars
+{
+	0x00, 0x1F, 0x00, 0x00, 0x00, 0x00, 0x1F, 0x00, // 0. 0/5 full progress block
+	0x00, 0x1F, 0x10, 0x10, 0x10, 0x10, 0x1F, 0x00, // 1. 1/5 full progress block
+	0x00, 0x1F, 0x18, 0x18, 0x18, 0x18, 0x1F, 0x00, // 2. 2/5 full progress block
+	0x00, 0x1F, 0x1C, 0x1C, 0x1C, 0x1C, 0x1F, 0x00, // 3. 3/5 full progress block
+	0x00, 0x1F, 0x1E, 0x1E, 0x1E, 0x1E, 0x1F, 0x00, // 4. 4/5 full progress block
+	0x00, 0x1F, 0x1F, 0x1F, 0x1F, 0x1F, 0x1F, 0x00, // 5. 5/5 full progress block
+	0x03, 0x07, 0x0F, 0x1F, 0x0F, 0x07, 0x03, 0x00, // 6. rewind arrow
+	0x18, 0x1C, 0x1E, 0x1F, 0x1E, 0x1C, 0x18, 0x00  // 7. fast-forward arrow
+};
+
 //functions prototype
-void lcd_init(void);
-void lcd_send_command (unsigned char cmnd);
-void lcd_write_character(unsigned char data);
-void lcd_write_word(char* str);
-void lcd_clear(void);
-void lcd_set_courser(uint8_t,uint8_t);
-void lcd_goto_xy (uint8_t , uint8_t );
+void LCDsendChar(uint8_t);		//forms data ready to send to LCD
+void LCDsendCommand(uint8_t);	//forms data ready to send to LCD
+void LCDinit(void);			//Initializes LCD
+void LCDclr(void);				//Clears LCD
+void LCDhome(void);			//LCD cursor home
+void LCDstring(uint8_t*, uint8_t);	//Outputs string to LCD
+void LCDGotoXY(uint8_t, uint8_t);	//Cursor to X Y position
+void CopyStringtoLCD(const uint8_t*, uint8_t, uint8_t);//copies flash string to LCD at x,y
+void LCDdefinechar(const uint8_t *,uint8_t);//write char to LCD CGRAM 
+void LCDshiftRight(uint8_t);	//shift by n characters Right
+void LCDshiftLeft(uint8_t);	//shift by n characters Left
+void LCDcursorOn(void);		//Underline cursor ON
+void LCDcursorOnBlink(void);	//Underline blinking cursor ON
+void LCDcursorOFF(void);		//Cursor OFF
+void LCDblank(void);			//LCD blank but not cleared
+void LCDvisible(void);			//LCD visible
+void LCDcursorLeft(uint8_t);	//Shift cursor left by n
+void LCDcursorRight(uint8_t);	//shif cursor right by n
+// displays a horizontal progress bar at the current cursor location
+// <progress> is the value the bargraph should indicate
+// <maxprogress> is the value at the end of the bargraph
+// <length> is the number of LCD characters that the bargraph should cover
+//adapted from AVRLIB - displays progress only for 8 bit variables
+void LCDprogressBar(uint8_t progress, uint8_t maxprogress, uint8_t length);
+
+// void lcd_init(void);
+// void lcd_send_command (unsigned char cmnd);
+// void lcd_write_character(unsigned char data);
+// void lcd_write_word(char* str);
+// void lcd_clear(void);
+// void lcd_set_courser(uint8_t,uint8_t);
+// void lcd_goto_xy (uint8_t , uint8_t );
 
 
 

@@ -8,7 +8,9 @@
 #define PIN_CONFIG_H_
 
 #include <avr/io.h>
+#include <inttypes.h>
 #include <util/delay.h>
+#include <avr/pgmspace.h>
 
 #define DATA_BUS	PORTB
 #define CTL_BUS		PORTD
