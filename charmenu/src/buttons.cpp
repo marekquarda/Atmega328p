@@ -73,23 +73,23 @@ void initInterruptSettings(void) {
 }
 
 void shortButtonUp() {
-    lcd_clear();
-    lcd_write_word("Short Up");
+    LCDclr();
+    LCDstring((uint8_t*)"Short Up",8);
 }
 
 void longButtonUp() {
-    lcd_clear();
-    lcd_write_word("Long Up");
+    LCDclr();
+    LCDstring((uint8_t*)"Long Up",7);
 }
 
 void shortButtonSet() {
-    lcd_clear();
-    lcd_write_word("Short Set");
+    LCDclr();
+    LCDstring((uint8_t*)"Short Set",9);
 }
 
 void longButtonSet() {
-    lcd_clear();
-    lcd_write_word("Long Set");
+    LCDclr();
+    LCDstring((uint8_t*)"Long Set",8);
 }
 
 
