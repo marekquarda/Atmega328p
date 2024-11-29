@@ -83,7 +83,7 @@ void LCDhome(void)
 	LCDsendCommand(LCD_CMD_CURSOR_HOME);	/* LCD cursor home */
 }
 
-void LCDstring(uint8_t* data, uint8_t nBytes) // Outputs string to LCD
+void LCDstring(char* data, uint8_t nBytes) // Outputs string to LCD
 {
 	register uint8_t i;
 	// check to make sure we have a good pointer
