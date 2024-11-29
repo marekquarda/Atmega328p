@@ -2,9 +2,9 @@
 #include "lcd.h"
 
 // Menu initialization
-MENU_ITEM(Menu_1, Menu_2, Menu_3, NULL_MENU, NULL_MENU, NULL, NULL, "1");
-MENU_ITEM(Menu_2, Menu_3, Menu_1, NULL_MENU, NULL_MENU, NULL, NULL, "2");
-MENU_ITEM(Menu_3, Menu_1, Menu_2, NULL_MENU, NULL_MENU, NULL, NULL, "3");
+MENU_ITEM(Menu_1, Menu_2, Menu_3, NULL_MENU, NULL_MENU, NULL, NULL, "sdd");
+MENU_ITEM(Menu_2, Menu_3, Menu_1, NULL_MENU, NULL_MENU, NULL, NULL, "ghhgfh");
+MENU_ITEM(Menu_3, Menu_1, Menu_2, NULL_MENU, NULL_MENU, NULL, NULL, "sere");
 
 // SubMenu initialization
 MENU_ITEM(Menu_1_1, Menu_1_2, Menu_1_2, NULL_MENU, NULL_MENU, NULL, NULL, "1.1");
@@ -16,7 +16,7 @@ static void Generic_Write(const char* Text)
     if(Text) {
         LCDclr();
         LCDstring((uint8_t*)"GENERIC:", 8);
-        LCDstring((uint8_t*)Text,10);
+        LCDstring((uint8_t*)Text,sizeof(Text));
     }
 }
 
