@@ -1,15 +1,6 @@
 #include "micromenu.h"
 #include "lcd.h"
 
-static void Generic_Write(const char* Text) 
-{
-    if(Text) {
-        LCDclr();
-        LCDstring((uint8_t*)"GENERIC:", 8);
-        LCDstring((uint8_t*)Text,sizeof(Text));
-    }
-}
-
 /** Example menu item specific enter callback function, run when the associated menu item is entered. */
 static void Level1Item1_Enter(void)
 {
@@ -67,6 +58,5 @@ MENU_ITEM(Menu_1_2, Menu_1_1, Menu_1_1, NULL_MENU, NULL_MENU, NULL, NULL, "1.1")
 
 void InitMenu() {
     // Init menu
-	//Menu_SetGenericWriteCallback(Generic_Write);
 	Menu_Navigate(&Menu_1);
 }
