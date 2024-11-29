@@ -25,4 +25,50 @@ void InitMenu() {
 	Menu_Navigate(&Menu_1);
 }
 
+/** Example menu item specific enter callback function, run when the associated menu item is entered. */
+static void Level1Item1_Enter(void)
+{
+	//puts("ENTER");
+    LCDclr();
+    LCDstring((uint8_t*) "ENTER 1",7);
+}
+
+/** Example menu item specific select callback function, run when the associated menu item is selected. */
+static void Level1Item1_Select(void)
+{
+	//puts("SELECT");
+    LCDclr();
+    LCDstring((uint8_t*) "SELECT 1",8);
+}
+
+static void Level1Item2_Enter(void)
+{
+	//puts("ENTER");
+    LCDclr();
+    LCDstring((uint8_t*) "ENTER 2",7);
+}
+
+/** Example menu item specific select callback function, run when the associated menu item is selected. */
+static void Level1Item2_Select(void)
+{
+	//puts("SELECT");
+    LCDclr();
+    LCDstring((uint8_t*) "SELECT 2",8);
+}
+
+static void Level1Item3_Enter(void)
+{
+	//puts("ENTER");
+    LCDclr();
+    LCDstring((uint8_t*) "ENTER 3",7);
+}
+
+/** Example menu item specific select callback function, run when the associated menu item is selected. */
+static void Level1Item3_Select(void)
+{
+	//puts("SELECT");
+    LCDclr();
+    LCDstring((uint8_t*) "SELECT 3",8);
+}
+
 
