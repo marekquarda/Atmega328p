@@ -16,7 +16,7 @@ static void Generic_Write(const uint8_t* Text)
     if(Text) {
         LCDclr();
         LCDstring((uint8_t*)"GENERIC:", 8);
-        LCDstring((uint8_t*)Text,sizeof(Text));
+        LCDstring(Text,sizeof(Text));
     }
 }
 
