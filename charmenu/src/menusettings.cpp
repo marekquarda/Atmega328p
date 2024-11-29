@@ -1,16 +1,6 @@
 #include "micromenu.h"
 #include "lcd.h"
 
-// Menu initialization
-MENU_ITEM(Menu_1, Menu_2, Menu_3, NULL_MENU, NULL_MENU, NULL, NULL, "1");
-MENU_ITEM(Menu_2, Menu_3, Menu_1, NULL_MENU, NULL_MENU, NULL, NULL, "2");
-MENU_ITEM(Menu_3, Menu_1, Menu_2, NULL_MENU, NULL_MENU, NULL, NULL, "3");
-
-// SubMenu initialization
-MENU_ITEM(Menu_1_1, Menu_1_2, Menu_1_2, NULL_MENU, NULL_MENU, NULL, NULL, "1.1");
-MENU_ITEM(Menu_1_2, Menu_1_1, Menu_1_1, NULL_MENU, NULL_MENU, NULL, NULL, "1.1");
-
-
 static void Generic_Write(const char* Text) 
 {
     if(Text) {
@@ -18,12 +8,6 @@ static void Generic_Write(const char* Text)
         LCDstring((uint8_t*)"GENERIC:", 8);
         LCDstring((uint8_t*)Text,sizeof(Text));
     }
-}
-
-void InitMenu() {
-    // Init menu
-	Menu_SetGenericWriteCallback(Generic_Write);
-	Menu_Navigate(&Menu_1);
 }
 
 /** Example menu item specific enter callback function, run when the associated menu item is entered. */
@@ -72,4 +56,17 @@ static void Level1Item3_Select(void)
     LCDstring((uint8_t*) "SELECT 3",8);
 }
 
+// Menu initialization
+MENU_ITEM(Menu_1, Menu_2, Menu_3, NULL_MENU, NULL_MENU, Level1Item1_Select, Level1Item1_Enter, "1");
+MENU_ITEM(Menu_2, Menu_3, Menu_1, NULL_MENU, NULL_MENU, Level1Item2_Select, Level1Item2_Enter, "2");
+MENU_ITEM(Menu_3, Menu_1, Menu_2, NULL_MENU, NULL_MENU, Level1Item3_Select, Level1Item3_Enter, "3");
 
+// SubMenu initialization
+MENU_ITEM(Menu_1_1, Menu_1_2, Menu_1_2, NULL_MENU, NULL_MENU, NULL, NULL, "1.1");
+MENU_ITEM(Menu_1_2, Menu_1_1, Menu_1_1, NULL_MENU, NULL_MENU, NULL, NULL, "1.1");
+
+void InitMenu() {
+    // Init menu
+	Menu_SetGenericWriteCallback(Generic_Write);
+	Menu_Navigate(&Menu_1);
+}
