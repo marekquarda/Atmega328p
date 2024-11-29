@@ -14,9 +14,6 @@
 #include "buttonsets.h"
 #include "micromenu.h"
 
-//#define RTC_READ_ADDR (0xA3)
-void Init(void);
-
 
 int main(void)
 {
@@ -37,7 +34,9 @@ int main(void)
 //	senddatetime.
 	PCF_SetDateTime(&senddatetime);
 	
-	Init();
+	// Init menu
+	Menu_SetGenericWriteCallback(Generic_Write);
+	//Menu_Navigate(&Menu_1);
 	
 	while (1)
 	{
@@ -45,7 +44,5 @@ int main(void)
 	}
 }
 
-void Init(void) {
 
-}
 

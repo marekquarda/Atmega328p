@@ -6,6 +6,7 @@
  */ 
 
 #include "buttonsets.h"
+#include "micromenu.h"
 #include "lcd.h"
 
 ButtonValues select = BTN_NONE;
@@ -14,11 +15,8 @@ ButtonValues select = BTN_NONE;
 ISR(PCINT1_vect) {
     cli();
     uint16_t timer = 0;
-    // Execute instruction for PCINT8 to PCINT14
-    // Pins C0 - C7 
     // Button Up
     if ((PINC & (1<<PINC0))==0) {
-       // lcd_write_word("Pin C0,");
         while((PINC & (1<<PINC0))==0) {
             _delay_ms(1);
             timer++;
@@ -26,16 +24,13 @@ ISR(PCINT1_vect) {
         if (timer < 500UL) {// unsigned long
                 // sigle click
                 select = BTN_SHORT_UP;
-                // shortButtonUp();
         } else {
                 // button hold
                 select = BTN_LONG_UP;
-                // longButtonUp();
         }
     }
     // Button Set
     if ((PINC & (1<<PINC2))== 0) {
-//        lcd_write_word("Pin C2,");
         while((PINC & (1<<PINC2))==0) {
             timer++;
             _delay_ms(1);
@@ -44,11 +39,9 @@ ISR(PCINT1_vect) {
             if (timer < 500UL) {// unsigned long
                 // sigle click
                 select = BTN_SHORT_SET;
-                // shortButtonSet();
             } else {
                 // button hold
                 select = BTN_LONG_SET;
-                // longButtonSet();
             }
         }
     }
@@ -107,16 +100,20 @@ void ChooseItem() {
     switch (GetButtonPress())
     {
     case BTN_SHORT_UP: 
-        shortButtonUp();
+        Menu_Navigate(MENU_PREVIOUS);
+        //shortButtonUp();
         break;
     case BTN_LONG_UP: 
-        longButtonUp();
+        Menu_Navigate(MENU_PARENT);
+        //longButtonUp();
         break;
-    case BTN_SHORT_SET:       
-        shortButtonSet();
+    case BTN_SHORT_SET: 
+        Menu_Navigate(MENU_NEXT);     
+        //shortButtonSet();
         break; 
     case BTN_LONG_SET:
-        longButtonSet();
+        Menu_Navigate(MENU_CHILD);
+        //longButtonSet();
         break;
     default:
         break;
