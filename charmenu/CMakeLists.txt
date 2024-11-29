@@ -42,6 +42,7 @@ add_compile_options(
     #-std=gnu99   # C99 standard
     -Os          # optimize
     -Wall        # enable warnings
+    -fpermissive
     #-Wno-main    
     #-Wundef 
     #-pedantic 

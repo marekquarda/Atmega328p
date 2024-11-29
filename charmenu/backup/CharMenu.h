@@ -1,6 +1,6 @@
 /*
- * CharMenu provides four buttons in a simple 16x2 charracter LCD 
- * 4 buttons: Enter, Back, Next, Previous
+ * CharMenu provides two buttons in a simple 16x2 charracter LCD 
+ * 2 buttons: Up, Set
  * API provided:
  * 	Button interfacing
  * 	Menu management & instant easy but performance oriented menu for low RAM & clock ATMEGA16/32

@@ -12,8 +12,11 @@
 #include <stdlib.h>
 #include "clock.h"
 #include "btnsettings.h"
+#include "micromenu.h"
 
 //#define RTC_READ_ADDR (0xA3)
+void Init(void);
+
 
 int main(void)
 {
@@ -21,6 +24,7 @@ int main(void)
 	LCDclr();
 	PCF_Init(1);
 	initInterruptSettings();
+	//charmenu = new_CharMenu(charmenu);
 	//twi_init();	// 100khz 
 	//uint8_t rtc_data[7];
 	PCF_DateTime senddatetime;
@@ -33,8 +37,15 @@ int main(void)
 //	senddatetime.
 	PCF_SetDateTime(&senddatetime);
 	
+	Init();
+	
 	while (1)
 	{
+		
 	}
+}
+
+void Init(void) {
+
 }
 
