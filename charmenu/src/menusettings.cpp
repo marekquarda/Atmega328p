@@ -11,12 +11,12 @@ MENU_ITEM(Menu_1_1, Menu_1_2, Menu_1_2, NULL_MENU, NULL_MENU, NULL, NULL, "1.1")
 MENU_ITEM(Menu_1_2, Menu_1_1, Menu_1_1, NULL_MENU, NULL_MENU, NULL, NULL, "1.1");
 
 
-static void Generic_Write(uint8_t* Text) 
+static void Generic_Write(const char* Text) 
 {
     if(Text) {
         LCDclr();
         LCDstring((uint8_t*)"GENERIC:", 8);
-        LCDstring(Text,sizeof(Text));
+        LCDstring((uint8_t*)Text,sizeof(Text));
     }
 }
 

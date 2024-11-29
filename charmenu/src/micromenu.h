@@ -25,7 +25,7 @@
 		const struct Menu_Item *Child; /**< Pointer to the child menu item of this menu item */
 		void (*SelectCallback)(void); /**< Pointer to the optional menu-specific select callback of this menu item */
 		void (*EnterCallback)(void); /**< Pointer to the optional menu-specific enter callback of this menu item */
-		uint8_t Text[]; /**< Menu item text to pass to the menu display callback function */
+		const char Text[]; /**< Menu item text to pass to the menu display callback function */
 	} Menu_Item_t;
 
 	/** Creates a new menu item entry with the specified links and callbacks.
@@ -79,7 +79,7 @@
 	 *
 	 *  \ref WriteFunc  Pointer to a callback function to execute for each selected menu item.
 	 */
-	void Menu_SetGenericWriteCallback(void (*WriteFunc)(uint8_t* Text));
+	void Menu_SetGenericWriteCallback(void (*WriteFunc)(const char* Text));
 
 	/** Enters the currently selected menu item, running its configured callback function (if any). */
 	void Menu_EnterCurrentItem(void);
