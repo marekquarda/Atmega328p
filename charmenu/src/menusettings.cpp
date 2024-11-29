@@ -14,7 +14,7 @@ static void Generic_Write(const char* Text)
 static void Level1Item1_Enter(void)
 {
 	//puts("ENTER");
-    LCDclr();
+    //LCDclr();
     LCDstring((uint8_t*) "ENTER 1",7);
 }
 
@@ -22,14 +22,14 @@ static void Level1Item1_Enter(void)
 static void Level1Item1_Select(void)
 {
 	//puts("SELECT");
-    LCDclr();
+   // LCDclr();
     LCDstring((uint8_t*) "SELECT 1",8);
 }
 
 static void Level1Item2_Enter(void)
 {
 	//puts("ENTER");
-    LCDclr();
+   // LCDclr();
     LCDstring((uint8_t*) "ENTER 2",7);
 }
 
@@ -37,14 +37,14 @@ static void Level1Item2_Enter(void)
 static void Level1Item2_Select(void)
 {
 	//puts("SELECT");
-    LCDclr();
+   // LCDclr();
     LCDstring((uint8_t*) "SELECT 2",8);
 }
 
 static void Level1Item3_Enter(void)
 {
 	//puts("ENTER");
-    LCDclr();
+    //LCDclr();
     LCDstring((uint8_t*) "ENTER 3",7);
 }
 
@@ -52,7 +52,7 @@ static void Level1Item3_Enter(void)
 static void Level1Item3_Select(void)
 {
 	//puts("SELECT");
-    LCDclr();
+   // LCDclr();
     LCDstring((uint8_t*) "SELECT 3",8);
 }
 
