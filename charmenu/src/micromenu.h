@@ -79,7 +79,7 @@
 	 *
 	 *  \ref WriteFunc  Pointer to a callback function to execute for each selected menu item.
 	 */
-	void Menu_SetGenericWriteCallback(void (*WriteFunc)(const uint8_t* Text));
+	void Menu_SetGenericWriteCallback(void (*WriteFunc)(uint8_t* Text));
 
 	/** Enters the currently selected menu item, running its configured callback function (if any). */
 	void Menu_EnterCurrentItem(void);
