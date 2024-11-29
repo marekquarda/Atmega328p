@@ -17,6 +17,14 @@
 //bool btnUp = false;
 //bool btnDown = false;
 
+enum ButtonValues 
+{
+    LONG_BTN_UP,
+    LONG_BTN_SET,
+    SHORT_BTN_UP,
+    SHORT_BTN_SET
+};
+
 void initInterruptSettings(void);
 void shortButtonUp(void);
 void longButtonUp(void);

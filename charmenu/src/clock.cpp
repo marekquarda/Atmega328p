@@ -11,7 +11,6 @@
 #include <avr/io.h>
 #include "clock.h"
 #include "twi_timer.h"
-#include "pins.h"
 
 
 void TWI_Pullups() {

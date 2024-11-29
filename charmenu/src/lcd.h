@@ -6,7 +6,7 @@
 #ifndef LCD_H_
 #define LCD_H_
 
-#include "pins.h"
+#include "lcdpins.h"
 
 #define LCD_CMD_CLEAR_DISPLAY	          0x01
 #define LCD_CMD_CURSOR_HOME		          0x02

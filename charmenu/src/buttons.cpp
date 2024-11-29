@@ -5,7 +5,7 @@
  * Author : Marek Xara Quarda
  */ 
 
-#include "btnsettings.h"
+#include "buttonsets.h"
 #include "lcd.h"
 
 // ISR for port B
@@ -91,6 +91,8 @@ void longButtonSet() {
     LCDclr();
     LCDstring((uint8_t*)"Long Set",8);
 }
+
+
 
 
 

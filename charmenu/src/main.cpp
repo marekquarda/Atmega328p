@@ -11,7 +11,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "clock.h"
-#include "btnsettings.h"
+#include "buttonsets.h"
 #include "micromenu.h"
 
 //#define RTC_READ_ADDR (0xA3)
