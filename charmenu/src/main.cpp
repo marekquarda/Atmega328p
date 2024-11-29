@@ -34,9 +34,7 @@ int main(void)
 //	senddatetime.
 	PCF_SetDateTime(&senddatetime);
 	
-	// Init menu
-	Menu_SetGenericWriteCallback(Generic_Write);
-	//Menu_Navigate(&Menu_1);
+	InitMenu();
 	
 	while (1)
 	{

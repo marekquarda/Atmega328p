@@ -84,6 +84,6 @@
 	/** Enters the currently selected menu item, running its configured callback function (if any). */
 	void Menu_EnterCurrentItem(void);
 
-	/** Generic function to write the text of a menu */
-	void Generic_Write(const char* Text);
+	/** Init Menu */
+	void InitMenu(void);
 #endif
