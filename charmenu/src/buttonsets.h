@@ -14,15 +14,13 @@
 
 #define BTN_DEBOUCE 20 //ms
 
-//bool btnUp = false;
-//bool btnDown = false;
-
 enum ButtonValues 
 {
-    LONG_BTN_UP,
-    LONG_BTN_SET,
-    SHORT_BTN_UP,
-    SHORT_BTN_SET
+    BTN_NONE,
+    BTN_LONG_UP,
+    BTN_LONG_SET,
+    BTN_SHORT_UP,
+    BTN_SHORT_SET
 };
 
 void initInterruptSettings(void);
@@ -30,5 +28,10 @@ void shortButtonUp(void);
 void longButtonUp(void);
 void shortButtonSet(void);
 void longButtonSet(void);
+
+// Menu settings
+enum ButtonValues GetButtonPress(void);
+void ChooseItem(void);
+
 
 #endif // SETTINGS_H_

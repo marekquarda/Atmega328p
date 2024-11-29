@@ -8,6 +8,8 @@
 #include "buttonsets.h"
 #include "lcd.h"
 
+ButtonValues select = BTN_NONE;
+
 // ISR for port B
 ISR(PCINT1_vect) {
     cli();
@@ -23,10 +25,12 @@ ISR(PCINT1_vect) {
         }
         if (timer < 500UL) {// unsigned long
                 // sigle click
-                shortButtonUp();
+                select = BTN_SHORT_UP;
+                // shortButtonUp();
         } else {
                 // button hold
-                longButtonUp();
+                select = BTN_LONG_UP;
+                // longButtonUp();
         }
     }
     // Button Set
@@ -39,13 +43,16 @@ ISR(PCINT1_vect) {
         if (timer > BTN_DEBOUCE) {
             if (timer < 500UL) {// unsigned long
                 // sigle click
-                shortButtonSet();
+                select = BTN_SHORT_SET;
+                // shortButtonSet();
             } else {
                 // button hold
-                longButtonSet();
+                select = BTN_LONG_SET;
+                // longButtonSet();
             }
         }
     }
+    ChooseItem();
     sei();
 }
 
@@ -92,7 +99,29 @@ void longButtonSet() {
     LCDstring((uint8_t*)"Long Set",8);
 }
 
+enum ButtonValues GetButtonPress(void) {
+    return select;
+}
 
+void ChooseItem() {
+    switch (GetButtonPress())
+    {
+    case BTN_SHORT_UP: 
+        shortButtonUp();
+        break;
+    case BTN_LONG_UP: 
+        longButtonUp();
+        break;
+    case BTN_SHORT_SET:       
+        shortButtonSet();
+        break; 
+    case BTN_LONG_SET:
+        longButtonSet();
+        break;
+    default:
+        break;
+    }
+}
 
 
 
