@@ -79,7 +79,7 @@ void LCDsendCommand(uint8_t);	//forms data ready to send to LCD
 void LCDinit(void);			//Initializes LCD
 void LCDclr(void);				//Clears LCD
 void LCDhome(void);			//LCD cursor home
-void LCDstring(char*, uint8_t);	//Outputs string to LCD
+void LCDstring(uint8_t*, uint8_t);	//Outputs string to LCD
 void LCDGotoXY(uint8_t, uint8_t);	//Cursor to X Y position
 void CopyStringtoLCD(const uint8_t*, uint8_t, uint8_t);//copies flash string to LCD at x,y
 void LCDdefinechar(const uint8_t *,uint8_t);//write char to LCD CGRAM 
