@@ -14,7 +14,7 @@ static void Generic_Write(const char* Text)
 static void Level1Item1_Enter(void)
 {
 	//puts("ENTER");
-   /LCDclr();
+    LCDclr();
     LCDstring((uint8_t*) "ENTER 1",7);
 }
 
