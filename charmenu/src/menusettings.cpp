@@ -21,7 +21,7 @@ static void Generic_Write(const char* Text)
 
 void InitMenu() {
     // Init menu
-	//Menu_SetGenericWriteCallback(Generic_Write);
+	Menu_SetGenericWriteCallback(Generic_Write);
 	Menu_Navigate(&Menu_1);
 }
 

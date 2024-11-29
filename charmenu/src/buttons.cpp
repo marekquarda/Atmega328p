@@ -112,7 +112,7 @@ void ChooseItem() {
         //shortButtonSet();
         break; 
     case BTN_LONG_SET:
-        Menu_Navigate(MENU_CHILD);
+        Menu_EnterCurrentItem();
         //longButtonSet();
         break;
     default:
