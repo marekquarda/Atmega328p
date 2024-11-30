@@ -51,12 +51,12 @@ int main(void)
 		LCDstring((uint8_t*)"Time: ", 6);
 		//lcd_write_word("Time: ");
 		//LCDstring((uint8_t*)(itoa(datetime.hour, ho, 10), 2);
-		LCDsendChar(datetime.hour);
+		LCDsendChar((uint8_t)(datetime.hour, ho, 10));
 		LCDsendChar(':');
 		//LCDstring((uint8_t*)':',);
-		LCDsendChar(datetime.minute);
+		LCDsendChar((uint8_t)(datetime.minute, min, 10));
 		LCDsendChar(':');
-		LCDsendChar(datetime.second);
+		LCDsendChar((uint8_t)(datetime.second, sec, 10));
 		//lcd_write_character(' ');
 		_delay_ms(1000);
 		//lcd_goto_xy(1,0);
