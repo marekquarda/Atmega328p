@@ -23,7 +23,7 @@ void TWI_Pullups() {
 
 void TWI_Init()
 {
-	TWI_Pullups();
+	//TWI_Pullups();
 	
 	DDRC = (1<<INT_CLOCK);
 	INT_DISABLE;
