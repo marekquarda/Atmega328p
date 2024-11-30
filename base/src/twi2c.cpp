@@ -12,20 +12,18 @@ volatile uint8_t status = 0xF8;
 
 ISR(TWI_vect) {
     status = (TWSR & 0xF8);
-    LCDstring((uint8_t*)"STA:",4);
-    LCDsendChar(status);
 }
 
 // Init i2c 
 void twi_init(void) {
-    // uint32_t gen_t = 0;
-    // gen_t = (((F_CPU/I2C_SPEED)-16)/2) & 0xFF;
+    uint32_t gen_t = 0;
+    gen_t = (((F_CPU/I2C_SPEED)-16)/2) & 0xFF;
 
-    // TWBR = gen_t & 0xFF;
-    // TWCR = (1 <<TWEN) | (1<<TWIE);
+    TWBR = gen_t & 0xFF;
+    TWCR = (1 <<TWEN) | (1<<TWIE);
 
-    TWBR = 0;										//Set bitrate factor to 0
-	TWSR &= ~((1<<TWPS1) | (1<<TWPS0));	
+    //TWBR = 0;										//Set bitrate factor to 0
+	//TWSR &= ~((1<<TWPS1) | (1<<TWPS0));	
     
     //TWSR &= ~((1<<TWPS1) | (1<<TWPS0));   // set prescaler to 1
     //pullup 
@@ -39,6 +37,8 @@ static uint8_t twi_start(void) {
     while (status != TWI_START) {
         i++;
         if (i >= TWI_TIMEOUT) {
+            LCDstring((uint8_t*)"ERR:",4);
+            LCDsendChar(status);
             return TWI_ERROR_START;
         }
     }
