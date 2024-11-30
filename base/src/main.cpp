@@ -22,6 +22,7 @@ int main(void)
 	PCF_Init(1);
 	initInterruptSettings();
 	//charmenu = new_CharMenu(charmenu);
+
 	//twi_init();	// 100khz 
 	//uint8_t rtc_data[7];
 	PCF_DateTime senddatetime;
