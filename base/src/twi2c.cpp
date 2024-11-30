@@ -15,11 +15,14 @@ ISR(TWI_vect) {
 
 // Init i2c 
 void twi_init(void) {
-    uint32_t gen_t = 0;
-    gen_t = (((F_CPU/I2C_SPEED)-16)/2) & 0xFF;
+    // uint32_t gen_t = 0;
+    // gen_t = (((F_CPU/I2C_SPEED)-16)/2) & 0xFF;
 
-    TWBR = gen_t & 0xFF;
-    TWCR = (1 <<TWEN) | (1<<TWIE);
+    // TWBR = gen_t & 0xFF;
+    // TWCR = (1 <<TWEN) | (1<<TWIE);
+
+    TWBR = 0;										//Set bitrate factor to 0
+	TWSR &= ~((1<<TWPS1) | (1<<TWPS0));	
     
     //TWSR &= ~((1<<TWPS1) | (1<<TWPS0));   // set prescaler to 1
     //pullup 
