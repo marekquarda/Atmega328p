@@ -40,7 +40,7 @@ int main(void)
 	{
 		PCF_DateTime datetime;
 		uint8_t err = PCF_GetDateTime(&datetime);
-		LCDclr();
+		//LCDclr();
 //		lcd_write_word("Time: ");
 		//memset(print_buffer, 0, sizeof(print_buffer));
 		char ho[4];
