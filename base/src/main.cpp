@@ -38,7 +38,36 @@ int main(void)
 	
 	while (1)
 	{
-		
+		PCF_DateTime datetime;
+		uint8_t err = PCF_GetDateTime(&datetime);
+		LCDclr();
+//		lcd_write_word("Time: ");
+		//memset(print_buffer, 0, sizeof(print_buffer));
+		char ho[4];
+		char min[4];
+		char sec[4];
+		//itoa(datetime.day, str, 1);
+		//lcd_write_word(sprintf(print_buffer,"\r20%.2f/%.2f/%.2f", datetime.year, datetime.month, datetime.day));
+		LCDstring((uint8_t*)"Time: ", 6);
+		//lcd_write_word("Time: ");
+		//LCDstring((uint8_t*)(itoa(datetime.hour, ho, 10), 2);
+		LCDsendChar(datetime.hour);
+		LCDsendChar(':');
+		//LCDstring((uint8_t*)':',);
+		LCDsendChar(datetime.minute);
+		LCDsendChar(':');
+		LCDsendChar(datetime.second);
+		//lcd_write_character(' ');
+		_delay_ms(1000);
+		//lcd_goto_xy(1,0);
+		// LCDclr();
+		// lcd_write_word("Date: ");
+		// lcd_write_word(itoa(datetime.day, sec, 10));
+		// lcd_write_character('/');
+		// lcd_write_word(itoa(datetime.month, sec, 10));
+		// lcd_write_character('/');
+		// lcd_write_word(itoa(datetime.year, sec, 10));
+		// _delay_ms(1000);
 	}
 }
 

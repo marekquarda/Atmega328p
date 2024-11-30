@@ -13,6 +13,19 @@ ISR(TWI_vect) {
     status = (TWSR & 0xF8);
 }
 
+// Init i2c 
+void twi_init(void) {
+    uint32_t gen_t = 0;
+    gen_t = (((F_CPU/I2C_SPEED)-16)/2) & 0xFF;
+
+    TWBR = gen_t & 0xFF;
+    TWCR = (1 <<TWEN) | (1<<TWIE);
+    
+    //TWSR &= ~((1<<TWPS1) | (1<<TWPS0));   // set prescaler to 1
+    //pullup 
+    //PORTC |= (1 << PORTC5 | 1 << PORTC4);
+}
+
 static uint8_t twi_start(void) {
     uint16_t i = 0;
     TWCR = (1 << TWINT) | (1 << TWSTA) | (1 << TWEN) | (1 << TWIE);
@@ -28,16 +41,16 @@ static uint8_t twi_start(void) {
 
 static void twi_stop(void) {
 
-    TWCR = (1 << TWINT) | (0 << TWSTA) | (1 << TWSTO) | (1 << TWEN) | (10 << TWIE);
+    TWCR = (1 << TWINT) | (1 << TWSTO) | (1 << TWEN) | (1 << TWIE);
 }
 
 static uint8_t twi_restart(void) {
     uint16_t i = 0;
-    TWCR = (1 << TWINT) |(0 << TWSTA) | (1 << TWSTO) | (1 << TWEN) | (1 << TWIE);
+    TWCR = (1 << TWINT) |(1 << TWSTA) | (1 << TWEN) | (1 << TWIE);
 
     while(status != TWI_RSTART) {
         i++;
-        if (i > TWI_TIMEOUT) {
+        if (i >= TWI_TIMEOUT) {
             return TWI_ERROR_START;
         }
     }
@@ -47,7 +60,7 @@ static uint8_t twi_restart(void) {
 static uint8_t twi_addr_write_ack(void) {
     uint16_t i = 0;
 
-    TWCR = (1 << TWINT) | (0 << TWSTA) | (1 << TWEN) | (1 << TWIE);
+    TWCR = (1 << TWINT) | (1 << TWEN) | (1 << TWIE);
     while(status != TWIT_ADDR_ACK) {
         i++;
         if (i >= TWI_TIMEOUT) {
@@ -60,7 +73,7 @@ static uint8_t twi_addr_write_ack(void) {
 static uint8_t twi_data_write_ack(void) { 
     uint16_t i = 0;
 
-    TWCR = (1 << TWINT) | (0 << TWSTA) | (1 << TWEN) | (1 < TWIE);
+    TWCR = (1 << TWINT) | (1 << TWEN) | (1 < TWIE);
     while(status != TWIT_DATA_ACK) {
         i++;
         if(i >= TWI_TIMEOUT) {
@@ -182,7 +195,7 @@ uint8_t twi_wire(uint8_t addr, uint8_t reg, uint8_t *data, uint16_t len) {
         twi_stop();
         return err;
     }
-
+ 
     TWDR = reg;
     err = twi_data_write_ack();
     if (err != TWI_OK) {
@@ -204,16 +217,7 @@ uint8_t twi_wire(uint8_t addr, uint8_t reg, uint8_t *data, uint16_t len) {
     return err;
 }
 
-void twi_init(void) {
-    uint32_t gen_t = 0;
-    TWSR &= ~((1<<TWPS1) | (1<<TWPS0));   // set prescaler to 1
-    gen_t = (((F_CPU/I2C_SPEED)-16)/2) & 0xFF;
-    TWBR = gen_t & 0xFF;
-    TWCR = (1 <<TWEN) | (1<<TWIE);
-    
-    // pullup 
-    //PORTC |= (1 << PORTC5 | 1 << PORTC4);
-}
+
 
 
 
