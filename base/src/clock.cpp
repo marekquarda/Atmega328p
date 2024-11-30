@@ -27,79 +27,79 @@ void TWI_Init()
 	// DDRC = (1<<INT_CLOCK);
 	// INT_DISABLE;
 	// //About 100kHz for 1.6MHz clock
-	// TWBR = 0;										//Set bitrate factor to 0
-	// TWSR &= ~((1<<TWPS1) | (1<<TWPS0));				//Set prescaler to 1
-	twi_init(); 
+	TWBR = 0;										//Set bitrate factor to 0
+	TWSR &= ~((1<<TWPS1) | (1<<TWPS0));				//Set prescaler to 1
+	//twi_init(); 
 }
 
-// void TWI_Start()
-// {
-// 	TWCR = (1<<TWINT) | (1<<TWEN) | (1<<TWSTA);
-// 	while (!(TWCR & (1<<TWINT)));
-// }
+void TWI_Start()
+{
+	TWCR = (1<<TWINT) | (1<<TWEN) | (1<<TWSTA);
+	while (!(TWCR & (1<<TWINT)));
+}
 
-// void TWI_Stop()
-// {
-// 	TWCR = (1<<TWINT) | (1<<TWEN) | (1<<TWSTO);
-// 	while ((TWCR & (1<<TWSTO)));
-// }
+void TWI_Stop()
+{
+	TWCR = (1<<TWINT) | (1<<TWEN) | (1<<TWSTO);
+	while ((TWCR & (1<<TWSTO)));
+}
 
-// uint8_t TWI_Read(uint8_t ack)
-// {
-// 	TWCR = (1<<TWINT) | (1<<TWEN) | (((ack ? 1 : 0)<<TWEA));
-// 	while (!(TWCR & (1<<TWINT)));
-// 	return TWDR;
-// }
+uint8_t TWI_Read(uint8_t ack)
+{
+	TWCR = (1<<TWINT) | (1<<TWEN) | (((ack ? 1 : 0)<<TWEA));
+	while (!(TWCR & (1<<TWINT)));
+	return TWDR;
+}
 
-// void TWI_Write(uint8_t byte)
-// {
-// 	TWDR = byte;
-// 	TWCR = (1<<TWINT) | (1<<TWEN);
-// 	while (!(TWCR & (1<<TWINT)));
-// }
+void TWI_Write(uint8_t byte)
+{
+	TWDR = byte;
+	TWCR = (1<<TWINT) | (1<<TWEN);
+	while (!(TWCR & (1<<TWINT)));
+}
 
 
 // //COMMUNICATION LAYER
 
 void PCF_Write(uint8_t addr, uint8_t *data, uint8_t count) {
-	twi_wire(PCF8563_WRITE_ADDR, addr, data, count);
-	// TWI_Start();
+	//twi_wire(PCF8563_WRITE_ADDR, addr, data, count);
+	TWI_Start();
 
-	// TWI_Write(PCF8563_WRITE_ADDR);
-	// TWI_Write(addr);
+	TWI_Write(PCF8563_WRITE_ADDR);
+	TWI_Write(addr);
 
-	// while (count) {
-	// 	count--;
+	while (count) {
+		count--;
 
-	// 	TWI_Write(*data);
-	// 	data++;
-	// }
+		TWI_Write(*data);
+		data++;
+	}
 
-	// TWI_Stop();
+	TWI_Stop();
 
 }
 
 void PCF_Read(uint8_t addr, uint8_t *data, uint8_t count) {
-	// TWI_Start();
+	TWI_Start();
 
-	// TWI_Write(PCF8563_WRITE_ADDR);
-	// TWI_Write(addr);
+	TWI_Write(PCF8563_WRITE_ADDR);
+	TWI_Write(addr);
 
-	// TWI_Stop();
-	// TWI_Start();
+	TWI_Stop();
+	TWI_Start();
 
-	// TWI_Write(PCF8563_READ_ADDR);
+	TWI_Write(PCF8563_READ_ADDR);
 
-	// while (count)
-	// {
-	// 	count--;
+	while (count)
+	{
+		count--;
 
-	// 	*data = TWI_Read(count);
-	// 	data++;
-	// }
+		*data = TWI_Read(count);
+		data++;
+	}
 
-	// TWI_Stop();
-	twi_read(PCF8563_READ_ADDR, addr, data, count);
+	TWI_Stop();
+	//twi_read(PCF8563_READ_ADDR, addr, data, count);
 }
 
 
