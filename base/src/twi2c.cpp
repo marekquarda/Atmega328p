@@ -5,7 +5,7 @@
  *  Author: Marek Xara Quarda
  */ 
 
-#include "twi_timer.h"
+#include "twi2c.h"
 
 volatile uint8_t status = 0xF8;
 
@@ -15,7 +15,7 @@ ISR(TWI_vect) {
 
 static uint8_t twi_start(void) {
     uint16_t i = 0;
-    TWCR = (1 << TWINT) | (1 << TWSTA) | (0 << TWSTO) | (1 << TWEN) | (1 << TWIE);
+    TWCR = (1 << TWINT) | (1 << TWSTA) | (1 << TWEN) | (1 << TWIE);
 
     while (status != TWI_START) {
         i++;
@@ -57,7 +57,7 @@ static uint8_t twi_addr_write_ack(void) {
     return TWI_OK;
 }
 
-static uint8_t twi_data_write_ack(void) {
+static uint8_t twi_data_write_ack(void) { 
     uint16_t i = 0;
 
     TWCR = (1 << TWINT) | (0 << TWSTA) | (1 << TWEN) | (1 < TWIE);
