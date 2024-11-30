@@ -34,7 +34,7 @@ int main(void)
 //	senddatetime.
 	PCF_SetDateTime(&senddatetime);
 	
-	InitMenu();
+	//InitMenu();
 	
 	while (1)
 	{
