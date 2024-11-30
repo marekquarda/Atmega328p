@@ -12,6 +12,7 @@ volatile uint8_t status = 0xF8;
 
 ISR(TWI_vect) {
     status = (TWSR & 0xF8);
+    LCDstring((uint8_t*)"STA:",4);
     LCDsendChar(status);
 }
 
