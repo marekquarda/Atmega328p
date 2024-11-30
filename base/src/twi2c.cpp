@@ -6,11 +6,13 @@
  */ 
 
 #include "twi2c.h"
+#include "lcd.h"
 
 volatile uint8_t status = 0xF8;
 
 ISR(TWI_vect) {
     status = (TWSR & 0xF8);
+    LCDsendChar(status);
 }
 
 // Init i2c 

@@ -58,7 +58,7 @@ int main(void)
 		LCDsendChar(':');
 		LCDsendChar((uint8_t)(datetime.second, sec, 10));
 		//lcd_write_character(' ');
-		_delay_ms(1000);
+		_delay_ms(2000);
 		//lcd_goto_xy(1,0);
 		// LCDclr();
 		// lcd_write_word("Date: ");
