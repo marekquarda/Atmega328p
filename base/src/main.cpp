@@ -19,8 +19,9 @@ int main(void)
 {
 	LCDinit(); /* Initialization of LCD*/
 	LCDclr();
-	PCF_Init(1);
 	initInterruptSettings();
+	PCF_Init(1);
+	
 	//charmenu = new_CharMenu(charmenu);
 
 	//twi_init();	// 100khz 
