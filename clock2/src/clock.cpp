@@ -24,7 +24,7 @@
 
 void TWI_Init()
 {
-	tw_init(TW_FREQ_100K, false);
+	tw_init(TW_FREQ_400K, true);
 	// //TWI_Pullups();
 	// DDRC  |= (1 << TW_SDA_PIN) | (1 << TW_SCL_PIN);
 	// //PORTC &= ~((1 << TW_SDA_PIN) | (1 << TW_SCL_PIN));
