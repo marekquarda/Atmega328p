@@ -25,6 +25,8 @@ void TWI_Init()
 {
 	//TWI_Pullups();
 	DDRC  |= (1 << TW_SDA_PIN) | (1 << TW_SCL_PIN);
+	PORTC &= ~((1 << TW_SDA_PIN) | (1 << TW_SCL_PIN));
+
 	//DDRC = (1<<INT_CLOCK);
 	//INT_DISABLE;
 	//About 100kHz for 1.6MHz clock
