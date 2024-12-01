@@ -18,7 +18,7 @@ static ret_code_t tw_start(void)
 	
 	/* Wait for TWINT flag to set */
 	while (!(TWCR & (1 << TWINT)));
-	
+	lcd_write_word("Start");
 	/* Check error */
 	if (TW_STATUS != TW_START && TW_STATUS != TW_REP_START)
 	{
