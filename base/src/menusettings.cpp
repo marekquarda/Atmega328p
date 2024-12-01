@@ -56,8 +56,8 @@ static void Date_Select(void)
 		LCDstring((uint8_t*)(itoa(datetime.day, ho, 10)), 2);
 		LCDsendChar('/');
 		LCDstring((uint8_t*)(itoa(datetime.month, min, 10)), 2);
-		LCDsendChar('/s');
-		LCDstring((uint8_t*)(itoa(datetime.year, sec, 10)), 2);
+		LCDsendChar('/');
+		LCDstring((uint8_t*)(itoa(datetime.year, sec, 10)), 4);
         // move to back
         LCDcursorLeft(10);
 //        _delay_ms(900);
