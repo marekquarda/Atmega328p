@@ -165,7 +165,7 @@ void tw_init(twi_freq_mode_t twi_freq_mode, bool pullup_en)
 }
 
 
-ret_code_t tw_master_transmit(uint8_t slave_addr,uint8_t addr, uint8_t* p_data, uint8_t len, bool repeat_start)
+ret_code_t tw_master_transmit(uint8_t slave_addr, uint8_t addr, uint8_t* p_data, uint8_t len, bool repeat_start)
 {
 	ret_code_t error_code;
 	
@@ -177,7 +177,7 @@ ret_code_t tw_master_transmit(uint8_t slave_addr,uint8_t addr, uint8_t* p_data, 
 	}
 	
 	/* Send slave address with WRITE flag */
-	error_code = tw_write(slave_addr);
+	error_code = tw_write_sla(slave_addr);
 	if (error_code != SUCCESS)
 	{
 		return error_code;
@@ -222,7 +222,7 @@ ret_code_t tw_master_receive(uint8_t slave_addr, uint8_t addr, uint8_t* p_data, 
 	}
 	
 	/* Write slave address with READ flag */
-	error_code = tw_write(slave_addr);
+	error_code = tw_write_sla(slave_addr);
 	if (error_code != SUCCESS)
 	{
 		return error_code;
@@ -241,7 +241,7 @@ ret_code_t tw_master_receive(uint8_t slave_addr, uint8_t addr, uint8_t* p_data, 
 	{
 		return error_code;
 	}
-	
+
 	/* Read single or multiple data byte and send ack */
 	for (int i = 0; i < len-1; ++i)
 	{
