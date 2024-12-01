@@ -177,14 +177,14 @@ ret_code_t tw_master_transmit(uint8_t slave_addr,uint8_t addr, uint8_t* p_data, 
 	}
 	
 	/* Send slave address with WRITE flag */
-	error_code = tw_write_sla(slave_addr);
+	error_code = tw_write(slave_addr);
 	if (error_code != SUCCESS)
 	{
 		return error_code;
 	}
 
 	/* Send address memory with WRITE flag */
-	error_code = tw_write_sla(addr);
+	error_code = tw_write(addr);
 	if (error_code != SUCCESS)
 	{
 		return error_code;
@@ -222,7 +222,7 @@ ret_code_t tw_master_receive(uint8_t slave_addr, uint8_t addr, uint8_t* p_data, 
 	}
 	
 	/* Write slave address with READ flag */
-	error_code = tw_write_sla(slave_addr);
+	error_code = tw_write(slave_addr);
 	if (error_code != SUCCESS)
 	{
 		return error_code;
@@ -230,6 +230,13 @@ ret_code_t tw_master_receive(uint8_t slave_addr, uint8_t addr, uint8_t* p_data, 
 
 	/* Write slave address with READ flag */
 	error_code = tw_write_sla(addr);
+	if (error_code != SUCCESS)
+	{
+		return error_code;
+	}
+
+	tw_stop();
+	error_code = tw_start();
 	if (error_code != SUCCESS)
 	{
 		return error_code;
