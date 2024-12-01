@@ -23,7 +23,7 @@ static void Time_Select(void)
 		LCDsendChar(':');
 		LCDstring((uint8_t*)(itoa(datetime.second, sec, 10)), 2);
         // move to back
-        LCDcursorLeft(7);
+        LCDcursorLeft(8);
         _delay_ms(900);
     }
 
