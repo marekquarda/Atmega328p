@@ -26,9 +26,9 @@ int main(void)
 	PCF_DateTime senddatetime;
 	senddatetime.day = 6;
 	senddatetime.month = 3;
-	senddatetime.year = 2030;
-	senddatetime.hour = 32;
-	senddatetime.minute = 33;
+	senddatetime.year = 2025;
+	senddatetime.hour = 6;
+	senddatetime.minute = 11;
 	senddatetime.second = 30;
 //	senddatetime.
 	PCF_SetDateTime(&senddatetime);
