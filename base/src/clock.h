@@ -37,9 +37,12 @@
 #define I2C_CONFIG_PORT					PORTC
 #define I2C_CONFIG_SDA					PC4
 #define I2C_CONFIG_SCL					PC5
+#define TW_SCL_PIN						PORTC5
+#define TW_SDA_PIN						PORTC4
 
-// #define INT_ENABLE   I2C_CONFIG_PORT|=(1<<INT_CLOCK)	
-// #define INT_DISABLE  I2C_CONFIG_PORT&=~(1<<INT_CLOCK)
+
+#define INT_ENABLE   I2C_CONFIG_PORT|=(1<<INT_CLOCK)	
+#define INT_DISABLE  I2C_CONFIG_PORT&=~(1<<INT_CLOCK)
 
 typedef struct {
 	uint8_t minute;

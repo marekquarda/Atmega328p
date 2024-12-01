@@ -24,10 +24,10 @@ enum ButtonValues
 };
 
 void initInterruptSettings(void);
-void shortButtonUp(void);
-void longButtonUp(void);
-void shortButtonSet(void);
-void longButtonSet(void);
+// void shortButtonUp(void);
+// void longButtonUp(void);
+// void shortButtonSet(void);
+// void longButtonSet(void);
 
 // Menu settings
 enum ButtonValues GetButtonPress(void);
