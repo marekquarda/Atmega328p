@@ -27,11 +27,11 @@ int main(void)
 	//twi_init();	// 100khz 
 	//uint8_t rtc_data[7];
 	PCF_DateTime senddatetime;
-	senddatetime.day = 12;
+	senddatetime.day = 1;
 	senddatetime.month = 11;
 	senddatetime.year = 2024;
-	senddatetime.hour = 14;
-	senddatetime.minute = 50;
+	senddatetime.hour = 23;
+	senddatetime.minute = 55;
 	senddatetime.second = 30;
 //	senddatetime.
 	PCF_SetDateTime(&senddatetime);
