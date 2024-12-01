@@ -72,26 +72,6 @@ void initInterruptSettings(void) {
     sei();          // Global Interrupts
 }
 
-// void shortButtonUp() {
-//     LCDclr();
-//     LCDstring((uint8_t*)"Short Up",8);
-// }
-
-// void longButtonUp() {
-//     LCDclr();
-//     LCDstring((uint8_t*)"Long Up",7);
-// }
-
-// void shortButtonSet() {
-//     LCDclr();
-//     LCDstring((uint8_t*)"Short Set",9);
-// }
-
-// void longButtonSet() {
-//     LCDclr();
-//     LCDstring((uint8_t*)"Long Set",8);
-// }
-
 enum ButtonValues GetButtonPress(void) {
     return select;
 }

@@ -5,13 +5,16 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+bool time = false;
+
 /** Time menu item select callback function */
 static void Time_Select(void)
 {
     LCDclr();
     PCF_DateTime datetime;
     LCDstring((uint8_t*)"Time:", 5);
-    while (1)
+    time = true;
+    while (time)
     {
        	uint8_t err = PCF_GetDateTime(&datetime);
  		char ho[4];
@@ -39,6 +42,7 @@ static void Time_Enter(void)
 /** Date menu item select callback function */
 static void Date_Select(void)
 {
+    time = false;
     LCDclr();
     LCDstring("Date Sel");
 }
@@ -52,6 +56,7 @@ static void Date_Enter(void)
 /** Voltage menu item select callback function */
 static void Voltage_Select(void)
 {
+    time = false;
     LCDclr();
     LCDstring("Voltage Sel");
 }
@@ -65,6 +70,7 @@ static void Voltage_Enter(void)
 /** Example menu item specific select callback function, run when the associated menu item is selected. */
 static void Current_Select(void)
 {
+    time = false;
     LCDclr();
     LCDstring("Current Sel");
 }
