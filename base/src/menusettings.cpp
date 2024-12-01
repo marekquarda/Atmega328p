@@ -13,7 +13,6 @@ static void Time_Select(void)
     LCDstring((uint8_t*)"Time:", 5);
     while (1)
     {
-        LCDcursorRight(5);
        	uint8_t err = PCF_GetDateTime(&datetime);
  		char ho[4];
  		char min[4];
@@ -25,6 +24,7 @@ static void Time_Select(void)
 		LCDstring((uint8_t*)(itoa(datetime.second, sec, 10)), 2);
         // move to back
         LCDcursorLeft(7);
+        _delay_ms(900);
     }
 
 }
