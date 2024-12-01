@@ -42,7 +42,7 @@ int main(void)
 	{
 		PCF_DateTime datetime;
 		uint8_t err = PCF_GetDateTime(&datetime);
-		//LCDclr();
+		LCDclr();
 //		lcd_write_word("Time: ");
 		//memset(print_buffer, 0, sizeof(print_buffer));
 		char ho[4];
@@ -53,12 +53,12 @@ int main(void)
 		LCDstring((uint8_t*)"Time: ", 6);
 		//lcd_write_word("Time: ");
 		//LCDstring((uint8_t*)(itoa(datetime.hour, ho, 10), 2);
-		LCDsendChar((uint8_t)(datetime.hour, ho, 10));
+		LCDsendChar((uint8_t)datetime.hour);
 		LCDsendChar(':');
 		//LCDstring((uint8_t*)':',);
-		LCDsendChar((uint8_t)(datetime.minute, min, 10));
+		LCDsendChar((uint8_t)datetime.minute);
 		LCDsendChar(':');
-		LCDsendChar((uint8_t)(datetime.second, sec, 10));
+		LCDsendChar((uint8_t)datetime.second);
 		//lcd_write_character(' ');
 		_delay_ms(2000);
 		//lcd_goto_xy(1,0);
