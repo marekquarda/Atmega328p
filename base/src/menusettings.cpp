@@ -11,26 +11,20 @@ static void Time_Select(void)
     LCDclr();
     PCF_DateTime datetime;
     LCDstring((uint8_t*)"Time:", 5);
-    LCDshiftRight(6);
     while (1)
     {
+        LCDshiftRight(6);
        	uint8_t err = PCF_GetDateTime(&datetime);
  		char ho[4];
  		char min[4];
  		char sec[4];
-		//itoa(datetime.day, str, 1);
-		//lcd_write_word(sprintf(print_buffer,"\r20%.2f/%.2f/%.2f", datetime.year, datetime.month, datetime.day));
-		
-		//lcd_write_word("Time: ");
-		//LCDstring((uint8_t*)(itoa(datetime.hour, ho, 10), 2);
 		LCDstring((uint8_t*)(itoa(datetime.hour, ho, 10)), 2);
 		LCDsendChar(':');
-		//LCDstring((uint8_t*)':',);
 		LCDstring((uint8_t*)(itoa(datetime.minute, min, 10)), 2);
 		LCDsendChar(':');
 		LCDstring((uint8_t*)(itoa(datetime.second, sec, 10)), 2);
-		//lcd_write_character(' ');
-                /* code */
+        // move to back
+        LCDhome();
     }
 
 }
