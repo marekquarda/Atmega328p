@@ -6,6 +6,7 @@
 */
 
 #include "twi_master.h"
+#include "lcd.h"
 
 static ret_code_t tw_start(void)
 {
@@ -21,6 +22,7 @@ static ret_code_t tw_start(void)
 	/* Check error */
 	if (TW_STATUS != TW_START && TW_STATUS != TW_REP_START)
 	{
+		lcd_write_word("Err Start");
 #if DEBUG_LOG
 		printf("\n");
 #endif
@@ -57,6 +59,7 @@ static ret_code_t tw_write_sla(uint8_t sla)
 	while (!(TWCR & (1 << TWINT)));
 	if (TW_STATUS != TW_MT_SLA_ACK && TW_STATUS != TW_MR_SLA_ACK)
 	{
+		lcd_write_word("Err Sla");
 #if DEBUG_LOG
 		printf("\n");
 #endif
@@ -83,6 +86,7 @@ static ret_code_t tw_write(uint8_t data)
 	while (!(TWCR & (1 << TWINT)));
 	if (TW_STATUS != TW_MT_DATA_ACK)
 	{
+		lcd_write_word("Err Data");
 #if DEBUG_LOG
 		printf("\n");
 #endif
