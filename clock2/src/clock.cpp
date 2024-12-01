@@ -82,7 +82,7 @@ void PCF_Write(uint8_t addr, uint8_t *data, uint8_t count) {
 	// }
 
 	// TWI_Stop();
-	tw_master_transmit(addr, data, count, false);
+	tw_master_transmit(PCF8563_WRITE_ADDR, data, count, false);
 
 }
 
@@ -107,7 +107,7 @@ void PCF_Read(uint8_t addr, uint8_t *data, uint8_t count) {
 
 	// TWI_Stop();
 	// //twi_read(PCF8563_READ_ADDR, addr, data, count);
-	tw_master_receive(addr, data, count);
+	tw_master_receive(PCF8563_WRITE_ADDR, data, count);
 }
 
 
