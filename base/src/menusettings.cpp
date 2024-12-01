@@ -1,50 +1,86 @@
 #include "micromenu.h"
 #include "lcd.h"
+#include "clock.h"
+#include <string.h>
+#include <stdio.h>
+#include <stdlib.h>
 
-/** Example menu item specific enter callback function, run when the associated menu item is entered. */
-static void Level1Item1_Enter(void)
+/** Time menu item select callback function */
+static void Time_Select(void)
 {
     LCDclr();
-    LCDstring((uint8_t*) "ENTER 1",7);
+    PCF_DateTime datetime;
+	uint8_t err = PCF_GetDateTime(&datetime);
+ //		lcd_write_word("Time: ");
+ 		char ho[4];
+ 		char min[4];
+ 		char sec[4];
+		//itoa(datetime.day, str, 1);
+		//lcd_write_word(sprintf(print_buffer,"\r20%.2f/%.2f/%.2f", datetime.year, datetime.month, datetime.day));
+		LCDstring((uint8_t*)"Time: ", 6);
+		//lcd_write_word("Time: ");
+		//LCDstring((uint8_t*)(itoa(datetime.hour, ho, 10), 2);
+		LCDstring((uint8_t*)(itoa(datetime.hour, ho, 10)), 2);
+		LCDsendChar(':');
+		//LCDstring((uint8_t*)':',);
+		LCDstring((uint8_t*)(itoa(datetime.minute, min, 10)), 2);
+		LCDsendChar(':');
+		LCDstring((uint8_t*)(itoa(datetime.second, sec, 10)), 2);
+		//lcd_write_character(' ');
+}
+
+static void Time_Enter(void)
+{
+    LCDclr();
+    LCDstring("Time Ent");
+}
+
+
+/** Date menu item select callback function */
+static void Date_Select(void)
+{
+    LCDclr();
+    LCDstring("Date Sel");
+}
+
+static void Date_Enter(void)
+{
+    LCDclr();
+    LCDstring("Date Ent");
+}
+
+/** Voltage menu item select callback function */
+static void Voltage_Select(void)
+{
+    LCDclr();
+    LCDstring("Voltage Sel");
+}
+
+static void Voltage_Enter(void)
+{
+    LCDclr();
+    LCDstring("Voltage Ent");
 }
 
 /** Example menu item specific select callback function, run when the associated menu item is selected. */
-static void Level1Item1_Select(void)
+static void Current_Select(void)
 {
     LCDclr();
-    LCDstring((uint8_t*) "SELECT 1",8);
+    LCDstring("Current Sel");
 }
 
-static void Level1Item2_Enter(void)
+static void Current_Enter(void)
 {
     LCDclr();
-    LCDstring((uint8_t*) "ENTER 2",7);
+    LCDstring("Current Ent");
 }
 
-/** Example menu item specific select callback function, run when the associated menu item is selected. */
-static void Level1Item2_Select(void)
-{
-    LCDclr();
-    LCDstring((uint8_t*) "SELECT 2",8);
-}
-
-static void Level1Item3_Enter(void)
-{
-    LCDclr();
-    LCDstring((uint8_t*) "ENTER 3",7);
-}
-
-/** Example menu item specific select callback function, run when the associated menu item is selected. */
-static void Level1Item3_Select(void)
-{
-    LCDclr();
-    LCDstring((uint8_t*) "SELECT 3",8);
-}
 
 // Menu initialization
-MENU_ITEM(Menu_1, Menu_2, Menu_3, NULL_MENU, NULL_MENU, Level1Item1_Select, Level1Item1_Enter, "1");
-MENU_ITEM(Menu_2, Menu_3, Menu_1, NULL_MENU, NULL_MENU, Level1Item2_Select, Level1Item2_Enter, "2");
-MENU_ITEM(Menu_3, Menu_1, Menu_2, NULL_MENU, NULL_MENU, Level1Item3_Select, Level1Item3_Enter, "3");
+MENU_ITEM(Menu_1, Menu_2, Menu_4, NULL_MENU, NULL_MENU, Time_Select, Time_Enter, "1");
+MENU_ITEM(Menu_2, Menu_3, Menu_1, NULL_MENU, NULL_MENU, Date_Select, Date_Enter, "2");
+MENU_ITEM(Menu_3, Menu_4, Menu_2, NULL_MENU, NULL_MENU, Voltage_Select, Voltage_Enter, "3");
+MENU_ITEM(Menu_4, Menu_1, Menu_3, NULL_MENU, NULL_MENU, Current_Select,Current_Enter, "4");
 
 // SubMenu initialization
 MENU_ITEM(Menu_1_1, Menu_1_2, Menu_1_2, NULL_MENU, NULL_MENU, NULL, NULL, "1.1");

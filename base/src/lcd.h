@@ -79,6 +79,7 @@ void LCDsendCommand(uint8_t);	//forms data ready to send to LCD
 void LCDinit(void);			//Initializes LCD
 void LCDclr(void);				//Clears LCD
 void LCDhome(void);			//LCD cursor home
+void LCDstring(char*); 			//Outputs string to LCD
 void LCDstring(uint8_t*, uint8_t);	//Outputs string to LCD
 void LCDGotoXY(uint8_t, uint8_t);	//Cursor to X Y position
 void CopyStringtoLCD(const uint8_t*, uint8_t, uint8_t);//copies flash string to LCD at x,y
@@ -98,15 +99,5 @@ void LCDcursorRight(uint8_t);	//shif cursor right by n
 // <length> is the number of LCD characters that the bargraph should cover
 //adapted from AVRLIB - displays progress only for 8 bit variables
 void LCDprogressBar(uint8_t progress, uint8_t maxprogress, uint8_t length);
-
-// void lcd_init(void);
-// void lcd_send_command (unsigned char cmnd);
-// void lcd_write_character(unsigned char data);
-// void lcd_write_word(char* str);
-// void lcd_clear(void);
-// void lcd_set_courser(uint8_t,uint8_t);
-// void lcd_goto_xy (uint8_t , uint8_t );
-
-
 
 #endif /* LCD_H_ */
