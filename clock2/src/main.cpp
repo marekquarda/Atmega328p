@@ -68,7 +68,7 @@ int main(void)
 		lcd_write_character('/');
 		lcd_write_word(itoa(datetime.year, sec, 10));
 
-		_delay_ms(3000);			
+		_delay_ms(1000);			
 	}
 	
 	
