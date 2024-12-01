@@ -28,6 +28,7 @@ static void Time_Select(void)
         // move to back
         LCDcursorLeft(8);
         _delay_ms(900);
+        time = false;
     }
 
 }
