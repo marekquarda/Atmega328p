@@ -35,7 +35,7 @@ static void Time_Select(void)
 static void Time_Enter(void)
 {
     LCDclr();
-    LCDstring("Time Ent");
+    LCDstring((uint8_t*)"Time Ent");
 }
 
 
@@ -44,13 +44,13 @@ static void Date_Select(void)
 {
     time = false;
     LCDclr();
-    LCDstring("Date Sel");
+    LCDstring((uint8_t*)"Date Sel");
 }
 
 static void Date_Enter(void)
 {
     LCDclr();
-    LCDstring("Date Ent");
+    LCDstring((uint8_t*)"Date Ent");
 }
 
 /** Voltage menu item select callback function */
@@ -58,13 +58,13 @@ static void Voltage_Select(void)
 {
     time = false;
     LCDclr();
-    LCDstring("Voltage Sel");
+    LCDstring((uint8_t*)"Voltage Sel");
 }
 
 static void Voltage_Enter(void)
 {
     LCDclr();
-    LCDstring("Voltage Ent");
+    LCDstring((uint8_t*)"Voltage Ent");
 }
 
 /** Example menu item specific select callback function, run when the associated menu item is selected. */
@@ -72,13 +72,13 @@ static void Current_Select(void)
 {
     time = false;
     LCDclr();
-    LCDstring("Current Sel");
+    LCDstring((uint8_t*)"Current Sel");
 }
 
 static void Current_Enter(void)
 {
     LCDclr();
-    LCDstring("Current Ent");
+    LCDstring((uint8_t*)"Current Ent");
 }
 
 

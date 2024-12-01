@@ -83,7 +83,7 @@ void LCDhome(void)
 	LCDsendCommand(LCD_CMD_CURSOR_HOME);	/* LCD cursor home */
 }
 
-void LCDstring(char* string) {
+void LCDstring(uint8_t* string) {
 	LCDstring((uint8_t*)string, sizeof(string));
 }
 
