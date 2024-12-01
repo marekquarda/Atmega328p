@@ -34,6 +34,6 @@ typedef enum {
 
 void tw_init(twi_freq_mode_t twi_freq, bool pullup_en);
 ret_code_t tw_master_transmit(uint8_t slave_addr, uint8_t addr, uint8_t* p_data, uint8_t len, bool repeat_start);
-ret_code_t tw_master_receive(uint8_t slave_addr, uint8_t* p_data, uint8_t len);
+ret_code_t tw_master_receive(uint8_t slave_addr, uint8_t addr, uint8_t* p_data, uint8_t len);
 
 #endif /* TWI_MASTER_H_ */
