@@ -143,21 +143,21 @@ void tw_init(twi_freq_mode_t twi_freq_mode, bool pullup_en)
 	switch (twi_freq_mode)
 	{
 		case TW_FREQ_100K:
-		/* Set bit rate register 72 and prescaler to 1 resulting in
-		SCL_freq = 16MHz/(16 + 2*72*1) = 100KHz	*/
-		TWBR = 72;
+		/* Set bit rate register 32 and prescaler to 1 resulting in
+		SCL_freq = 8MHz/(16 + 2*32*1) = 100KHz	*/
+		TWBR = 32;
 		break;
 		
 		case TW_FREQ_250K:
-		/* Set bit rate register 24 and prescaler to 1 resulting in
-		SCL_freq = 16MHz/(16 + 2*24*1) = 250KHz	*/
-		TWBR = 24;
+		/* Set bit rate register 8 and prescaler to 1 resulting in
+		SCL_freq = 8MHz/(16 + 2*8*1) = 250KHz	*/
+		TWBR = 8;
 		break;
 		
 		case TW_FREQ_400K:
-		/* Set bit rate register 12 and prescaler to 1 resulting in
-		SCL_freq = 16MHz/(16 + 2*12*1) = 400KHz	*/
-		TWBR = 12;
+		/* Set bit rate register 2 and prescaler to 1 resulting in
+		SCL_freq = 8MHz/(16 + 2*2*1) = 400KHz	*/
+		TWBR = 2;
 		break;
 		
 		default: break;
