@@ -27,7 +27,7 @@ static void Time_Select(void)
 		LCDstring((uint8_t*)(itoa(datetime.second, sec, 10)), 2);
         // move to back
         LCDcursorLeft(8);
-        _delay_ms(900);
+  //      _delay_ms(900);
     //     time = false;
     // }
 
@@ -43,9 +43,25 @@ static void Time_Enter(void)
 /** Date menu item select callback function */
 static void Date_Select(void)
 {
-    time = false;
     LCDclr();
-    LCDstring((uint8_t*)"Date Sel",8);
+    PCF_DateTime datetime;
+    LCDstring((uint8_t*)"Date:", 5);
+    time = true;
+    // while (time)
+    // {
+       	uint8_t err = PCF_GetDateTime(&datetime);
+ 		char ho[4];
+ 		char min[4];
+ 		char sec[4];
+		LCDstring((uint8_t*)(itoa(datetime.day, ho, 10)), 2);
+		LCDsendChar('/');
+		LCDstring((uint8_t*)(itoa(datetime.month, min, 10)), 2);
+		LCDsendChar('/s');
+		LCDstring((uint8_t*)(itoa(datetime.year, sec, 10)), 2);
+        // move to back
+        LCDcursorLeft(10);
+//        _delay_ms(900);
+    //     time = false;
 }
 
 static void Date_Enter(void)
