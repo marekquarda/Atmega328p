@@ -100,10 +100,10 @@ static void Current_Enter(void)
 
 
 // Menu initialization
-MENU_ITEM(Menu_1, Menu_2, Menu_4, NULL_MENU, NULL_MENU, Time_Select, Time_Enter, "1");
-MENU_ITEM(Menu_2, Menu_3, Menu_1, NULL_MENU, NULL_MENU, Date_Select, Date_Enter, "2");
-MENU_ITEM(Menu_3, Menu_4, Menu_2, NULL_MENU, NULL_MENU, Voltage_Select, Voltage_Enter, "3");
-MENU_ITEM(Menu_4, Menu_1, Menu_3, NULL_MENU, NULL_MENU, Current_Select,Current_Enter, "4");
+MENU_ITEM(Menu_1, Menu_2, NULL_MENU, NULL_MENU, NULL_MENU, Time_Select, Time_Enter, "1");
+MENU_ITEM(Menu_2, Menu_3, NULL_MENU, NULL_MENU, NULL_MENU, Date_Select, Date_Enter, "2");
+MENU_ITEM(Menu_3, Menu_4, NULL_MENU, NULL_MENU, NULL_MENU, Voltage_Select, Voltage_Enter, "3");
+MENU_ITEM(Menu_4, Menu_1, NULL_MENU, NULL_MENU, NULL_MENU, Current_Select,Current_Enter, "4");
 
 // SubMenu initialization
 MENU_ITEM(Menu_1_1, Menu_1_2, Menu_1_2, NULL_MENU, NULL_MENU, NULL, NULL, "1.1");
