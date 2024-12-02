@@ -5,9 +5,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-bool time = false;
-uint8_t current = 0;
-uint8_t voltage = 0;
+static bool time = false;
+static uint8_t current = 0;
+static uint8_t voltage = 0;
 
 /** Time menu item select callback function */
 static void Time_Select(void)
