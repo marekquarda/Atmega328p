@@ -84,7 +84,7 @@ void ChooseItem() {
         //shortButtonUp();
         break;
     case BTN_LONG_UP: 
-       // Menu_Navigate(MENU_PARENT);
+        Menu_Navigate(MENU_PARENT);
         //longButtonUp();
         break;
     case BTN_SHORT_SET: 
@@ -92,6 +92,7 @@ void ChooseItem() {
         //shortButtonSet();
         break; 
     case BTN_LONG_SET:
+        Menu_Navigate(MENU_CHILD);
        // Menu_EnterCurrentItem();
         //longButtonSet();
         break;
