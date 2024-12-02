@@ -22,7 +22,7 @@ ISR(PCINT1_vect) {
             _delay_ms(1);
             timer++;
         }
-        if (timer < 500UL) {// unsigned long
+        if (timer < 1000UL) {// unsigned long
                 // sigle click
                 select = BTN_SHORT_UP;
         } else {
@@ -37,7 +37,7 @@ ISR(PCINT1_vect) {
             _delay_ms(1);
         }
         if (timer > BTN_DEBOUCE) {
-            if (timer < 500UL) {// unsigned long
+            if (timer < 1000UL) {// unsigned long
                 // sigle click
                 select = BTN_SHORT_SET;
             } else {
