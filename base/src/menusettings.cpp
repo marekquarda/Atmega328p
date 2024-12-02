@@ -91,7 +91,8 @@ static void Current_Select(void)
 {
     time = false;
     LCDclr();
-    LCDstring((uint8_t*)"Current: " + current,13);
+    LCDstring("Current: ");
+    LCDsendChar(current);
 }
 
 static void Current_Enter(void)
@@ -105,7 +106,8 @@ static void Voltage_Setting_Up(void)
 {
     voltage++;
     LCDclr();
-    LCDstring((uint8_t*)"Voltage: " + voltage,13);
+    LCDstring("Voltage: ");
+    LCDsendChar(voltage);
 }
 
 /** Voltage Setting Down */
@@ -113,7 +115,8 @@ static void Voltage_Setting_Down(void)
 {
     voltage= ((voltage--)==0)?0:voltage;
     LCDclr();
-    LCDstring((uint8_t*)"Voltage: " + voltage,13);
+    LCDstring("Voltage: ");
+    LCDsendChar(voltage);
 }
 
 /** Voltage Setting Up */
@@ -121,7 +124,8 @@ static void Current_Setting_Up(void)
 {
     current++;
     LCDclr();
-    LCDstring((uint8_t*)"Current: " + current,13);
+    LCDstring("Current: ");
+    LCDsendChar(current);
 }
 
 /** Voltage Setting Down */
@@ -129,7 +133,8 @@ static void Current_Setting_Down(void)
 {
     current= ((current--)==0)?0:current;
     LCDclr();
-    LCDstring((uint8_t*)"Current: " + current,13);
+    LCDstring("Current: ");
+    LCDsendChar(current);
 }
 
 

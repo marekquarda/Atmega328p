@@ -56,7 +56,7 @@ void LCDsendCommand(uint8_t cmnd)
 	_delay_ms(2);
 }
 
-void LCDsendChar(uint8_t data)
+void LCDsendChar(char data)
 {
 	// high value
 	DATA_BUS=((DATA_BUS & 0xF0) | ((data & 0xF0)>>4)); 
@@ -83,8 +83,12 @@ void LCDhome(void)
 	LCDsendCommand(LCD_CMD_CURSOR_HOME);	/* LCD cursor home */
 }
 
-void LCDstring(uint8_t* string) {
-	LCDstring((uint8_t*)string, sizeof(string));
+void LCDstring(char* string) {
+	int i;
+	for(i=0;string[i]!=0;i++)		/* Send each char of string till the NULL */
+	{
+		LCDsendChar(string[i]);
+	}
 }
 
 void LCDstring(uint8_t* data, uint8_t nBytes) // Outputs string to LCD
