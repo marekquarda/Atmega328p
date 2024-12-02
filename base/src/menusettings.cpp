@@ -171,11 +171,11 @@ MENU_ITEM(Menu_3, Menu_1, Menu_2, NULL_MENU, Menu_2_1, Current_Select, NULL, "3"
 
 // Voltage SubMenu initialization
 MENU_ITEM(Menu_1_1, Menu_1_2, NULL_MENU, Menu_2, NULL_MENU, Voltage_Setting_Up, Voltage_Up, "1.1");
-MENU_ITEM(Menu_1_2, NULL_MENU, Menu_1_1, Menu_2, NULL_MENU, Voltage_Setting_Down, Voltage_Down, "1.2");
+MENU_ITEM(Menu_1_2, Menu_1_1, NULL_MENU, Menu_2, NULL_MENU, Voltage_Setting_Down, Voltage_Down, "1.2");
 
 // Current SubMenu initialization
 MENU_ITEM(Menu_2_1, Menu_2_2, NULL_MENU, Menu_3, NULL_MENU, Current_Setting_Up, Current_Up, "2.1");
-MENU_ITEM(Menu_2_2, NULL_MENU, Menu_2_1, Menu_3, NULL_MENU, Current_Setting_Down, Current_Down, "2.2");
+MENU_ITEM(Menu_2_2, Menu_2_1, NULL_MENU, Menu_3, NULL_MENU, Current_Setting_Down, Current_Down, "2.2");
 
 void InitMenu() {
     // Init menu
