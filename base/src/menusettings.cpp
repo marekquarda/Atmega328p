@@ -107,7 +107,16 @@ static void Voltage_Setting_Up(void)
 {
     LCDclr();
     char val[10];
-    LCDstring("Voltage: ");
+    LCDstring("Voltageu: ");
+    LCDstring(itoa(voltage, val, 10));
+}
+
+/** Voltage Setting Down */
+static void Voltage_Setting_Down(void)
+{
+    LCDclr();
+    char val[10];
+    LCDstring("Voltaged: ");
     LCDstring(itoa(voltage, val, 10));
 }
 
@@ -121,21 +130,12 @@ static void Voltage_Down(void)
     voltage= ((voltage--)==0)?0:voltage;
 }
 
-/** Voltage Setting Down */
-static void Voltage_Setting_Down(void)
-{
-    LCDclr();
-    char val[10];
-    LCDstring("Voltage: ");
-    LCDstring(itoa(voltage, val, 10));
-}
-
 /** Voltage Setting Up */
 static void Current_Setting_Up(void)
 {
     LCDclr();
     char val[10];
-    LCDstring("Current: ");
+    LCDstring("Currentu: ");
     LCDstring(itoa(current, val, 10));
 }
 
@@ -144,7 +144,7 @@ static void Current_Setting_Down(void)
 {
     LCDclr();
     char val[10];
-    LCDstring("Current: ");
+    LCDstring("Currentd: ");
     LCDstring(itoa(current, val, 10));
 }
 
