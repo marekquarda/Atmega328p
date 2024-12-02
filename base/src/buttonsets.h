@@ -23,10 +23,18 @@ enum ButtonValues
     BTN_SHORT_SET
 };
 
+enum MenuPosition 
+{
+    DEFAULT_POS,
+   	SETING_MODE,
+};
+
 void initInterruptSettings(void);
 
 // Menu settings
 enum ButtonValues GetButtonPress(void);
+enum MenuPosition GetMenuPosition(void);
+void SetMenuPosition(MenuPosition);
 void ChooseItem(void);
 
 

@@ -105,17 +105,25 @@ static void Current_Enter(void)
 /** Voltage Setting Up */
 static void Voltage_Setting_Up(void)
 {
-    voltage++;
     LCDclr();
     char val[10];
     LCDstring("Voltage: ");
     LCDstring(itoa(voltage, val, 10));
 }
 
+static void Voltage_Up(void)
+{
+    voltage++;
+}
+
+static void Voltage_Down(void)
+{
+    voltage= ((voltage--)==0)?0:voltage;
+}
+
 /** Voltage Setting Down */
 static void Voltage_Setting_Down(void)
 {
-    voltage= ((voltage--)==0)?0:voltage;
     LCDclr();
     char val[10];
     LCDstring("Voltage: ");
@@ -125,7 +133,6 @@ static void Voltage_Setting_Down(void)
 /** Voltage Setting Up */
 static void Current_Setting_Up(void)
 {
-    current++;
     LCDclr();
     char val[10];
     LCDstring("Current: ");
@@ -135,11 +142,20 @@ static void Current_Setting_Up(void)
 /** Voltage Setting Down */
 static void Current_Setting_Down(void)
 {
-    current= ((current--)==0)?0:current;
     LCDclr();
     char val[10];
     LCDstring("Current: ");
     LCDstring(itoa(current, val, 10));
+}
+
+static void Current_Up(void)
+{
+    current++;
+}
+
+static void Current_Down(void)
+{
+    current= ((current--)==0)?0:current;
 }
 
 
@@ -150,14 +166,14 @@ MENU_ITEM(Menu_3, Menu_1, Menu_2, NULL_MENU, Menu_2_1, Current_Select, Current_E
 //MENU_ITEM(Menu_4, Menu_1, NULL_MENU, NULL_MENU, NULL_MENU, Current_Select,Current_Enter, "4");
 
 // Voltage SubMenu initialization
-MENU_ITEM(Menu_1_1, Menu_1_2, Menu_1_3, Menu_2, NULL_MENU, Voltage_Setting_Up, NULL, "1.1");
-MENU_ITEM(Menu_1_2, Menu_1_3, Menu_1_1, Menu_2, NULL_MENU, NULL, NULL, "1.2");
-MENU_ITEM(Menu_1_3, Menu_1_1, Menu_1_2, Menu_2, NULL_MENU, Voltage_Setting_Down, NULL, "1.3");
+MENU_ITEM(Menu_1_1, Menu_1_2, Menu_1_2, Menu_2, NULL_MENU, Voltage_Setting_Up, Voltage_Up, "1.1");
+MENU_ITEM(Menu_1_2, Menu_1_1, Menu_1_1, Menu_2, NULL_MENU, Voltage_Setting_Down, Voltage_Down, "1.2");
+//MENU_ITEM(Menu_1_3, Menu_1_1, Menu_1_2, Menu_2, NULL_MENU, Voltage_Setting_Down, NULL, "1.3");
 
 // Current SubMenu initialization
-MENU_ITEM(Menu_2_1, Menu_2_2, Menu_2_1, Menu_3, NULL_MENU, Current_Setting_Up, NULL, "2.1");
-MENU_ITEM(Menu_2_2, Menu_2_3, Menu_2_1, Menu_3, NULL_MENU, NULL, NULL, "2.2");
-MENU_ITEM(Menu_2_3, Menu_2_1, Menu_2_2, Menu_3, NULL_MENU, Current_Setting_Down, NULL, "2.1");
+MENU_ITEM(Menu_2_1, Menu_2_2, Menu_2_2, Menu_3, NULL_MENU, Current_Setting_Up, Current_Up, "2.1");
+MENU_ITEM(Menu_2_2, Menu_2_1, Menu_2_1, Menu_3, NULL_MENU, Current_Setting_Down, Current_Down, "2.2");
+//MENU_ITEM(Menu_2_3, Menu_2_1, Menu_2_2, Menu_3, NULL_MENU, Current_Setting_Down, NULL, "2.1");
 
 void InitMenu() {
     // Init menu

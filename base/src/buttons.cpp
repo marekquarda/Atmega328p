@@ -10,6 +10,7 @@
 #include "lcd.h"
 
 ButtonValues select = BTN_NONE;
+MenuPosition position = DEFAULT_POS;
 
 // ISR for port B
 ISR(PCINT1_vect) {
@@ -76,23 +77,47 @@ enum ButtonValues GetButtonPress(void) {
     return select;
 }
 
+enum MenuPosition GetMenuPosition(void) {
+    return position;
+}
+
+void SetMenuPosition(MenuPosition pos) {
+    position = pos;
+}
+
 void ChooseItem() {
     switch (GetButtonPress())
     {
     case BTN_SHORT_UP: 
         Menu_Navigate(MENU_PREVIOUS);
-        //shortButtonUp();
+        Menu_EnterCurrentItem();
         break;
     case BTN_LONG_UP: 
         Menu_Navigate(MENU_PARENT);
         //longButtonUp();
         break;
     case BTN_SHORT_SET: 
-        Menu_Navigate(MENU_NEXT);     
-        //shortButtonSet();
+        Menu_Navigate(MENU_NEXT); 
+        Menu_EnterCurrentItem();    
         break; 
     case BTN_LONG_SET:
         Menu_Navigate(MENU_CHILD);
+        SetMenuPosition(SETING_MODE);
+        // switch (GetMenuPosition())
+        // {
+        // case DEFAULT_POS:
+        //     Menu_Navigate(MENU_CHILD);
+        //     break;
+        // case SET_CURRENT:
+        //     Menu_EnterCurrentItem();  
+        //     break;
+        // case SET_VOLTATE:
+        //     Menu_EnterCurrentItem();
+        // default:
+        //     Menu_Navigate(MENU_CHILD);
+        //     break;
+        // };
+        
        // Menu_EnterCurrentItem();
         //longButtonSet();
         break;
