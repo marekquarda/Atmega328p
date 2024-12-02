@@ -75,9 +75,10 @@ static void Date_Enter(void)
 /** Voltage menu item select callback function */
 static void Voltage_Select(void)
 {
-    time = false;
     LCDclr();
-    LCDstring((uint8_t*)"Voltage: " + voltage,13);
+    char val[10];
+    LCDstring("Voltage: ");
+    LCDstring(itoa(voltage, val, 10));
 }
 
 static void Voltage_Enter(void)
@@ -89,10 +90,10 @@ static void Voltage_Enter(void)
 /** Example menu item specific select callback function, run when the associated menu item is selected. */
 static void Current_Select(void)
 {
-    time = false;
     LCDclr();
+    char val[10];
     LCDstring("Current: ");
-    LCDsendChar(current);
+    LCDstring(itoa(current, val, 10));
 }
 
 static void Current_Enter(void)
@@ -106,8 +107,9 @@ static void Voltage_Setting_Up(void)
 {
     voltage++;
     LCDclr();
+    char val[10];
     LCDstring("Voltage: ");
-    LCDsendChar(voltage);
+    LCDstring(itoa(voltage, val, 10));
 }
 
 /** Voltage Setting Down */
@@ -115,8 +117,9 @@ static void Voltage_Setting_Down(void)
 {
     voltage= ((voltage--)==0)?0:voltage;
     LCDclr();
+    char val[10];
     LCDstring("Voltage: ");
-    LCDsendChar(voltage);
+    LCDstring(itoa(voltage, val, 10));
 }
 
 /** Voltage Setting Up */
@@ -124,8 +127,9 @@ static void Current_Setting_Up(void)
 {
     current++;
     LCDclr();
+    char val[10];
     LCDstring("Current: ");
-    LCDsendChar(current);
+    LCDstring(itoa(current, val, 10));
 }
 
 /** Voltage Setting Down */
@@ -133,8 +137,9 @@ static void Current_Setting_Down(void)
 {
     current= ((current--)==0)?0:current;
     LCDclr();
+    char val[10];
     LCDstring("Current: ");
-    LCDsendChar(current);
+    LCDstring(itoa(current, val, 10));
 }
 
 
