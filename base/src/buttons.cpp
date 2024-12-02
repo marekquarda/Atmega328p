@@ -90,7 +90,7 @@ void ChooseItem() {
     {
     case BTN_SHORT_UP: 
         Menu_Navigate(MENU_PREVIOUS);
-        Menu_EnterCurrentItem();
+       // Menu_EnterCurrentItem();
         break;
     case BTN_LONG_UP: 
         Menu_Navigate(MENU_PARENT);
@@ -98,11 +98,11 @@ void ChooseItem() {
         break;
     case BTN_SHORT_SET: 
         Menu_Navigate(MENU_NEXT); 
-        Menu_EnterCurrentItem();    
+     //   Menu_EnterCurrentItem();    
         break; 
     case BTN_LONG_SET:
         Menu_Navigate(MENU_CHILD);
-        SetMenuPosition(SETING_MODE);
+        //SetMenuPosition(SETING_MODE);
         // switch (GetMenuPosition())
         // {
         // case DEFAULT_POS:
