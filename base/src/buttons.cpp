@@ -22,12 +22,14 @@ ISR(PCINT1_vect) {
             _delay_ms(1);
             timer++;
         }
-        if (timer < 1000UL) {// unsigned long
+        if (timer > BTN_DEBOUCE) {
+            if (timer < 700UL) {// unsigned long
                 // sigle click
                 select = BTN_SHORT_UP;
-        } else {
+            } else {
                 // button hold
                 select = BTN_LONG_UP;
+            }
         }
     }
     // Button Set
@@ -37,7 +39,7 @@ ISR(PCINT1_vect) {
             _delay_ms(1);
         }
         if (timer > BTN_DEBOUCE) {
-            if (timer < 1000UL) {// unsigned long
+            if (timer < 700UL) {// unsigned long
                 // sigle click
                 select = BTN_SHORT_SET;
             } else {
@@ -90,36 +92,15 @@ void ChooseItem() {
     {
     case BTN_SHORT_UP: 
         Menu_Navigate(MENU_PREVIOUS);
-       // Menu_EnterCurrentItem();
         break;
     case BTN_LONG_UP: 
         Menu_Navigate(MENU_PARENT);
-        //longButtonUp();
         break;
     case BTN_SHORT_SET: 
         Menu_Navigate(MENU_NEXT); 
-     //   Menu_EnterCurrentItem();    
         break; 
     case BTN_LONG_SET:
         Menu_Navigate(MENU_CHILD);
-        //SetMenuPosition(SETING_MODE);
-        // switch (GetMenuPosition())
-        // {
-        // case DEFAULT_POS:
-        //     Menu_Navigate(MENU_CHILD);
-        //     break;
-        // case SET_CURRENT:
-        //     Menu_EnterCurrentItem();  
-        //     break;
-        // case SET_VOLTATE:
-        //     Menu_EnterCurrentItem();
-        // default:
-        //     Menu_Navigate(MENU_CHILD);
-        //     break;
-        // };
-        
-       // Menu_EnterCurrentItem();
-        //longButtonSet();
         break;
     default:
         break;
