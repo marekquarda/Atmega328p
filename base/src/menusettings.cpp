@@ -165,6 +165,7 @@ void setCurrentVal(ButtonSet value) {
     char val[10];
     LCDstring("Current: ");
     LCDstring(itoa(current, val, 10));
+    _delay_ms(2000);
 }
 
 /** Change Voltage value counter */
@@ -200,6 +201,7 @@ void setVoltageVal(ButtonSet value) {
     char val[10];
     LCDstring("Voltage: ");
     LCDstring(itoa(voltage, val, 10));
+    _delay_ms(2000);
 }
 
 
