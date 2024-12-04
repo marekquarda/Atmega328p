@@ -141,6 +141,17 @@ void printValue(PrintValues value)
     }
 }
 
+static void Current_Save() {
+    LCDclr();
+    LCDstring("Current saved");
+    //lcd_write_word("EEPROM Error");
+}
+
+static void Voltage_Save() {
+    LCDclr();
+    LCDstring("Voltage saved");
+}
+
 
 // Menu initialization
 MENU_ITEM(Menu_1, Menu_2, Menu_3, NULL_MENU, NULL_MENU, Time_Select, NULL, "1");
@@ -155,6 +166,9 @@ MENU_ITEM(Menu_1_2, Menu_1_2, Menu_1_1, Menu_2, NULL_MENU, Voltage_Setting_Down,
 // Current SubMenu initialization
 MENU_ITEM(Menu_2_1, Menu_2_2, Menu_2_1, Menu_3, NULL_MENU, Current_Setting_Up, NULL, "2.1");
 MENU_ITEM(Menu_2_2, Menu_2_2, Menu_2_1, Menu_3, NULL_MENU, Current_Setting_Down, NULL, "2.2");
+
+MENU_ITEM(Menu_SC, MENU_NUL, MENU_NULL, NULL_MENU, Menu_3, Current_Save, NULL,"3.0");
+MENU_ITEM(Menu_SV, MENU_NUL, MENU_NULL, NULL_MENU, Menu_2, Voltage_Save,NULL, "3.0");
 
 void InitMenu() {
     // Init menu
