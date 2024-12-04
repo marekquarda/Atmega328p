@@ -28,8 +28,10 @@ static void Date_Select(void)
 static void Voltage_Select(void)
 {
     viewTimeDate(SHOW_NONE);
-    EEPROM_read(VOLTAGE_ADDR, (uint8_t*) voltage);
-    printValue(PRINT_VOLTAGE);
+    uint8_t err = 0;
+    err = EEPROM_read(VOLTAGE_ADDR, (uint8_t*) voltage);
+    LCDsendChar(err);
+    //printValue(PRINT_VOLTAGE);
 }
 
 /** Current menu item select callback function */
