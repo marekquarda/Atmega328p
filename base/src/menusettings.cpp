@@ -82,11 +82,11 @@ static void Voltage_Select(void)
     LCDstring(itoa(voltage, val, 10));
 }
 
-static void Voltage_Enter(void)
-{
-    LCDclr();
-    LCDstring((uint8_t*)"Voltage Ent",11);
-}
+// static void Voltage_Enter(void)
+// {
+//     LCDclr();
+//     LCDstring((uint8_t*)"Voltage Ent",11);
+// }
 
 /** Example menu item specific select callback function, run when the associated menu item is selected. */
 static void Current_Select(void)
@@ -97,16 +97,17 @@ static void Current_Select(void)
     LCDstring(itoa(current, val, 10));
 }
 
-static void Current_Enter(void)
-{
-    LCDclr();
-    LCDstring((uint8_t*)"Current Ent",11);
-}
+// static void Current_Enter(void)
+// {
+//     LCDclr();
+//     LCDstring((uint8_t*)"Current Ent",11);
+// }
 
 /** Voltage Setting Up */
 static void Voltage_Setting_Up(void)
 {
     setVoltageVal(VOLTAGE_SET_SET);
+    preposition = PREV_BTN_UP;
     // LCDclr();
     // char val[10];
     // //voltage++;
@@ -118,6 +119,7 @@ static void Voltage_Setting_Up(void)
 static void Voltage_Setting_Down(void)
 {
     setVoltageVal(VOLTAGE_SET_SET);
+    preposition = PREV_BTN_SET;
     // LCDclr();
     // char val[10];
     // //voltage= ((voltage--)==0)?0:voltage;
@@ -139,6 +141,7 @@ static void Voltage_Setting_Down(void)
 static void Current_Setting_Up(void)
 {
     setCurrentVal(CURRENT_SET_UP);
+    preposition = PREV_BTN_UP;
     // LCDclr();
     // //current++;
     // char val[10];
@@ -150,6 +153,7 @@ static void Current_Setting_Up(void)
 static void Current_Setting_Down(void)
 {
     setCurrentVal(CURRENT_SET_SET);
+    preposition = PREV_BTN_SET;
     // LCDclr();
     // //current= ((current--)==0)?0:current;
     // char val[10];
@@ -209,7 +213,7 @@ void setVoltageVal(ButtonSet value) {
 
 
 // Menu initialization
-MENU_ITEM(Menu_1, Menu_2, Menu_3, NULL_MENU, NULL_MENU, Time_Select, Time_Enter, "1");
+MENU_ITEM(Menu_1, Menu_2, Menu_3, NULL_MENU, NULL_MENU, Time_Select, NULL, "1");
 MENU_ITEM(Menu_2, Menu_3, Menu_1, NULL_MENU, Menu_1_1, Voltage_Select,NULL,"2");
 MENU_ITEM(Menu_3, Menu_1, Menu_2, NULL_MENU, Menu_2_1, Current_Select, NULL, "3");
 //MENU_ITEM(Menu_4, Menu_1, NULL_MENU, NULL_MENU, NULL_MENU, Current_Select,Current_Enter, "4");
