@@ -135,7 +135,7 @@ void setCurrentVal(ButtonSet value) {
     LCDclr();
     char val[10];
     LCDstring("Current: ");
-    if(voltage<10) {
+    if(current<10) {
         LCDstring("0.");
         LCDstring(itoa(current, val, 10));
     } else{
