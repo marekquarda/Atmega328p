@@ -106,7 +106,7 @@ static void Current_Select(void)
 /** Voltage Setting Up */
 static void Voltage_Setting_Up(void)
 {
-    setVoltageVal(VOLTAGE_SET_SET);
+    setVoltageVal(VOLTAGE_SET_UP);
     preposition = PREV_BTN_UP;
 }
 
