@@ -39,20 +39,45 @@ void show() {
         LCDclr();
         PCF_GetDateTime(&datetime);
         LCDstring((uint8_t*)"Time:", 5);
-		LCDstring((uint8_t*)(itoa(datetime.hour, ho, 10)), 2);
+        if(datetime.hour < 10) {
+            LCDsendChar('0');
+            LCDstring((uint8_t*)(itoa(datetime.hour, ho, 10)), 1);
+        } else {
+            LCDstring((uint8_t*)(itoa(datetime.hour, ho, 10)), 2);
+        }
 		LCDsendChar(':');
-		LCDstring((uint8_t*)(itoa(datetime.minute, min, 10)), 2);
+        if(datetime.minute < 10) {
+            LCDsendChar('0');
+            LCDstring((uint8_t*)(itoa(datetime.minute, min, 10)), 1);
+        } else{
+            LCDstring((uint8_t*)(itoa(datetime.minute, min, 10)), 2);
+        }
 		LCDsendChar(':');
-		LCDstring((uint8_t*)(itoa(datetime.second, sec, 10)), 2);
+        if(datetime.second < 10) {
+            LCDsendChar('0');
+            LCDstring((uint8_t*)(itoa(datetime.second, sec, 10)), 1);
+        } else {
+            LCDstring((uint8_t*)(itoa(datetime.second, sec, 10)), 2);
+        }
         break;
     
     case SHOW_DATE:
         LCDclr();
         PCF_GetDateTime(&datetime);
         LCDstring((uint8_t*)"Date:", 5);
-		LCDstring((uint8_t*)(itoa(datetime.day, ho, 10)), 2);
+        if (datetime.day < 10) {
+            LCDsendChar('0');
+            LCDstring((uint8_t*)(itoa(datetime.day, ho, 10)), 1);
+        } else {
+            LCDstring((uint8_t*)(itoa(datetime.day, ho, 10)), 2);
+        }
 		LCDsendChar('/');
-		LCDstring((uint8_t*)(itoa(datetime.month, min, 10)), 2);
+        if (datetime.month < 10) {
+            LCDsendChar('0');
+            LCDstring((uint8_t*)(itoa(datetime.month, min, 10)), 1);
+        } else {
+            LCDstring((uint8_t*)(itoa(datetime.month, min, 10)), 2);                
+        }
 		LCDsendChar('/');
 		LCDstring((uint8_t*)(itoa(datetime.year, sec, 10)), 4);
         break;
