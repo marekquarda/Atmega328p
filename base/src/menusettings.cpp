@@ -181,7 +181,8 @@ void printValue(PrintValues value)
             LCDstring(itoa(whole, val, 10));
             LCDsendChar('.');
             LCDstring(itoa(rest, val, 10));
-    }
+        }
+        break;
     default:
         LCDstring("Unknown value");
         break;
