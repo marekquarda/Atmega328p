@@ -6,9 +6,9 @@
 #include <stdlib.h>
 
 static bool time = false;
-static uint8_t current = 0;
-static uint8_t voltage = 0;
-PreviousBtn preposition = PREV_BTN_NONE;
+static uint16_t current = 0;
+static uint16_t voltage = 0;
+static bool once = false;
 
 /** Time menu item select callback function */
 static void Time_Select(void)
@@ -82,12 +82,6 @@ static void Voltage_Select(void)
     LCDstring(itoa(voltage, val, 10));
 }
 
-// static void Voltage_Enter(void)
-// {
-//     LCDclr();
-//     LCDstring((uint8_t*)"Voltage Ent",11);
-// }
-
 /** Current menu item select callback function */
 static void Current_Select(void)
 {
@@ -97,69 +91,46 @@ static void Current_Select(void)
     LCDstring(itoa(current, val, 10));
 }
 
-// static void Current_Enter(void)
-// {
-//     LCDclr();
-//     LCDstring((uint8_t*)"Current Ent",11);
-// }
-
 /** Voltage Setting Up */
 static void Voltage_Setting_Up(void)
 {
     setVoltageVal(VOLTAGE_SET_UP);
-    preposition = PREV_BTN_UP;
 }
 
 /** Voltage Setting Down */
 static void Voltage_Setting_Down(void)
 {
     setVoltageVal(VOLTAGE_SET_DOWN);
-    preposition = PREV_BTN_SET;
 }
 
 /** Voltage Setting Up */
 static void Current_Setting_Up(void)
 {
     setCurrentVal(CURRENT_SET_UP);
-    preposition = PREV_BTN_UP;
 }
 
 /** Voltage Setting Down */
 static void Current_Setting_Down(void)
 {
     setCurrentVal(CURRENT_SET_DOWN);
-    preposition = PREV_BTN_SET;
 }
 
 /** Change Current value counter */
 void setCurrentVal(ButtonSet value) {
-    // switch (GetPreviousBtn())
-    // {
-    // case PREV_BTN_UP:
-        switch (value)
-        {
-        case CURRENT_SET_UP:
+    once = (once == true)?false:true;
+    switch (value)
+    {
+    case CURRENT_SET_UP:
+        if(once) {
             current++;
-            break;
-        case CURRENT_SET_DOWN:
-            current= ((current--)==0)?0:current;
-            break;
         }
-    //     break;
-    // case PREV_BTN_SET:
-    //     switch (value)
-    //     {
-    //     case CURRENT_SET_UP:
-    //         current++;
-    //         break;
-    //     case CURRENT_SET_DOWN:
-    //         current= ((current--)==0)?0:current;
-    //         break;
-    //     }
-    //     break;
-    // default:
-    //     break;
-//    }
+        break;
+    case CURRENT_SET_DOWN:
+        if(once) {
+            current= ((current--)==0)?0:current;
+        }
+        break;
+    }
     // print value
     LCDclr();
     char val[10];
@@ -170,32 +141,20 @@ void setCurrentVal(ButtonSet value) {
 
 /** Change Voltage value counter */
 void setVoltageVal(ButtonSet value) {
-    // switch (GetPreviousBtn())
-    // {
-    // case PREV_BTN_UP:
-        switch (value)
-        {
-        case VOLTAGE_SET_UP:
+    once = (once == true)?false:true;
+    switch (value)
+    {
+    case VOLTAGE_SET_UP:
+        if(once) {
             voltage++;
-            break;
-        case VOLTAGE_SET_DOWN:
-            voltage= ((voltage--)==0)?0:voltage;
-            break;
         }
-//      break;
-    // case PREV_BTN_SET:
-    //     switch (value)
-    //     {
-    //     case VOLTAGE_SET_UP:
-    //         voltage++;
-    //         break;
-    //     case VOLTAGE_SET_DOWN:
-    //         voltage= ((voltage--)==0)?0:voltage;
-    //         break;
-    //     }
-    // default:
-    //     break;
-    // }
+        break;
+    case VOLTAGE_SET_DOWN:
+        if(once) {
+            voltage= ((voltage--)==0)?0:voltage;
+        }
+        break;
+    }
     // Print value
     LCDclr();
     char val[10];
@@ -224,7 +183,5 @@ void InitMenu() {
 	Menu_Navigate(&Menu_1);
 }
 
-// Return previous touch
-PreviousBtn GetPreviousBtn() {
-    return preposition;
-}
+
+
