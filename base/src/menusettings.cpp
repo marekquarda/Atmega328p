@@ -167,8 +167,8 @@ MENU_ITEM(Menu_1_2, Menu_1_2, Menu_1_1, Menu_2, Menu_SV, Voltage_Setting_Down, N
 MENU_ITEM(Menu_2_1, Menu_2_2, Menu_2_1, Menu_3, Menu_SC, Current_Setting_Up, NULL, "2.1");
 MENU_ITEM(Menu_2_2, Menu_2_2, Menu_2_1, Menu_3, Menu_SC, Current_Setting_Down, NULL, "2.2");
 
-MENU_ITEM(Menu_SC, MENU_NUL, MENU_NULL, NULL_MENU, Menu_3, Current_Save, NULL,"3.0");
-MENU_ITEM(Menu_SV, MENU_NUL, MENU_NULL, NULL_MENU, Menu_2, Voltage_Save,NULL, "3.0");
+MENU_ITEM(Menu_SC, MENU_NULL, MENU_NULL, NULL_MENU, Menu_3, Current_Save, NULL,"3.0");
+MENU_ITEM(Menu_SV, MENU_NULL, MENU_NULL, NULL_MENU, Menu_2, Voltage_Save,NULL, "3.0");
 
 void InitMenu() {
     // Init menu
