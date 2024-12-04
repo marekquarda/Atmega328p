@@ -89,7 +89,7 @@ uint8_t EEPROM_update_batch(uint16_t uiAdress, void *data, uint16_t len) {
      return EEPROM_OK;
 }
 
-uint8_t EEPROM_read_batch(uint8_t uiAdress, void *data, uint16_t len) {
+uint8_t EEPROM_read_batch(uint16_t uiAdress, void *data, uint16_t len) {
     uint16_t i = 0;
     uint8_t err = EEPROM_OK;
     uint8_t *data_cast = (uint8_t*)  data;
