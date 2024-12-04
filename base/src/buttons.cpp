@@ -92,14 +92,12 @@ void ChooseItem() {
     {
     case BTN_SHORT_UP: 
         Menu_Navigate(MENU_PREVIOUS);
-        Menu_EnterCurrentItem();
         break;
     case BTN_LONG_UP: 
         Menu_Navigate(MENU_PARENT);
         break;
     case BTN_SHORT_SET: 
         Menu_Navigate(MENU_NEXT); 
-        Menu_EnterCurrentItem();
         break; 
     case BTN_LONG_SET:
         Menu_Navigate(MENU_CHILD);
