@@ -88,7 +88,7 @@ static void Voltage_Select(void)
 //     LCDstring((uint8_t*)"Voltage Ent",11);
 // }
 
-/** Example menu item specific select callback function, run when the associated menu item is selected. */
+/** Current menu item select callback function */
 static void Current_Select(void)
 {
     LCDclr();
@@ -108,11 +108,6 @@ static void Voltage_Setting_Up(void)
 {
     setVoltageVal(VOLTAGE_SET_SET);
     preposition = PREV_BTN_UP;
-    // LCDclr();
-    // char val[10];
-    // //voltage++;
-    // LCDstring("Voltage: ");
-    // LCDstring(itoa(voltage, val, 10));
 }
 
 /** Voltage Setting Down */
@@ -120,33 +115,13 @@ static void Voltage_Setting_Down(void)
 {
     setVoltageVal(VOLTAGE_SET_SET);
     preposition = PREV_BTN_SET;
-    // LCDclr();
-    // char val[10];
-    // //voltage= ((voltage--)==0)?0:voltage;
-    // LCDstring("Voltage: ");
-    // LCDstring(itoa(voltage, val, 10));
 }
-
-// static void Voltage_Up(void)
-// {
-//     voltage++;
-// }
-
-// static void Voltage_Down(void)
-// {
-//     voltage= ((voltage--)==0)?0:voltage;
-// }
 
 /** Voltage Setting Up */
 static void Current_Setting_Up(void)
 {
     setCurrentVal(CURRENT_SET_UP);
     preposition = PREV_BTN_UP;
-    // LCDclr();
-    // //current++;
-    // char val[10];
-    // LCDstring("Current: ");
-    // LCDstring(itoa(current, val, 10));
 }
 
 /** Voltage Setting Down */
@@ -154,22 +129,7 @@ static void Current_Setting_Down(void)
 {
     setCurrentVal(CURRENT_SET_SET);
     preposition = PREV_BTN_SET;
-    // LCDclr();
-    // //current= ((current--)==0)?0:current;
-    // char val[10];
-    // LCDstring("Current: ");
-    // LCDstring(itoa(current, val, 10));
 }
-
-// static void Current_Up(void)
-// {
-//     current++;
-// }
-
-// static void Current_Down(void)
-// {
-//     current= ((current--)==0)?0:current;
-// }
 
 /** Change Current value counter */
 void setCurrentVal(ButtonSet value) {
@@ -190,10 +150,10 @@ void setCurrentVal(ButtonSet value) {
         switch (value)
         {
         case CURRENT_SET_UP:
-            current++;
+            current= ((current--)==0)?0:current;
             break;
         case CURRENT_SET_SET:
-            current= ((current--)==0)?0:current;
+            current++;
             break;
         }
         break;
@@ -226,10 +186,10 @@ void setVoltageVal(ButtonSet value) {
         switch (value)
         {
         case VOLTAGE_SET_UP:
-            voltage++;
+            voltage= ((voltage--)==0)?0:voltage;
             break;
         case VOLTAGE_SET_SET:
-            voltage= ((voltage--)==0)?0:voltage;
+            voltage++;
             break;
         }
     default:
@@ -262,6 +222,7 @@ void InitMenu() {
 	Menu_Navigate(&Menu_1);
 }
 
+// Return previous touch
 PreviousBtn GetPreviousBtn() {
     return preposition;
 }
