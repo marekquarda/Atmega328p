@@ -95,7 +95,14 @@
 		VOLTAGE_SET_DOWN
 	};
 
+	enum PrintValues 
+	{
+		PRINT_CURRENT,
+		PRINT_VOLTAGE
+	};
+
 	void setVoltageVal(ButtonSet);
 	void setCurrentVal(ButtonSet);
+	void printValue(PrintValues);
 
 #endif

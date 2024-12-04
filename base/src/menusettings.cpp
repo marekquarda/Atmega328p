@@ -76,19 +76,13 @@ static void Date_Enter(void)
 /** Voltage menu item select callback function */
 static void Voltage_Select(void)
 {
-    LCDclr();
-    char val[10];
-    LCDstring("Voltage: ");
-    LCDstring(itoa(voltage, val, 10));
+    printValue(PRINT_VOLTAGE);
 }
 
 /** Current menu item select callback function */
 static void Current_Select(void)
 {
-    LCDclr();
-    char val[10];
-    LCDstring("Current: ");
-    LCDstring(itoa(current, val, 10));
+    printValue(PRINT_CURRENT);
 }
 
 /** Voltage Setting Up */
@@ -132,19 +126,7 @@ void setCurrentVal(ButtonSet value) {
         break;
     }
     // print value
-    LCDclr();
-    char val[10];
-    LCDstring("Current: ");
-    if(current<10) {
-        LCDstring("0.");
-        LCDstring(itoa(current, val, 10));
-    } else{
-        uint8_t whole = current/10;
-        uint8_t rest =  current%10;
-        LCDstring(itoa(whole, val, 10));
-        LCDsendChar('.');
-        LCDstring(itoa(rest, val, 10));
-    }
+    printValue(PRINT_CURRENT);
 }
 
 /** Change Voltage value counter */
@@ -164,18 +146,45 @@ void setVoltageVal(ButtonSet value) {
         break;
     }
     // Print value
+    printValue(PRINT_VOLTAGE);
+}
+
+/** Print values (voltage, current) */
+void printValue(PrintValues value)
+ {
     LCDclr();
     char val[10];
-    LCDstring("Voltage: ");
-    if(voltage<10) {
-        LCDstring("0.");
-        LCDstring(itoa(voltage, val, 10));
-    } else{
-        uint8_t whole = voltage/10;
-        uint8_t rest =  voltage%10;
-        LCDstring(itoa(whole, val, 10));
-        LCDsendChar('.');
-        LCDstring(itoa(rest, val, 10));
+    switch (value)
+    {
+    case PRINT_VOLTAGE:
+        LCDstring("Voltage: ");
+        if(voltage<10) {
+            LCDstring("0.");
+            LCDstring(itoa(voltage, val, 10));
+        } else{
+            uint8_t whole = voltage/10;
+            uint8_t rest =  voltage%10;
+            LCDstring(itoa(whole, val, 10));
+            LCDsendChar('.');
+            LCDstring(itoa(rest, val, 10));
+        }
+        break;
+
+    case PRINT_CURRENT:
+        LCDstring("Current: ");
+        if(current<10) {
+            LCDstring("0.");
+            LCDstring(itoa(current, val, 10));
+        } else{
+            uint8_t whole = current/10;
+            uint8_t rest =  current%10;
+            LCDstring(itoa(whole, val, 10));
+            LCDsendChar('.');
+            LCDstring(itoa(rest, val, 10));
+    }
+    default:
+        LCDstring("Unknown value");
+        break;
     }
 }
 
