@@ -5,6 +5,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "timer1.h"
+#include "eeprom.h"
 
 static bool time = false;
 static uint16_t current = 0;
@@ -27,6 +28,7 @@ static void Date_Select(void)
 static void Voltage_Select(void)
 {
     viewTimeDate(SHOW_NONE);
+    //EEPROM_read_batch(VOLTAGE_ADDR, (void*)&voltage, 2);
     printValue(PRINT_VOLTAGE);
 }
 
@@ -34,6 +36,7 @@ static void Voltage_Select(void)
 static void Current_Select(void)
 {
     viewTimeDate(SHOW_NONE);
+    //EEPROM_read_batch(CURRENT_ADDR, (uint8_t*)&current, 2);
     printValue(PRINT_CURRENT);
 }
 
@@ -167,8 +170,8 @@ MENU_ITEM(Menu_1_2, Menu_1_2, Menu_1_1, Menu_2, Menu_SV, Voltage_Setting_Down, N
 MENU_ITEM(Menu_2_1, Menu_2_2, Menu_2_1, Menu_3, Menu_SC, Current_Setting_Up, NULL, "2.1");
 MENU_ITEM(Menu_2_2, Menu_2_2, Menu_2_1, Menu_3, Menu_SC, Current_Setting_Down, NULL, "2.2");
 
-MENU_ITEM(Menu_SC, NULL_MENU, NULL_MENU, Menu_3, NULL_MENU, Current_Save, NULL,"3.0");
-MENU_ITEM(Menu_SV, NULL_MENU, NULL_MENU, Menu_2, NULL_MENU, Voltage_Save,NULL, "3.0");
+MENU_ITEM(Menu_SC, NULL_MENU, NULL_MENU, NULL_MENU, Menu_3, Current_Save, NULL,"3.0");
+MENU_ITEM(Menu_SV, NULL_MENU, NULL_MENU, NULL_MENU, Menu_2, Voltage_Save, NULL, "3.0");
 
 void InitMenu() {
     // Init menu
