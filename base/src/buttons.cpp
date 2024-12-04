@@ -72,7 +72,7 @@ void initInterruptSettings(void) {
     // green led
     DDRB |=  0b00100000;
     PORTB |= 0b00000000;
-    sei();          // Global Interrupts
+    //sei();          // Global Interrupts
 }
 
 enum ButtonValues GetButtonPress(void) {

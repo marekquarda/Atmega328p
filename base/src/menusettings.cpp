@@ -4,6 +4,7 @@
 #include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include "timer1.h"
 
 static bool time = false;
 static uint16_t current = 0;
@@ -13,75 +14,26 @@ static bool once = false;
 /** Time menu item select callback function */
 static void Time_Select(void)
 {
-    LCDclr();
-    PCF_DateTime datetime;
-    LCDstring((uint8_t*)"Time:", 5);
-    time = true;
-    // while (time)
-    // {
-       	uint8_t err = PCF_GetDateTime(&datetime);
- 		char ho[4];
- 		char min[4];
- 		char sec[4];
-		LCDstring((uint8_t*)(itoa(datetime.hour, ho, 10)), 2);
-		LCDsendChar(':');
-		LCDstring((uint8_t*)(itoa(datetime.minute, min, 10)), 2);
-		LCDsendChar(':');
-		LCDstring((uint8_t*)(itoa(datetime.second, sec, 10)), 2);
-        // move to back
-        LCDcursorLeft(8);
-  //      _delay_ms(900);
-    //     time = false;
-    // }
-
+    viewTimeDate(SHOW_TIME);
 }
-
-static void Time_Enter(void)
-{
-    LCDclr();
-    LCDstring((uint8_t*)"Time Ent",8);
-}
-
 
 /** Date menu item select callback function */
 static void Date_Select(void)
 {
-    LCDclr();
-    PCF_DateTime datetime;
-    LCDstring((uint8_t*)"Date:", 5);
-    time = true;
-    // while (time)
-    // {
-       	uint8_t err = PCF_GetDateTime(&datetime);
- 		char ho[4];
- 		char min[4];
- 		char sec[4];
-		LCDstring((uint8_t*)(itoa(datetime.day, ho, 10)), 2);
-		LCDsendChar('/');
-		LCDstring((uint8_t*)(itoa(datetime.month, min, 10)), 2);
-		LCDsendChar('/');
-		LCDstring((uint8_t*)(itoa(datetime.year, sec, 10)), 4);
-        // move to back
-        LCDcursorLeft(10);
-//        _delay_ms(900);
-    //     time = false;
-}
-
-static void Date_Enter(void)
-{
-    LCDclr();
-    LCDstring((uint8_t*)"Date Ent",8);
+    viewTimeDate(SHOW_TIME);
 }
 
 /** Voltage menu item select callback function */
 static void Voltage_Select(void)
 {
+    viewTimeDate(SHOW_NONE);
     printValue(PRINT_VOLTAGE);
 }
 
 /** Current menu item select callback function */
 static void Current_Select(void)
 {
+    viewTimeDate(SHOW_NONE);
     printValue(PRINT_CURRENT);
 }
 
