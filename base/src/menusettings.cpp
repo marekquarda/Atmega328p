@@ -176,10 +176,26 @@ void setCurrentVal(ButtonSet value) {
     switch (GetPreviousBtn())
     {
     case PREV_BTN_UP:
-        current++;
+        switch (value)
+        {
+        case CURRENT_SET_UP:
+            current++;
+            break;
+        case CURRENT_SET_SET:
+            current= ((current--)==0)?0:current;
+            break;
+        }
         break;
     case PREV_BTN_SET:
-        current= ((current--)==0)?0:current;
+        switch (value)
+        {
+        case CURRENT_SET_UP:
+            current++;
+            break;
+        case CURRENT_SET_SET:
+            current= ((current--)==0)?0:current;
+            break;
+        }
         break;
     default:
         break;
@@ -196,11 +212,26 @@ void setVoltageVal(ButtonSet value) {
     switch (GetPreviousBtn())
     {
     case PREV_BTN_UP:
+        switch (value)
+        {
+        case VOLTAGE_SET_UP:
             voltage++;
-        break;
-        case PREV_BTN_SET:
+            break;
+        case VOLTAGE_SET_SET:
             voltage= ((voltage--)==0)?0:voltage;
+            break;
+        }
         break;
+    case PREV_BTN_SET:
+        switch (value)
+        {
+        case VOLTAGE_SET_UP:
+            voltage++;
+            break;
+        case VOLTAGE_SET_SET:
+            voltage= ((voltage--)==0)?0:voltage;
+            break;
+        }
     default:
         break;
     }
