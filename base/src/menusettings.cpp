@@ -150,10 +150,10 @@ void setCurrentVal(ButtonSet value) {
         switch (value)
         {
         case CURRENT_SET_UP:
-            current= ((current--)==0)?0:current;
+            current++;
             break;
         case CURRENT_SET_SET:
-            current++;
+            current= ((current--)==0)?0:current;
             break;
         }
         break;
@@ -186,10 +186,10 @@ void setVoltageVal(ButtonSet value) {
         switch (value)
         {
         case VOLTAGE_SET_UP:
-            voltage= ((voltage--)==0)?0:voltage;
+            voltage++;
             break;
         case VOLTAGE_SET_SET:
-            voltage++;
+            voltage= ((voltage--)==0)?0:voltage;
             break;
         }
     default:
