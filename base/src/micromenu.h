@@ -97,9 +97,9 @@
 	enum ButtonSet 
 	{
 		CURRENT_SET_UP,
-		CURRENT_SET_SET,
+		CURRENT_SET_DOWN,
 		VOLTAGE_SET_UP,
-		VOLTAGE_SET_SET
+		VOLTAGE_SET_DOWN
 	};
 
 	enum PreviousBtn GetPreviousBtn(void);

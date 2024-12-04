@@ -113,7 +113,7 @@ static void Voltage_Setting_Up(void)
 /** Voltage Setting Down */
 static void Voltage_Setting_Down(void)
 {
-    setVoltageVal(VOLTAGE_SET_SET);
+    setVoltageVal(VOLTAGE_SET_DOWN);
     preposition = PREV_BTN_SET;
 }
 
@@ -127,39 +127,39 @@ static void Current_Setting_Up(void)
 /** Voltage Setting Down */
 static void Current_Setting_Down(void)
 {
-    setCurrentVal(CURRENT_SET_SET);
+    setCurrentVal(CURRENT_SET_DOWN);
     preposition = PREV_BTN_SET;
 }
 
 /** Change Current value counter */
 void setCurrentVal(ButtonSet value) {
-    switch (GetPreviousBtn())
-    {
-    case PREV_BTN_UP:
+    // switch (GetPreviousBtn())
+    // {
+    // case PREV_BTN_UP:
         switch (value)
         {
         case CURRENT_SET_UP:
             current++;
             break;
-        case CURRENT_SET_SET:
+        case CURRENT_SET_DOWN:
             current= ((current--)==0)?0:current;
             break;
         }
-        break;
-    case PREV_BTN_SET:
-        switch (value)
-        {
-        case CURRENT_SET_UP:
-            current++;
-            break;
-        case CURRENT_SET_SET:
-            current= ((current--)==0)?0:current;
-            break;
-        }
-        break;
-    default:
-        break;
-    }
+    //     break;
+    // case PREV_BTN_SET:
+    //     switch (value)
+    //     {
+    //     case CURRENT_SET_UP:
+    //         current++;
+    //         break;
+    //     case CURRENT_SET_DOWN:
+    //         current= ((current--)==0)?0:current;
+    //         break;
+    //     }
+    //     break;
+    // default:
+    //     break;
+//    }
     // print value
     LCDclr();
     char val[10];
@@ -169,32 +169,32 @@ void setCurrentVal(ButtonSet value) {
 
 /** Change Voltage value counter */
 void setVoltageVal(ButtonSet value) {
-    switch (GetPreviousBtn())
-    {
-    case PREV_BTN_UP:
+    // switch (GetPreviousBtn())
+    // {
+    // case PREV_BTN_UP:
         switch (value)
         {
         case VOLTAGE_SET_UP:
             voltage++;
             break;
-        case VOLTAGE_SET_SET:
+        case VOLTAGE_SET_DOWN:
             voltage= ((voltage--)==0)?0:voltage;
             break;
         }
-        break;
-    case PREV_BTN_SET:
-        switch (value)
-        {
-        case VOLTAGE_SET_UP:
-            voltage++;
-            break;
-        case VOLTAGE_SET_SET:
-            voltage= ((voltage--)==0)?0:voltage;
-            break;
-        }
-    default:
-        break;
-    }
+//      break;
+    // case PREV_BTN_SET:
+    //     switch (value)
+    //     {
+    //     case VOLTAGE_SET_UP:
+    //         voltage++;
+    //         break;
+    //     case VOLTAGE_SET_DOWN:
+    //         voltage= ((voltage--)==0)?0:voltage;
+    //         break;
+    //     }
+    // default:
+    //     break;
+    // }
     // Print value
     LCDclr();
     char val[10];
