@@ -87,4 +87,23 @@
 	/** Init Menu */
 	void InitMenu(void);
 
+	enum PreviousBtn
+	{
+    	PREV_BTN_UP,
+    	PREV_BTN_SET,
+		PREV_BTN_NONE
+	};
+
+	enum ButtonSet 
+	{
+		CURRENT_SET_UP,
+		CURRENT_SET_SET,
+		VOLTAGE_SET_UP,
+		VOLTAGE_SET_SET
+	};
+
+	enum PreviousBtn GetPreviousBtn(void);
+	void setVoltageVal(ButtonSet);
+	void setCurrentVal(ButtonSet);
+
 #endif

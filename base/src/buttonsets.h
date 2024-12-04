@@ -29,6 +29,8 @@ enum MenuPosition
    	SETING_MODE,
 };
 
+
+
 void initInterruptSettings(void);
 
 // Menu settings
