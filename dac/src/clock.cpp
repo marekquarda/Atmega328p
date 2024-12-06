@@ -43,7 +43,7 @@ void TWI_Start()
 {
 // 	TWCR = (1<<TWINT) | (1<<TWEN) | (1<<TWSTA);
 // 	while (!(TWCR & (1<<TWINT)));
-	i2c_start();
+	//i2c_start();
 }
 
 void TWI_Stop()
@@ -74,9 +74,9 @@ void TWI_Write(uint8_t byte)
 
 void PCF_Write(uint8_t addr, uint8_t *data, uint8_t count) {
 	//twi_wire(PCF8563_WRITE_ADDR, addr, data, count);
-	TWI_Start();
+	//TWI_Start();
 
-	TWI_Write(PCF8563_WRITE_ADDR);
+	i2c_start(PCF8563_WRITE_ADDR);
 	TWI_Write(addr);
 
 	while (count) {
@@ -92,9 +92,9 @@ void PCF_Write(uint8_t addr, uint8_t *data, uint8_t count) {
 }
 
 void PCF_Read(uint8_t addr, uint8_t *data, uint8_t count) {
-	TWI_Start();
+	//TWI_Start();
 
-	TWI_Write(PCF8563_WRITE_ADDR);
+	i2c_start(PCF8563_WRITE_ADDR);
 	TWI_Write(addr);
 
 	TWI_Stop();
