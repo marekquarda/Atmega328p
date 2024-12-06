@@ -131,7 +131,7 @@ void i2c_stop(void)
  * Return: 0 write successful
  *         1 write failed
  */
-unsigned char i2c_write(unsigned char data)
+unsigned char i2c_write(uint8_t data)
 {
     uint8_t twst;
 
@@ -153,7 +153,7 @@ unsigned char i2c_write(unsigned char data)
  * 
  * Return: byte read from I2C device
  */
-unsigned char i2c_readAck(void)
+uint8_t i2c_readAck(void)
 {
     TWCR = (1<<TWINT) | (1<<TWEN) | (1<TWEA);
     while (!(TWCR & (1<<TWINT)));
@@ -166,7 +166,7 @@ unsigned char i2c_readAck(void)
  * 
  * Return: byte read from I2C
  */
-unsigned char i2c_readNak(void)
+uint8_t i2c_readNak(void)
 {
     TWCR = (1<<TWINT) | (1<<TWEN);
     while (!(TWCR & (1<<TWINT)));

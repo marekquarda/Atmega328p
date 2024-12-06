@@ -20,10 +20,10 @@ extern void i2c_stop(void);
 extern unsigned char i2c_start(unsigned char addr);
 extern unsigned char i2c_rep_start(unsigned char addr);
 extern void i2c_start_wait(unsigned char addr);
-extern unsigned char i2c_write(unsigned char data);
-extern unsigned char i2c_readAck(void);
-extern unsigned char i2c_readNak(void);
-extern unsigned char i2c_read(unsigned char ack);
+extern unsigned char i2c_write(uint8_t data);
+extern uint8_t i2c_readAck(void);
+extern uint8_t i2c_readNak(void);
+extern uint8_t i2c_read(uint8_t ack);
 
 #define i2c_read(ack) ?i2c_readAck() : i2c_readNak();
 
