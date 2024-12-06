@@ -58,7 +58,12 @@ uint8_t TWI_Read(uint8_t ack)
 	// TWCR = (1<<TWINT) | (1<<TWEN) | (((ack ? 1 : 0)<<TWEA));
 	// while (!(TWCR & (1<<TWINT)));
 	// return TWDR;
-	return i2c_readAck();
+	if(ack) {
+		return i2c_readAck();
+	} else {
+		return i2c_readNak();
+	}
+	
 }
 
 void TWI_Write(uint8_t byte)
