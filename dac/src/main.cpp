@@ -21,7 +21,7 @@ int main(void)
 	LCDinit(); /* Initialization of LCD*/
 	LCDclr();
 	initInterruptSettings();
-	//PCF_Init(1);
+	PCF_Init(1);
 	timer1_Init();
 	
 	//charmenu = new_CharMenu(charmenu);
