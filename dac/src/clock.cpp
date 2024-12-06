@@ -82,16 +82,16 @@ void PCF_Write(uint8_t addr, uint8_t *data, uint8_t count) {
 	//TWI_Start();
 
 	i2c_start(PCF8563_WRITE_ADDR);
-	TWI_Write(addr);
+	i2c_write(addr);
 
 	while (count) {
 		count--;
 
-		TWI_Write(*data);
+		i2c_write(*data);
 		data++;
 	}
 
-	TWI_Stop();
+	i2c_stop();
 	//tw_master_transmit(PCF8563_WRITE_ADDR, addr, data, count, true);
 
 }
@@ -100,12 +100,12 @@ void PCF_Read(uint8_t addr, uint8_t *data, uint8_t count) {
 	//TWI_Start();
 
 	i2c_start(PCF8563_WRITE_ADDR);
-	TWI_Write(addr);
+	i2c_write(addr);
 
-	TWI_Stop();
-	TWI_Start();
+	i2c_stop();
+	//TWI_Start();
 
-	TWI_Write(PCF8563_READ_ADDR);
+	i2c_start(PCF8563_READ_ADDR);
 
 	while (count)
 	{
