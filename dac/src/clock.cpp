@@ -10,6 +10,7 @@
 
 #include <avr/io.h>
 #include "clock.h"
+#include "i2cmaster.h"
 //#include "twi2c.h"
 //#include "twi_master.h"
 
@@ -23,44 +24,49 @@
 
 void TWI_Init()
 {
-	//tw_init(TW_FREQ_400K, true);
-	//TWI_Pullups();
-	DDRC  |= (1 << TW_SDA_PIN) | (1 << TW_SCL_PIN);
-	//PORTC &= ~((1 << TW_SDA_PIN) | (1 << TW_SCL_PIN));
-    PORTC |= (1 << TW_SDA_PIN) | (1 << TW_SCL_PIN);
+	// //tw_init(TW_FREQ_400K, true);
+	// //TWI_Pullups();
+	// DDRC  |= (1 << TW_SDA_PIN) | (1 << TW_SCL_PIN);
+	// //PORTC &= ~((1 << TW_SDA_PIN) | (1 << TW_SCL_PIN));
+    // PORTC |= (1 << TW_SDA_PIN) | (1 << TW_SCL_PIN);
 
-	//DDRC = (1<<INT_CLOCK);
-	//INT_DISABLE;
-	//About 100kHz for 1.6MHz clock
-	TWBR = 0;										//Set bitrate factor to 0
-	TWSR &= ~((1<<TWPS1) | (1<<TWPS0));				//Set prescaler to 1
-	//twi_init();
+	// //DDRC = (1<<INT_CLOCK);
+	// //INT_DISABLE;
+	// //About 100kHz for 1.6MHz clock
+	// TWBR = 0;										//Set bitrate factor to 0
+	// TWSR &= ~((1<<TWPS1) | (1<<TWPS0));				//Set prescaler to 1
+
+	i2c_init();
 }
 
 void TWI_Start()
 {
-	TWCR = (1<<TWINT) | (1<<TWEN) | (1<<TWSTA);
-	while (!(TWCR & (1<<TWINT)));
+// 	TWCR = (1<<TWINT) | (1<<TWEN) | (1<<TWSTA);
+// 	while (!(TWCR & (1<<TWINT)));
+	i2c_start();
 }
 
 void TWI_Stop()
 {
-	TWCR = (1<<TWINT) | (1<<TWEN) | (1<<TWSTO);
-	while ((TWCR & (1<<TWSTO)));
+	// TWCR = (1<<TWINT) | (1<<TWEN) | (1<<TWSTO);
+	// while ((TWCR & (1<<TWSTO)));
+	i2c_stop();
 }
 
 uint8_t TWI_Read(uint8_t ack)
 {
-	TWCR = (1<<TWINT) | (1<<TWEN) | (((ack ? 1 : 0)<<TWEA));
-	while (!(TWCR & (1<<TWINT)));
-	return TWDR;
+	// TWCR = (1<<TWINT) | (1<<TWEN) | (((ack ? 1 : 0)<<TWEA));
+	// while (!(TWCR & (1<<TWINT)));
+	// return TWDR;
+	return i2c_readAck();
 }
 
 void TWI_Write(uint8_t byte)
 {
-	TWDR = byte;
-	TWCR = (1<<TWINT) | (1<<TWEN);
-	while (!(TWCR & (1<<TWINT)));
+	// TWDR = byte;
+	// TWCR = (1<<TWINT) | (1<<TWEN);
+	// while (!(TWCR & (1<<TWINT)));
+	i2c_write(byte);
 }
 
 

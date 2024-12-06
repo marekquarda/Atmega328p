@@ -17,7 +17,7 @@ void dac_init(uint8_t address, uint8_t resetic)
         _delay_us(10);
     #endif
 
-    // set power down mode
+    // set power down mode (disabled)
     i2c_start_wait(I2C_WRITE + DAC_BASE_ADDRESS + address);
     #if DAC_POWERDOWNMODE == DAC_POWERDOWN1K
         i2c_write(0b01000010);
@@ -64,10 +64,10 @@ void dac_setvoltagefast(uint8_t address, double voltage, double dacref)
 /**
  * Set the raw value to output 
  */
-void dac_settrawoutput(uint8_t address, uint16_t rawoutput, uint8_t savetoeeprom)
+void dac_settrawoutput(uint8_t address, uint16_t rawoutput, bool savetoeeprom)
 {
     // write raw output value to register
-    i2c_start_wait(I2C_WRITE +DAC_BASE_ADDRESS + address);
+    i2c_start_wait(I2C_WRITE + DAC_BASE_ADDRESS + address);
     if(savetoeeprom) {
         i2c_write(DAC_WRITEDACEEPROM);
     } else {
@@ -82,7 +82,7 @@ void dac_settrawoutput(uint8_t address, uint16_t rawoutput, uint8_t savetoeeprom
 /**
  * Set a voltage to output
  */
-void dac_setvoltage(uint8_t address, double voltage, double dacref, uint8_t savetoeeprom) 
+void dac_setvoltage(uint8_t address, double voltage, double dacref, bool savetoeeprom) 
 {
     uint16_t rawoutput = 0;
 
