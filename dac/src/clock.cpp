@@ -11,53 +11,21 @@
 #include <avr/io.h>
 #include "clock.h"
 #include "i2cmaster.h"
-//#include "twi2c.h"
-//#include "twi_master.h"
-
-
-// void TWI_Pullups() {
-// 	I2C_CONFIG_DDR &= ~(_BV(I2C_CONFIG_SDA) | _BV(I2C_CONFIG_SCL));
-// 	I2C_CONFIG_PORT |= _BV(I2C_CONFIG_SDA) | _BV(I2C_CONFIG_SCL);
-// }
 
 //PHYSICAL LAYER
 
 void TWI_Init()
 {
-	// //tw_init(TW_FREQ_400K, true);
-	// //TWI_Pullups();
-	// DDRC  |= (1 << TW_SDA_PIN) | (1 << TW_SCL_PIN);
-	// //PORTC &= ~((1 << TW_SDA_PIN) | (1 << TW_SCL_PIN));
-    // PORTC |= (1 << TW_SDA_PIN) | (1 << TW_SCL_PIN);
-
-	// //DDRC = (1<<INT_CLOCK);
-	// //INT_DISABLE;
-	// //About 100kHz for 1.6MHz clock
-	// TWBR = 0;										//Set bitrate factor to 0
-	// TWSR &= ~((1<<TWPS1) | (1<<TWPS0));				//Set prescaler to 1
-
 	i2c_init();
-}
-
-void TWI_Start()
-{
-// 	TWCR = (1<<TWINT) | (1<<TWEN) | (1<<TWSTA);
-// 	while (!(TWCR & (1<<TWINT)));
-	//i2c_start();
 }
 
 void TWI_Stop()
 {
-	// TWCR = (1<<TWINT) | (1<<TWEN) | (1<<TWSTO);
-	// while ((TWCR & (1<<TWSTO)));
 	i2c_stop();
 }
 
 uint8_t TWI_Read(uint8_t ack)
 {
-	// TWCR = (1<<TWINT) | (1<<TWEN) | (((ack ? 1 : 0)<<TWEA));
-	// while (!(TWCR & (1<<TWINT)));
-	// return TWDR;
 	if(ack) {
 		return i2c_readAck();
 	} else {
@@ -68,9 +36,6 @@ uint8_t TWI_Read(uint8_t ack)
 
 void TWI_Write(uint8_t byte)
 {
-	// TWDR = byte;
-	// TWCR = (1<<TWINT) | (1<<TWEN);
-	// while (!(TWCR & (1<<TWINT)));
 	i2c_write(byte);
 }
 
@@ -78,9 +43,6 @@ void TWI_Write(uint8_t byte)
 //COMMUNICATION LAYER
 
 void PCF_Write(uint8_t addr, uint8_t *data, uint8_t count) {
-	//twi_wire(PCF8563_WRITE_ADDR, addr, data, count);
-	//TWI_Start();
-
 	i2c_start(PCF8563_WRITE_ADDR);
 	i2c_write(addr);
 
@@ -92,18 +54,13 @@ void PCF_Write(uint8_t addr, uint8_t *data, uint8_t count) {
 	}
 
 	i2c_stop();
-	//tw_master_transmit(PCF8563_WRITE_ADDR, addr, data, count, true);
-
 }
 
 void PCF_Read(uint8_t addr, uint8_t *data, uint8_t count) {
-	//TWI_Start();
-
 	i2c_start(PCF8563_WRITE_ADDR);
 	i2c_write(addr);
 
 	i2c_stop();
-	//TWI_Start();
 
 	i2c_start(PCF8563_READ_ADDR);
 
@@ -116,8 +73,6 @@ void PCF_Read(uint8_t addr, uint8_t *data, uint8_t count) {
 	}
 
 	TWI_Stop();
-	//twi_read(PCF8563_READ_ADDR, addr, data, count);
-//	tw_master_receive(PCF8563_READ_ADDR, addr, data, count);
 }
 
 
