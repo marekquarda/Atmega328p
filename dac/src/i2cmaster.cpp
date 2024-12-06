@@ -37,9 +37,9 @@ unsigned char i2c_start(unsigned char address)
     // wait until transmission complete
     while (!(TWCR & (1 << TWINT)));
     
-    // // checkvalue of TWI status register. Mask prescaller bits.
-    // twst = TW_STATUS & 0xF8;
-    // if ((twst != TW_START) && (twst != TW_REP_START)) return 1;
+    // checkvalue of TWI status register. Mask prescaller bits.
+    twst = TW_STATUS & 0xF8;
+    if ((twst != TW_START) && (twst != TW_REP_START)) return 1;
 
     // send device address
     TWDR = address;
@@ -48,9 +48,9 @@ unsigned char i2c_start(unsigned char address)
     // wait until transmission completed and ACK/NACK has been received
     while (!(TWCR & (1<<TWINT)));
     
-    // // check value of TWI Status Register. Mask prescaler bits.
-    // twst = TW_STATUS & 0xF8;
-    // if((twst != TW_MT_SLA_ACK) && (twst != TW_MR_SLA_ACK)) return 1;
+    // check value of TWI Status Register. Mask prescaler bits.
+    twst = TW_STATUS & 0xF8;
+    if((twst != TW_MT_SLA_ACK) && (twst != TW_MR_SLA_ACK)) return 1;
 
     return 0;
 }
