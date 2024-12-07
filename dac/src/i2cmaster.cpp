@@ -83,7 +83,7 @@ void i2c_start_wait(unsigned char address)
         // wait until transmitioon completed
         while (!(TWCR & (1<<TWINT)));
         
-        check value of TWI status register. Mask prescaler bits.
+        // check value of TWI status register. Mask prescaler bits.
         twst = TW_STATUS & 0xF8;
         if ((twst == TW_MT_SLA_NACK) || (twst == TW_MR_DATA_NACK))
         {
