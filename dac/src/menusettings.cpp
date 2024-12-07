@@ -147,15 +147,20 @@ void printValue(PrintValues value)
 
 static void Current_Save() {
     LCDclr();
-    EEPROM_update_batch(CURRENT_ADDR, &current,2);
-    LCDstring("Current saved");
-    //lcd_write_word("EEPROM Error");
+    uint8_t err = 0;
+    err = EEPROM_update_batch(CURRENT_ADDR, &current,2);
+    LCDstring("Current saved:");
+    LCDsendChar(err);
+    _delay_ms(1000);
 }
 
 static void Voltage_Save() {
     LCDclr();
-    EEPROM_update_batch(VOLTAGE_ADDR, &voltage,2);
-    LCDstring("Voltage saved");
+    uint8_t err = 0;
+    err = EEPROM_update_batch(VOLTAGE_ADDR, &voltage,2);
+    LCDstring("Voltage saved:");
+    LCDsendChar(err);
+    _delay_ms(1000);
 }
 
 
@@ -173,8 +178,8 @@ MENU_ITEM(Menu_1_2, Menu_1_2, Menu_1_1, Menu_SV, NULL_MENU, Voltage_Setting_Down
 MENU_ITEM(Menu_2_1, Menu_2_2, Menu_2_1, Menu_SC, NULL_MENU, Current_Setting_Up, NULL, "2.1");
 MENU_ITEM(Menu_2_2, Menu_2_2, Menu_2_1, Menu_SC, NULL_MENU, Current_Setting_Down, NULL, "2.2");
 
-MENU_ITEM(Menu_SC, NULL_MENU, NULL_MENU, NULL_MENU, NULL_MENU, Current_Save, NULL,"3.0");
-MENU_ITEM(Menu_SV, NULL_MENU, NULL_MENU, NULL_MENU, NULL_MENU, Voltage_Save, NULL, "3.0");
+MENU_ITEM(Menu_SC, NULL_MENU, NULL_MENU, Menu_3, NULL_MENU, Current_Save, NULL,"3.0");
+MENU_ITEM(Menu_SV, NULL_MENU, NULL_MENU, Menu_2, NULL_MENU, Voltage_Save, NULL, "3.0");
 
 void InitMenu() {
     // Init menu
