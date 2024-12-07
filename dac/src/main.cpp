@@ -25,6 +25,8 @@ int main(void)
 	PCF_Init(1);
 	timer1_Init();
 	dac_init(DAC_GND_ADDRESS, true);
+	dac_setvoltage(DAC_GND_ADDRESS, 1, 5, 1);
+	//dac_setvoltage(DAC_VCC_ADDRESS, 2, 5, 1);
 	//dac_init(DAC_VCC_ADDRESS, true);
 	
 	PCF_DateTime senddatetime;
@@ -40,8 +42,7 @@ int main(void)
 	sei();          // Global Interrupts
 
 	// set dac default
-	dac_setvoltage(DAC_GND_ADDRESS, 1, 5, 1);
-	//dac_setvoltage(DAC_VCC_ADDRESS, 2, 5, 1);
+	
 
 	while (1)
 	{
