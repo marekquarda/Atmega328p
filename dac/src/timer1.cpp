@@ -13,13 +13,6 @@ ISR(TIMER1_OVF_vect) {
     // reset timer
     TCNT1 = 65535 - (F_CPU/1024);
     show();
-    // change++;
-    // if (change > 3) {
-    //     viewTimeDate(SHOW_DATE);
-    //     change=0;
-    // } else {
-    //     viewTimeDate(SHOW_TIME);
-    // }
 }
 
 void timer1_Init() {
