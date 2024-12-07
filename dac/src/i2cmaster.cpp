@@ -155,7 +155,7 @@ uint8_t i2c_write(uint8_t data)
  */
 uint8_t i2c_readAck(void)
 {
-    TWCR = (1<<TWINT) | (1<<TWEN) | (1<TWEA);
+    TWCR = (1<<TWINT) | (1<<TWEN) | (1<<TWEA);
     while (!(TWCR & (1<<TWINT)));
     
     return TWDR;
