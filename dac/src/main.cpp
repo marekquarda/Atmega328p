@@ -40,8 +40,8 @@ int main(void)
 	sei();          // Global Interrupts
 
 	// set dac default
-	dac_setvoltage(DAC_GND_ADDRESS, 100, 300, 0);
-	dac_setvoltage(DAC_VCC_ADDRESS, 50, 300, 0);
+	dac_setvoltage(DAC_GND_ADDRESS, 100, 300, 1);
+	dac_setvoltage(DAC_VCC_ADDRESS, 50, 300, 1);
 
 	while (1)
 	{
