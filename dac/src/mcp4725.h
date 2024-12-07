@@ -11,7 +11,7 @@
 #include <util/delay.h>
 
 #define DAC_BASE_ADDRESS    (0x60)      // device base address
-#define DAC_GND_ADDRESS     (0x00)      // GND
+#define DAC_GND_ADDRESS     (0x03)      // GND
 #define DAC_VCC_ADDRESS     (0x02)      // VCC
 
 // i2c settings 
