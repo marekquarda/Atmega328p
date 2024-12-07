@@ -24,8 +24,8 @@ int main(void)
 	initInterruptSettings();
 	PCF_Init(1);
 	timer1_Init();
-	dac_init(DAC_GND_ADDRESS, true);
-	dac_init(DAC_VCC_ADDRESS, true);
+	//dac_init(DAC_GND_ADDRESS, true);
+	//dac_init(DAC_VCC_ADDRESS, true);
 	
 	PCF_DateTime senddatetime;
 	senddatetime.day = 8;
