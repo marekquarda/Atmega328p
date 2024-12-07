@@ -15,7 +15,7 @@ static bool once = false;
 /** Time menu item select callback function */
 static void Time_Select(void)
 {
-    viewTimeDate(SHOW_DATE);
+    viewTimeDate(SHOW_TIME);
 }
 
 /** Date menu item select callback function */

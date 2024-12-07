@@ -69,7 +69,6 @@ void show() {
             LCDsendChar('0');
             LCDstring((uint8_t*)(itoa(datetime.day, ho, 10)), 1);
         } else {
-           // LCDstring((uint8_t*) datetime.day,2);
             LCDstring((uint8_t*)(itoa(datetime.day, ho, 10)), 2);
         }
 		LCDsendChar('/');
@@ -77,11 +76,9 @@ void show() {
             LCDsendChar('0');
             LCDstring((uint8_t*)(itoa(datetime.month, min, 10)), 1);
         } else {
-            //LCDstring((uint8_t*) datetime.month,2);
             LCDstring((uint8_t*)(itoa(datetime.month, min, 10)), 2);                
         }
 		LCDsendChar('/');
-        //LCDstring((uint8_t*) datetime.year,4);
 		LCDstring((uint8_t*)(itoa(datetime.year, sec, 10)), 4);
         break;
 
