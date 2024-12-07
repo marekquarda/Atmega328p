@@ -29,7 +29,7 @@ static void Voltage_Select(void)
 {
     viewTimeDate(SHOW_NONE);
     uint8_t err = 0;
-    err = EEPROM_read_batch(VOLTAGE_ADDR, (void*) voltage,2);
+    err = EEPROM_read_batch(VOLTAGE_ADDR, &voltage,2);
     printValue(PRINT_VOLTAGE);
 }
 
@@ -37,7 +37,7 @@ static void Voltage_Select(void)
 static void Current_Select(void)
 {
     viewTimeDate(SHOW_NONE);
-    EEPROM_read_batch(CURRENT_ADDR, (void*) current, 2);
+    EEPROM_read_batch(CURRENT_ADDR, &current, 2);
     printValue(PRINT_CURRENT);
 }
 
@@ -147,14 +147,14 @@ void printValue(PrintValues value)
 
 static void Current_Save() {
     LCDclr();
-    EEPROM_update_batch(CURRENT_ADDR, (void*)current, 2);
+    EEPROM_update_batch(CURRENT_ADDR, &current, 2);
     LCDstring("Current saved");
     //lcd_write_word("EEPROM Error");
 }
 
 static void Voltage_Save() {
     LCDclr();
-    EEPROM_update_batch(VOLTAGE_ADDR, (void*) voltage,2);
+    EEPROM_update_batch(VOLTAGE_ADDR, &voltage,2);
     LCDstring("Voltage saved");
 }
 
