@@ -18,13 +18,13 @@
 // Entire EEPROM size
 #define EEPROM_SIZE 1023
 // Addresses for values
-#define CURRENT_ADDR 10   
-#define VOLTAGE_ADDR 20    
-#define DATE_DD_ADDR 30
-#define DATE_MM_ADDR 40
-#define DATE_YY_ADDR 50
-#define TIME_HH_ADDR 60
-#define TIME_MM_ADDR 70
+#define CURRENT_ADDR 110   
+#define VOLTAGE_ADDR 120    
+#define DATE_DD_ADDR 130
+#define DATE_MM_ADDR 140
+#define DATE_YY_ADDR 150
+#define TIME_HH_ADDR 160
+#define TIME_MM_ADDR 170
 
 enum{
     EEPROM_OK,
