@@ -78,7 +78,7 @@ uint8_t EEPROM_update(uint16_t uiAddress, uint8_t ucData) {
 uint8_t EEPROM_update_batch(uint16_t uiAdress, void *data, uint16_t len) {
     uint16_t i = 0;
     uint8_t err = EEPROM_OK;
-    uint8_t *data_cast = (uint8_t*)  data;
+    uint8_t *data_cast = (uint8_t*) data;
     for (i = 0; i < len; i++) {
         err = EEPROM_update(uiAdress+i, data_cast[i]);
         if (err != EEPROM_OK) {
