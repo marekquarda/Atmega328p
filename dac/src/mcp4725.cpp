@@ -10,7 +10,7 @@
 /**
  * Initialize
  */
-void dac_init(uint8_t address, uint8_t resetic) 
+void dac_init(unsigned char address, bool resetic) 
 {    
     #if DAC_I2CINIT == 1
         i2c_init();

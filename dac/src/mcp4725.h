@@ -32,7 +32,7 @@
 #define DAC_POWERDOWNMODE   DAC_NORMALMODE
 
 // functions 
-extern void dac_init(uint8_t address, uint8_t resetic);
+extern void dac_init(unsigned char address, bool resetic);
 extern void dac_setrawoutputfast(uint8_t address, uint16_t rawoutput);
 extern void dac_setvoltagefast(uint8_t address, double voltage,double dacref);
 extern void dac_settrawoutput(uint8_t address, uint16_t rawoutput, bool savetoeeprom);
