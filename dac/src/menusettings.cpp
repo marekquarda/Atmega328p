@@ -165,9 +165,9 @@ static void Voltage_Save() {
 
 
 // Menu initialization
-MENU_ITEM(Menu_1, Menu_2, Menu_3, NULL_MENU, NULL_MENU, Time_Select, NULL, "1");
-MENU_ITEM(Menu_2, Menu_3, Menu_1, NULL_MENU, Menu_1_1, Voltage_Select,NULL,"2");
-MENU_ITEM(Menu_3, Menu_1, Menu_2, NULL_MENU, Menu_2_1, Current_Select, NULL, "3");
+MENU_ITEM(Menu_1, Menu_2, Menu_3, NULL_MENU, Menu_1_1, Time_Select, NULL, "1");
+MENU_ITEM(Menu_2, Menu_3, Menu_1, NULL_MENU, Menu_2_1, Voltage_Select,NULL,"2");
+MENU_ITEM(Menu_3, Menu_1, Menu_2, NULL_MENU, Menu_3_1, Current_Select, NULL, "3");
 //MENU_ITEM(Menu_4, Menu_1, NULL_MENU, NULL_MENU, NULL_MENU, Current_Select,Current_Enter, "4");
 
 // Voltage SubMenu initialization
