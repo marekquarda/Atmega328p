@@ -41,16 +41,16 @@ uint8_t i2c_start(uint8_t address)
     twst = TW_STATUS & 0xF8;
     if ((twst != TW_START) && (twst != TW_REP_START)) return 1;
 
-    // send device address
-    TWDR = address;
-    TWCR  = (1<<TWINT) | (1<<TWEN);
+    // // send device address
+    // TWDR = address;
+    // TWCR  = (1<<TWINT) | (1<<TWEN);
 
-    // wait until transmission completed and ACK/NACK has been received
-    while (!(TWCR & (1<<TWINT)));
+    // // wait until transmission completed and ACK/NACK has been received
+    // while (!(TWCR & (1<<TWINT)));
     
-    // check value of TWI Status Register. Mask prescaler bits.
-    twst = TW_STATUS & 0xF8;
-    if((twst != TW_MT_SLA_ACK) && (twst != TW_MR_SLA_ACK)) return 1;
+    // // check value of TWI Status Register. Mask prescaler bits.
+    // twst = TW_STATUS & 0xF8;
+    // if((twst != TW_MT_SLA_ACK) && (twst != TW_MR_SLA_ACK)) return 1;
 
     return 0;
 }

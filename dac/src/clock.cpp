@@ -14,15 +14,15 @@
 
 //PHYSICAL LAYER
 
-void TWI_Init()
-{
-	i2c_init();
-}
+// void TWI_Init()
+// {
+// 	i2c_init();
+// }
 
-void TWI_Stop()
-{
-	i2c_stop();
-}
+// void TWI_Stop()
+// {
+// 	i2c_stop();
+// }
 
 uint8_t TWI_Read(uint8_t ack)
 {
@@ -34,16 +34,17 @@ uint8_t TWI_Read(uint8_t ack)
 	
 }
 
-void TWI_Write(uint8_t byte)
-{
-	i2c_write(byte);
-}
+// void TWI_Write(uint8_t byte)
+// {
+// 	i2c_write(byte);
+// }
 
 
 //COMMUNICATION LAYER
 
 void PCF_Write(uint8_t addr, uint8_t *data, uint8_t count) {
-	i2c_start(PCF8563_WRITE_ADDR);
+	i2c_start(0);
+	i2c_write(PCF8563_WRITE_ADDR);
 	i2c_write(addr);
 
 	while (count) {
@@ -57,12 +58,15 @@ void PCF_Write(uint8_t addr, uint8_t *data, uint8_t count) {
 }
 
 void PCF_Read(uint8_t addr, uint8_t *data, uint8_t count) {
-	i2c_start(PCF8563_READ_ADDR);
+
+	i2c_start(0);
+	i2c_write(PCF8563_WRITE_ADDR);
 	i2c_write(addr);
 
 	i2c_stop();
+	i2c_start(0);
 
-	i2c_start(PCF8563_READ_ADDR);
+	i2c_write(PCF8563_READ_ADDR);
 
 	while (count)
 	{
@@ -72,7 +76,7 @@ void PCF_Read(uint8_t addr, uint8_t *data, uint8_t count) {
 		data++;
 	}
 
-	TWI_Stop();
+	i2c_stop();
 }
 
 
@@ -84,7 +88,7 @@ void PCF_Read(uint8_t addr, uint8_t *data, uint8_t count) {
 
  void PCF_Init(uint8_t mode)
 {
-	TWI_Init();
+	i2c_init();
 
 	 uint8_t tmp = 0b00000000;
 	 PCF_Write(0x00, &tmp, 1);				//Control_status_1
