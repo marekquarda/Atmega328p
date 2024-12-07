@@ -150,7 +150,7 @@ static void Current_Save() {
     uint8_t err = 0;
     err = EEPROM_update_batch(CURRENT_ADDR, &current,2);
     LCDstring("Current saved:");
-    LCDstring((uint8_t*)itoa(err, val, 1),1);
+    LCDstring((uint8_t*)err,1);
     _delay_ms(1000);
 }
 
@@ -159,7 +159,7 @@ static void Voltage_Save() {
     uint8_t err = 0;
     err = EEPROM_update_batch(VOLTAGE_ADDR, &voltage,2);
     LCDstring("Voltage saved:");
-    LCDstring((uint8_t*)itoa(err, val, 1),1);
+    LCDstring((uint8_t*)err,1);
     _delay_ms(1000);
 }
 
