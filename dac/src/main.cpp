@@ -24,18 +24,13 @@ int main(void)
 	PCF_Init(1);
 	timer1_Init();
 	
-	//charmenu = new_CharMenu(charmenu);
-
-	//twi_init();	// 100khz 
-	//uint8_t rtc_data[7];
 	PCF_DateTime senddatetime;
-	senddatetime.day = 4;
+	senddatetime.day = 8;
 	senddatetime.month = 12;
 	senddatetime.year = 2024;
-	senddatetime.hour = 23;
-	senddatetime.minute = 00;
-	senddatetime.second = 30;
-//	senddatetime.
+	senddatetime.hour = 2;
+	senddatetime.minute = 10;
+	senddatetime.second = 11;
 	PCF_SetDateTime(&senddatetime);
 	
 	InitMenu();
@@ -43,7 +38,6 @@ int main(void)
 	
 	while (1)
 	{
-
 	}
 }
 
