@@ -182,8 +182,8 @@ MENU_ITEM(Menu_SC, NULL_MENU, NULL_MENU, Menu_3, NULL_MENU, Current_Save, NULL,"
 MENU_ITEM(Menu_SV, NULL_MENU, NULL_MENU, Menu_2, NULL_MENU, Voltage_Save, NULL, "3.1.0");
 
 // Time and Date updater
-MENU_ITEM(Menu_1_1, Menu_1_2, Menu_1_1, Menu_1, NULL_MENU, Time_Select, NULL, "1.1");
-MENU_ITEM(Menu_1_2, Menu_1_1, Menu_1_2, Menu_1, NULL_MENU, Date_Select, NULL, "1.2");
+MENU_ITEM(Menu_1_1, Menu_1_2, Menu_1_2, Menu_1, NULL_MENU, Time_Select, NULL, "1.1");
+MENU_ITEM(Menu_1_2, Menu_1_1, Menu_1_1, Menu_1, NULL_MENU, Date_Select, NULL, "1.2");
 
 
 void InitMenu() {
