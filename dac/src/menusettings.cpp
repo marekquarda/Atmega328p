@@ -15,13 +15,13 @@ static bool once = false;
 /** Time menu item select callback function */
 static void Time_Select(void)
 {
-    viewTimeDate(SHOW_TIME);
+    viewTimeDate(SHOW_DATE);
 }
 
 /** Date menu item select callback function */
 static void Date_Select(void)
 {
-    viewTimeDate(SHOW_TIME);
+    viewTimeDate(SHOW_DATE);
 }
 
 /** Voltage menu item select callback function */
