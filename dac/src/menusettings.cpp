@@ -11,6 +11,7 @@ static bool time = false;
 static uint16_t current = 0;
 static uint16_t voltage = 0;
 static bool once = false;
+char val[10];
 
 /** Time menu item select callback function */
 static void Time_Select(void)
@@ -109,7 +110,6 @@ void setVoltageVal(ButtonSet value) {
 void printValue(PrintValues value)
  {
     LCDclr();
-    char val[10];
     switch (value)
     {
     case PRINT_VOLTAGE:
@@ -150,7 +150,7 @@ static void Current_Save() {
     uint8_t err = 0;
     err = EEPROM_update_batch(CURRENT_ADDR, &current,2);
     LCDstring("Current saved:");
-    LCDsendChar(err);
+    LCDstring(itoa(err, val, 1));
     _delay_ms(1000);
 }
 
@@ -159,7 +159,7 @@ static void Voltage_Save() {
     uint8_t err = 0;
     err = EEPROM_update_batch(VOLTAGE_ADDR, &voltage,2);
     LCDstring("Voltage saved:");
-    LCDsendChar(err);
+    LCDstring(itoa(err, val, 1));
     _delay_ms(1000);
 }
 
