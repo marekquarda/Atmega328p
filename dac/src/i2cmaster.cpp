@@ -27,7 +27,7 @@ void i2c_init(void) {
  * Issues a start condition and sends address and transfer direction. 
  * return 0 = device accessible, 1 = failed to access device
  */
-unsigned char i2c_start(uint8_t address) 
+uint8_t i2c_start(uint8_t address) 
 {
     uint8_t twst;
 
@@ -107,7 +107,7 @@ void i2c_start_wait(uint8_t address)
  * Return: 0 device accessible 
  *         1 failed to access device
  */
-unsigned char i2c_rep_start(uint8_t address) 
+uint8_t i2c_rep_start(uint8_t address) 
 {
     return i2c_start(address);        
 }
@@ -131,7 +131,7 @@ void i2c_stop(void)
  * Return: 0 write successful
  *         1 write failed
  */
-unsigned char i2c_write(uint8_t data)
+uint8_t i2c_write(uint8_t data)
 {
     uint8_t twst;
 
