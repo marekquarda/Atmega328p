@@ -171,15 +171,20 @@ MENU_ITEM(Menu_3, Menu_1, Menu_2, NULL_MENU, Menu_2_1, Current_Select, NULL, "3"
 //MENU_ITEM(Menu_4, Menu_1, NULL_MENU, NULL_MENU, NULL_MENU, Current_Select,Current_Enter, "4");
 
 // Voltage SubMenu initialization
-MENU_ITEM(Menu_1_1, Menu_1_2, Menu_1_1, Menu_SV, NULL_MENU, Voltage_Setting_Up, NULL, "1.1");
-MENU_ITEM(Menu_1_2, Menu_1_2, Menu_1_1, Menu_SV, NULL_MENU, Voltage_Setting_Down, NULL, "1.2");
+MENU_ITEM(Menu_2_1, Menu_2_2, Menu_2_1, Menu_SV, NULL_MENU, Voltage_Setting_Up, NULL, "2.1");
+MENU_ITEM(Menu_2_2, Menu_2_2, Menu_2_1, Menu_SV, NULL_MENU, Voltage_Setting_Down, NULL, "2.2");
 
 // Current SubMenu initialization
-MENU_ITEM(Menu_2_1, Menu_2_2, Menu_2_1, Menu_SC, NULL_MENU, Current_Setting_Up, NULL, "2.1");
-MENU_ITEM(Menu_2_2, Menu_2_2, Menu_2_1, Menu_SC, NULL_MENU, Current_Setting_Down, NULL, "2.2");
+MENU_ITEM(Menu_3_1, Menu_3_2, Menu_3_1, Menu_SC, NULL_MENU, Current_Setting_Up, NULL, "3.1");
+MENU_ITEM(Menu_3_2, Menu_3_2, Menu_3_1, Menu_SC, NULL_MENU, Current_Setting_Down, NULL, "3.2");
 
-MENU_ITEM(Menu_SC, NULL_MENU, NULL_MENU, Menu_3, NULL_MENU, Current_Save, NULL,"3.0");
-MENU_ITEM(Menu_SV, NULL_MENU, NULL_MENU, Menu_2, NULL_MENU, Voltage_Save, NULL, "3.0");
+MENU_ITEM(Menu_SC, NULL_MENU, NULL_MENU, Menu_3, NULL_MENU, Current_Save, NULL,"3.1.0");
+MENU_ITEM(Menu_SV, NULL_MENU, NULL_MENU, Menu_2, NULL_MENU, Voltage_Save, NULL, "3.1.0");
+
+// Time and Date updater
+MENU_ITEM(Menu_1_1, Menu_1_2, Menu_1_2, Menu_1, NULL_MENU, Time_Select, NULL, "1.1");
+MENU_ITEM(Menu_1_2, Menu_1_1, Menu_1_1, Menu_1, NULL_MENU, Date_Select, NULL, "1.2");
+
 
 void InitMenu() {
     // Init menu
