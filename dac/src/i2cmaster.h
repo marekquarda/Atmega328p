@@ -17,9 +17,9 @@
 // functions
 extern void i2c_init(void);
 extern void i2c_stop(void);
-extern unsigned char i2c_start(unsigned char addr);
-extern unsigned char i2c_rep_start(unsigned char addr);
-extern void i2c_start_wait(unsigned char addr);
+extern unsigned char i2c_start(uint8_t addr);
+extern unsigned char i2c_rep_start(uint8_t addr);
+extern void i2c_start_wait(uint8_t addr);
 extern unsigned char i2c_write(uint8_t data);
 extern uint8_t i2c_readAck(void);
 extern uint8_t i2c_readNak(void);
