@@ -12,7 +12,7 @@
 
 	#include <stddef.h>
 	#include <stdint.h>
-
+	#include "clock.h"
 	#include "menuconfig.h"
 
 	/** Type define for a menu item. Menu items should be initialized via the helper
@@ -104,5 +104,6 @@
 	void setVoltageVal(ButtonSet);
 	void setCurrentVal(ButtonSet);
 	void printValue(PrintValues);
+	void getCurrentTimeDate();
 
 #endif

@@ -10,8 +10,14 @@
 static bool time = false;
 static uint16_t current = 0;
 static uint16_t voltage = 0;
+static PCF_DateTime senddatetime;
 static bool once = false;
 char val[10];
+
+void getCurrentTimeDate() {
+    PCF_GetDateTime(&senddatetime);
+}
+
 
 /** Time menu item select callback function */
 static void Time_Select(void)
@@ -163,6 +169,26 @@ static void Voltage_Save() {
     _delay_ms(1000);
 }
 
+static void Time_Minute_Up() {
+
+}
+
+static void Time_Minute_Down() {
+
+}
+
+static void Time_Hour_Up() {
+
+}
+
+static void Time_Hour_Down() {
+
+}
+
+static void Time_Save() {
+    
+}
+
 
 // Menu initialization
 MENU_ITEM(Menu_1, Menu_2, Menu_3, NULL_MENU, Menu_1_1, Time_Select, NULL, "1");
@@ -185,6 +211,16 @@ MENU_ITEM(Menu_SV, NULL_MENU, NULL_MENU, Menu_2, NULL_MENU, Voltage_Save, NULL, 
 MENU_ITEM(Menu_1_1, Menu_1_2, Menu_1_1, Menu_1, NULL_MENU, Time_Select, NULL, "1.1");
 MENU_ITEM(Menu_1_2, Menu_1_2, Menu_1_1, Menu_1, NULL_MENU, Date_Select, NULL, "1.2");
 
+// Set Time 
+// Time Minute SubMenu initialization
+MENU_ITEM(Menu_1_1_1, Menu_1_1_2, Menu_1_1_1, Menu_SV, NULL_MENU, Time_Minute_Up, NULL, "1.1.1");
+MENU_ITEM(Menu_1_1_2, Menu_1_1_2, Menu_1_1_1, Menu_SV, NULL_MENU, Time_Minute_Down, NULL, "1.1.2");
+
+// Time Hour SubMenu initialization
+MENU_ITEM(Menu_1_2_1, Menu_1_2_2, Menu_1_2_1, Menu_SV, NULL_MENU, Time_Hour_Up, NULL, "1.2.1");
+MENU_ITEM(Menu_1_2_2, Menu_1_2_2, Menu_1_2_1, Menu_SV, NULL_MENU, Time_Hour_Down, NULL, "1.2.2");
+
+// Set Date
 
 void InitMenu() {
     // Init menu
