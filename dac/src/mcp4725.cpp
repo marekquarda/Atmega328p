@@ -87,7 +87,7 @@ void dac_settrawoutput(uint8_t address, uint16_t rawoutput, bool savetoeeprom)
  */
 void dac_setvoltage(uint8_t address, double voltage, double dacref, bool savetoeeprom) 
 {
-    uint16_t rawoutput = 0;
+    uint32_t rawoutput = 0;
 
     //get the raw output
     rawoutput = voltage*4096/dacref;
