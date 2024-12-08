@@ -48,6 +48,9 @@ int main(void)
 
 	while (1)
 	{
+		dac_setvoltage(DAC_GND_ADDRESS, 3, 5, 0);
+		dac_setvoltage(DAC_VCC_ADDRESS, 2, 5, 0);
+		_delay_ms(100);
 	}
 }
 
