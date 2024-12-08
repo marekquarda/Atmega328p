@@ -37,8 +37,8 @@ int main(void)
 	PCF_SetDateTime(&senddatetime);
 	dac_init(DAC_GND_ADDRESS_WRITE, true);
 	dac_init(DAC_VCC_ADDRESS_WRITE, true);
-	dac_setvoltage(DAC_GND_ADDRESS_WRITE, 1, 5, 1);
-	dac_setvoltage(DAC_VCC_ADDRESS_WRITE, 2, 5, 1);
+	dac_setvoltagefast(DAC_GND_ADDRESS_WRITE, 1, 5);
+	dac_setvoltagefast(DAC_VCC_ADDRESS_WRITE, 2, 5);
 	
 	InitMenu();
 	sei();          // Global Interrupts
