@@ -8,14 +8,14 @@
 #include "i2cmaster.h"
 #include "clock.h"
 
-#define SCL_CLOCK   100000L
+#define SCL_CLOCK   400000L
 
 /**
  * Initialization of the I2C bus interface. Need to be called only once
  */
 void i2c_init(void) {
-   	DDRC  |= (1 << TW_SDA_PIN) | (1 << TW_SCL_PIN);
-    PORTC |= (1 << TW_SDA_PIN) | (1 << TW_SCL_PIN);
+   	// DDRC  |= (1 << TW_SDA_PIN) | (1 << TW_SCL_PIN);
+    // PORTC |= (1 << TW_SDA_PIN) | (1 << TW_SCL_PIN);
     /** Initialization TWI clock: 100 khz clock, TWPS = 0 => prescaler = 1 */
     TWSR = 0;                           /* No prescaller */
     TWBR = ((F_CPU/SCL_CLOCK)-16)/2;    /* must be > 10 for s table operation */
