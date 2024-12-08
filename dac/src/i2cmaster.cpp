@@ -27,7 +27,7 @@ void i2c_init(void) {
  * Issues a start condition and sends address and transfer direction. 
  * return 0 = device accessible, 1 = failed to access device
  */
-uint8_t i2c_start(uint8_t address) 
+uint8_t i2c_start(uint8_t addr) 
 {
     uint8_t twst;
 
@@ -42,7 +42,7 @@ uint8_t i2c_start(uint8_t address)
     if ((twst != TW_START) && (twst != TW_REP_START)) return 1;
 
     // send device address
-    TWDR = address;
+    TWDR = (addr<<1);
     TWCR  = (1<<TWINT) | (1<<TWEN);
 
     // wait until transmission completed and ACK/NACK has been received
@@ -61,7 +61,7 @@ uint8_t i2c_start(uint8_t address)
  * 
  * Input: address and transfer direction of I2C device
  */
-void i2c_start_wait(uint8_t address) 
+void i2c_start_wait(uint8_t addr) 
 {
     uint8_t twst;
     while(1)
@@ -77,7 +77,7 @@ void i2c_start_wait(uint8_t address)
         if((twst != TW_START) && (twst != TW_REP_START)) continue;
         
         // send device address
-        TWDR = address;
+        TWDR = (addr<<1);
         TWCR = (1<<TWINT) | (1<<TWEN);
 
         // wait until transmitioon completed
