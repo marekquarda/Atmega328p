@@ -68,7 +68,7 @@ void dac_setvoltagefast(uint8_t address, double voltage, double dacref)
 void dac_settrawoutput(uint8_t address, uint16_t rawoutput, bool savetoeeprom)
 {
     // write raw output value to register
-    uint8_t err = i2c_write(address);
+    uint8_t err = i2c_start(address);
     if (err) LCDstring("Error DAC");
     if(savetoeeprom) {
         i2c_write(DAC_WRITEDACEEPROM);
