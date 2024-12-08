@@ -15,6 +15,7 @@
 #include "timer1.h"
 #include "micromenu.h"
 #include "mcp4725.h"
+#include "test.h"
 
 
 int main(void)
@@ -48,6 +49,12 @@ int main(void)
 
 	while (1)
 	{
+		for(uint8_t i =0; i < 256; i++) {
+			uint8_t sinval = sine256[i];
+			dac_setvoltage(DAC_GND_ADDRESS_WRITE, sinval, 1, 0);
+			dac_setvoltage(DAC_VCC_ADDRESS_WRITE, sinval, 1, 0);	
+		}
+		
 		// dac_setvoltage(DAC_GND_ADDRESS, 3, 5, 0);
 		// dac_setvoltage(DAC_VCC_ADDRESS, 2, 5, 0);
 		// _delay_ms(100);
@@ -56,3 +63,4 @@ int main(void)
 
 
 
+ 
