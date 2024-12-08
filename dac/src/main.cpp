@@ -37,6 +37,8 @@ int main(void)
 	senddatetime.minute = 3;
 	senddatetime.second = 10;
 	PCF_SetDateTime(&senddatetime);
+	dac_init(0, true);
+	dac_init(2, true);
 	dac_setvoltage(0, 1, 5, 1);
 	dac_setvoltage(2, 2, 5, 1);
 	
