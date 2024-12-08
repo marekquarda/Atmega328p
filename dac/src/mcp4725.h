@@ -16,7 +16,7 @@
 
 // i2c settings 
 //#define DAC_I2CFLEURYPATH   "clock.h"   // define the path to i2c fleury lib
-#define DAC_I2CINIT         1           // init i2c
+#define DAC_I2CINIT         0           // init i2c
 
 // registers
 #define DAC_WRITEDAC        0x40
