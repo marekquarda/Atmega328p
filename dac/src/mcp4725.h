@@ -10,12 +10,12 @@
 #include <stdio.h>
 #include <util/delay.h>
 
-#define DAC_DEFAULT_ADDRESS    (0xC3)      // device default address
-#define DAC_GND_ADDRESS        (0xC0)      // GND
-#define DAC_VCC_ADDRESS        (0xC1)      // VCC
+#define DAC_GND_ADDRESS_WRITE        0xC0      // GND WRITE  
+#define DAC_GND_ADDRESS_READ         0xC1      // GND READ
+#define DAC_VCC_ADDRESS_WRITE        0xC2      // VCC WRITE
+#define DAC_VCC_ADDRESS_READ         0xC3      // VCC READ
 
 // i2c settings 
-//#define DAC_I2CFLEURYPATH   "clock.h"   // define the path to i2c fleury lib
 #define DAC_I2CINIT         0           // init i2c
 
 // registers
