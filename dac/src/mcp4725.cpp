@@ -73,9 +73,11 @@ void dac_settrawoutput(uint8_t address, uint16_t rawoutput, bool savetoeeprom)
     } else {
         i2c_write(DAC_WRITEDAC);
     }
-    i2c_write((uint8_t)(rawoutput>>4));
-    rawoutput = (rawoutput<<12);
-    i2c_write((uint8_t)(rawoutput>>8));
+    //i2c_write((uint8_t)(rawoutput>>4));
+    i2c_write(rawoutput/16);
+    i2c_write((rawoutput%16)<<14);
+    //rawoutput = (rawoutput<<12);
+    //i2c_write((uint8_t)(rawoutput>>8));
     i2c_stop();
 }
 
