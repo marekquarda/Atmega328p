@@ -89,9 +89,9 @@ int main(void)
 {
 	setup();
 
-	for(;;)	{
+	//for(;;)	{
 		scan();
-	}
+	//}
 
 
 	while(1) {
