@@ -91,7 +91,7 @@ void dac_setvoltage(uint8_t address, double voltage, double dacref, bool savetoe
 
     //get the raw output
    rawoutput = voltage*4096/dacref;
-    if(rawoutput > 4095);
+    if(rawoutput > 4095)
         rawoutput = 4095;
 
     // write to chip
