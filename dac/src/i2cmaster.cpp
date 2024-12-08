@@ -42,7 +42,7 @@ uint8_t i2c_start(uint8_t addr)
     if ((twst != TW_START) && (twst != TW_REP_START)) return 1;
 
     // send device address
-    TWDR = (addr<<1);
+    TWDR = addr;
     TWCR  = (1<<TWINT) | (1<<TWEN);
 
     // wait until transmission completed and ACK/NACK has been received
@@ -77,7 +77,7 @@ void i2c_start_wait(uint8_t addr)
         if((twst != TW_START) && (twst != TW_REP_START)) continue;
         
         // send device address
-        TWDR = (addr<<1);
+        TWDR = addr;
         TWCR = (1<<TWINT) | (1<<TWEN);
 
         // wait until transmitioon completed

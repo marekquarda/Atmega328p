@@ -27,7 +27,7 @@ uint8_t TWI_Read(uint8_t ack)
 //COMMUNICATION LAYER
 
 void PCF_Write(uint8_t addr, uint8_t *data, uint8_t count) {
-	i2c_start(PCF8563_BASE_ADDR + I2C_WRITE);
+	i2c_start((PCF8563_BASE_ADDR<<1) + I2C_WRITE);
 	//i2c_start(PCF8563_WRITE_ADDR);
 	i2c_write(addr);
 
@@ -44,12 +44,12 @@ void PCF_Write(uint8_t addr, uint8_t *data, uint8_t count) {
 void PCF_Read(uint8_t addr, uint8_t *data, uint8_t count) {
 
 	//i2c_start(PCF8563_WRITE_ADDR);
-	i2c_start(PCF8563_BASE_ADDR + I2C_WRITE);
+	i2c_start((PCF8563_BASE_ADDR<<1) + I2C_WRITE);
 	i2c_write(addr);
 
 	i2c_stop();
 	//i2c_start(PCF8563_READ_ADDR);
-	i2c_start(PCF8563_BASE_ADDR + I2C_READ);
+	i2c_start((PCF8563_BASE_ADDR<<1) + I2C_READ);
 
 	while (count)
 	{
