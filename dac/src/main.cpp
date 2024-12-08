@@ -25,9 +25,10 @@ int main(void)
 	PCF_Init(1);
 	timer1_Init();
 	dac_init(DAC_GND_ADDRESS, true);
-	dac_setvoltage(DAC_GND_ADDRESS, 1, 5, 1);
-	//dac_setvoltage(DAC_VCC_ADDRESS, 2, 5, 1);
-	//dac_init(DAC_VCC_ADDRESS, true);
+	dac_init(DAC_VCC_ADDRESS, true);
+	dac_setvoltage(DAC_GND_ADDRESS, 3, 5, 0);
+	dac_setvoltage(DAC_VCC_ADDRESS, 2, 5, 0);
+	
 	
 	PCF_DateTime senddatetime;
 	senddatetime.day = 8;
