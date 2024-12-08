@@ -29,7 +29,7 @@
 #define DAC_POWERDOWN100K   100
 #define DAC_POWERDOWN500K   500
 //#define DAC_POWERDOWNMODE   DAC_POWERDOWN1K
-#define DAC_POWERDOWNMODE   DAC_NORMALMODE
+#define DAC_POWERDOWNMODE   DAC_POWERDOWN1K
 
 // functions 
 extern void dac_init(unsigned char address, bool resetic);
