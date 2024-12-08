@@ -90,8 +90,7 @@ void dac_setvoltage(uint8_t address, double voltage, double dacref, bool savetoe
     uint16_t rawoutput = 0;
 
     //get the raw output
-   // rawoutput = voltage*4096/dacref;
-   rawoutput = 1023;
+   rawoutput = voltage*4096/dacref;
     if(rawoutput > 4095);
         rawoutput = 4095;
 
