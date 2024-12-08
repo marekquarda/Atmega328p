@@ -58,7 +58,7 @@ static void i2c_set_address(uint8_t addr, uint8_t rw) {
 static void setup() {
 	lcd_init(); /* Initialization of LCD*/
 	lcd_clear();
-	i2c_set_100kHz();
+	i2c_set_400kHz();
 
 	// uncomment if I2C modules don't come with pull-ups
 	// DDRC &= ~_BV(DDC4); PORTC |= _BV(PORTC4);
