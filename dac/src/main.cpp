@@ -46,15 +46,16 @@ int main(void)
 
 	// set dac default
 	
-
-	while (1)
-	{
+	for(;;) {
 		for(uint8_t i =0; i < 256; i++) {
 			uint8_t sinval = sine256[i];
 			dac_setvoltagefast(DAC_GND_ADDRESS_WRITE, sinval, 255);
 			dac_setvoltagefast(DAC_VCC_ADDRESS_WRITE, sinval, 255);	
 		}
-		
+	}
+
+	while (1)
+	{
 		// dac_setvoltage(DAC_GND_ADDRESS, 3, 5, 0);
 		// dac_setvoltage(DAC_VCC_ADDRESS, 2, 5, 0);
 		// _delay_ms(100);
