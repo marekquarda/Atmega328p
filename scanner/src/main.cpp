@@ -73,7 +73,7 @@ static void probe_address(uint8_t i)
 		addr++;
 		lcd_clear();
 		lcd_write_word("Port:");
-		lcd_write_word(itoa(i, val, 2));
+		lcd_write_word(itoa(i, val, 16));
 		lcd_write_word(" ");
 		_delay_ms(3000);
 	}
@@ -94,7 +94,8 @@ int main(void)
 	//for(;;)	{
 		scan();
 		lcd_write_character(' ');
-		lcd_write_word(itoa(addr, val, 2));
+		lcd_write_word("No:");
+		lcd_write_word(itoa(addr, val, 10));
 		lcd_write_word(" ");
 	//}
 
