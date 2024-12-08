@@ -69,12 +69,11 @@ static void probe_address(uint8_t i)
 	i2c_start();
 	i2c_set_address(i, TW_WRITE);
 	if ((TWSR & TW_STATUS_MASK) == TW_MT_SLA_ACK) 
-		
 		lcd_clear();
 		lcd_write_word("Port:");
 		lcd_write_word(itoa(i, val, 2));
 		lcd_write_word(" ");
-		_delay_ms(2000);
+		_delay_ms(3000);
 	i2c_stop();
 }
 
