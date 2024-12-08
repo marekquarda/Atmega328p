@@ -12,7 +12,6 @@
 
 #define PCF8563_READ_ADDR				0xA3
 #define PCF8563_WRITE_ADDR				0xA2
-#define PCF8563_BASE_ADDR				0x51
 
 #define PCF_ALARM_FLAG					(1<<3)
 #define PCF_TIMER_FLAG					(1<<2)
