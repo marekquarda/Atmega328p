@@ -50,9 +50,8 @@ int main(void)
 		for(uint8_t i =0; i < 256; i++) {
 			uint8_t sinval = sine256[i];
 			dac_setvoltagefast(DAC_GND_ADDRESS_WRITE, sinval, 255);
+			_delay_ms(5);
 			dac_setvoltagefast(DAC_VCC_ADDRESS_WRITE, sinval, 255);	
-			_delay_ms(2);
-			
 		}
 	}
 
