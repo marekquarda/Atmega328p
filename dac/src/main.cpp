@@ -22,12 +22,12 @@ int main(void)
 	LCDinit(); /* Initialization of LCD*/
 	LCDclr();
 	initInterruptSettings();
-	PCF_Init(1);
+	//PCF_Init(1);
 	timer1_Init();
 	dac_init(DAC_GND_ADDRESS, true);
 	dac_init(DAC_VCC_ADDRESS, true);
-	dac_setvoltage(DAC_GND_ADDRESS, 3, 5, 0);
-	dac_setvoltage(DAC_VCC_ADDRESS, 2, 5, 0);
+	dac_setvoltage(DAC_GND_ADDRESS, 1, 5, 1);
+	dac_setvoltage(DAC_VCC_ADDRESS, 2, 5, 1);
 	
 	
 	PCF_DateTime senddatetime;
