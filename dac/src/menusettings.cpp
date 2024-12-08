@@ -90,7 +90,7 @@ void setCurrentVal(ButtonSet value) {
         break;
     }
     // print value
-    dac_setvoltagefast(DAC_GND_ADDRESS_WRITE,current,300);
+    dac_setvoltage(DAC_GND_ADDRESS_WRITE,current,300,0);
     printValue(PRINT_CURRENT);
 }
 
@@ -111,7 +111,7 @@ void setVoltageVal(ButtonSet value) {
         break;
     }
     // Print value
-    dac_setvoltagefast(DAC_VCC_ADDRESS_WRITE,voltage,300);
+    dac_setvoltage(DAC_VCC_ADDRESS_WRITE,voltage,300,0);
     printValue(PRINT_VOLTAGE);
 }
 
