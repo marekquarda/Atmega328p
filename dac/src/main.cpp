@@ -38,8 +38,8 @@ int main(void)
 	PCF_SetDateTime(&senddatetime);
 	dac_init(DAC_GND_ADDRESS_WRITE, true);
 	dac_init(DAC_VCC_ADDRESS_WRITE, true);
-	dac_setvoltagefast(DAC_GND_ADDRESS_WRITE, 5, 5);
-	dac_setvoltagefast(DAC_VCC_ADDRESS_WRITE, 5, 5);
+	//dac_setvoltagefast(DAC_GND_ADDRESS_WRITE, 5, 5);
+	//dac_setvoltagefast(DAC_VCC_ADDRESS_WRITE, 5, 5);
 	
 	InitMenu();
 	sei();          // Global Interrupts
@@ -51,8 +51,8 @@ int main(void)
 	{
 		for(uint8_t i =0; i < 256; i++) {
 			uint8_t sinval = sine256[i];
-			dac_setvoltage(DAC_GND_ADDRESS_WRITE, sinval, 1, 0);
-			dac_setvoltage(DAC_VCC_ADDRESS_WRITE, sinval, 1, 0);	
+			dac_setvoltage(DAC_GND_ADDRESS_WRITE, sinval, 255, 0);
+			dac_setvoltage(DAC_VCC_ADDRESS_WRITE, sinval, 255, 0);	
 		}
 		
 		// dac_setvoltage(DAC_GND_ADDRESS, 3, 5, 0);
