@@ -51,8 +51,8 @@ int main(void)
 	{
 		for(uint8_t i =0; i < 256; i++) {
 			uint8_t sinval = sine256[i];
-			dac_setvoltage(DAC_GND_ADDRESS_WRITE, sinval, 255, 0);
-			dac_setvoltage(DAC_VCC_ADDRESS_WRITE, sinval, 255, 0);	
+			dac_setvoltagefast(DAC_GND_ADDRESS_WRITE, sinval, 255);
+			dac_setvoltagefast(DAC_VCC_ADDRESS_WRITE, sinval, 255);	
 		}
 		
 		// dac_setvoltage(DAC_GND_ADDRESS, 3, 5, 0);
