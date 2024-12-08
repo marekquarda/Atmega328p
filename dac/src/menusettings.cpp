@@ -6,6 +6,7 @@
 #include <stdlib.h>
 #include "timer1.h"
 #include "eeprom.h"
+#include "mcp4725.h"
 
 static bool time = false;
 static uint16_t current = 0;
@@ -79,7 +80,7 @@ void setCurrentVal(ButtonSet value) {
     {
     case CURRENT_SET_UP:
         if(once) {
-            current++;
+            current=((current++)>=300)?300:current;
         }
         break;
     case CURRENT_SET_DOWN:
@@ -89,6 +90,7 @@ void setCurrentVal(ButtonSet value) {
         break;
     }
     // print value
+    dac_setvoltage(DAC_GND_ADDRESS_WRITE,current,300,0);
     printValue(PRINT_CURRENT);
 }
 
@@ -99,7 +101,7 @@ void setVoltageVal(ButtonSet value) {
     {
     case VOLTAGE_SET_UP:
         if(once) {
-            voltage++;
+            voltage=((voltage++)>=300)?300:voltage;
         }
         break;
     case VOLTAGE_SET_DOWN:
@@ -109,6 +111,7 @@ void setVoltageVal(ButtonSet value) {
         break;
     }
     // Print value
+    dac_setvoltage(DAC_VCC_ADDRESS_WRITE,voltage,300,0);
     printValue(PRINT_VOLTAGE);
 }
 
@@ -155,8 +158,8 @@ static void Current_Save() {
     LCDclr();
     uint8_t err = 0;
     err = EEPROM_update_batch(CURRENT_ADDR, &current,2);
+    dac_setvoltage(DAC_GND_ADDRESS_WRITE,current,300,1);
     LCDstring("Current saved");
-    //LCDstring((uint8_t*)err,1);
     _delay_ms(1000);
 }
 
@@ -164,6 +167,7 @@ static void Voltage_Save() {
     LCDclr();
     uint8_t err = 0;
     err = EEPROM_update_batch(VOLTAGE_ADDR, &voltage,2);
+    dac_setvoltage(DAC_VCC_ADDRESS_WRITE,voltage,300,1);
     LCDstring("Voltage saved");
     //LCDstring((uint8_t*)err,1);
     _delay_ms(1000);
