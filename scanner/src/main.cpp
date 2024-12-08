@@ -15,6 +15,7 @@
 #include <stdlib.h>
 
 char val[2];
+int addr = 0;
 
 // at 8 Mhz
 static void i2c_set_100kHz() {
@@ -69,6 +70,7 @@ static void probe_address(uint8_t i)
 	i2c_start();
 	i2c_set_address(i, TW_WRITE);
 	if ((TWSR & TW_STATUS_MASK) == TW_MT_SLA_ACK) {
+		addr++;
 		lcd_clear();
 		lcd_write_word("Port:");
 		lcd_write_word(itoa(i, val, 2));
@@ -91,6 +93,9 @@ int main(void)
 
 	//for(;;)	{
 		scan();
+		lcd_write_character(' ');
+		lcd_write_word(itoa(addr, val, 2));
+		lcd_write_word(" ");
 	//}
 
 
