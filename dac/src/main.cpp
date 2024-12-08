@@ -40,7 +40,7 @@ int main(void)
 	//dac_init(0, true);
 	//dac_init(2, true);
 	//dac_setvoltage(0, 1, 5, 1);
-	dac_setvoltage(0, 2, 5, 1);
+	dac_setvoltage(3, 2, 5, 1);
 	
 	InitMenu();
 	sei();          // Global Interrupts
