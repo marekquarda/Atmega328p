@@ -29,11 +29,11 @@ int main(void)
 	//dac_init(DAC_VCC_ADDRESS, true);
 
 	PCF_DateTime senddatetime;
-	senddatetime.day = 8;
+	senddatetime.day = 10;
 	senddatetime.month = 12;
 	senddatetime.year = 2024;
-	senddatetime.hour = 22;
-	senddatetime.minute = 3;
+	senddatetime.hour = 16;
+	senddatetime.minute = 0;
 	senddatetime.second = 10;
 	PCF_SetDateTime(&senddatetime);
 	dac_init(DAC_GND_ADDRESS_WRITE, true);
