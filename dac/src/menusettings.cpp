@@ -48,7 +48,7 @@ static void Current_Select(void)
     viewTimeDate(SHOW_NONE);
     EEPROM_read_batch(CURRENT_ADDR, &current, 2);
     printValue(PRINT_CURRENT);
-    LCDstring("Voldfs: ");
+   // LCDstring("Voldfs: ");
 }
 
 /** Voltage Setting Up */
