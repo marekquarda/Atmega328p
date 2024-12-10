@@ -46,10 +46,9 @@ static void Voltage_Select(void)
 static void Current_Select(void)
 {
     viewTimeDate(SHOW_NONE);
-    //LCDstring("Cuurrre ... ");
-    printValue(PRINT_CURRENT);
     EEPROM_read_batch(CURRENT_ADDR, &current, 2);
-    //printValue(PRINT_CURRENT);
+    printValue(PRINT_CURRENT);
+    _delay_ms(1000);
 }
 
 /** Voltage Setting Up */
