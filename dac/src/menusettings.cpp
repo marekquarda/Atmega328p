@@ -111,7 +111,7 @@ void setVoltageVal(ButtonSet value) {
         break;
     }
     // Print value
-    dac_setvoltage(DAC_VCC_ADDRESS_WRITE,voltage,290,0);
+    dac_setvoltage(DAC_VCC_ADDRESS_WRITE,voltage,300,0);
     printValue(PRINT_VOLTAGE);
 }
 
