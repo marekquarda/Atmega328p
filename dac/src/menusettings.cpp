@@ -111,7 +111,7 @@ void setVoltageVal(ButtonSet value) {
         break;
     }
     // Print value
-    dac_setvoltage(DAC_VCC_ADDRESS_WRITE,voltage,300,0);
+    dac_setvoltage(DAC_VCC_ADDRESS_WRITE,voltage,290,0);
     printValue(PRINT_VOLTAGE);
 }
 
@@ -122,7 +122,7 @@ void printValue(PrintValues value)
     switch (value)
     {
     case PRINT_VOLTAGE:
-        uint16_t printvolt = voltage+10;
+        uint16_t printvolt = voltage+13;
         LCDstring("Voltage: ");
         if(printvolt<10) {
             LCDstring("0.");
