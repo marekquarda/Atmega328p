@@ -124,14 +124,14 @@ void printValue(PrintValues value)
     switch (value)
     {
     case PRINT_VOLTAGE:
-        uint16_t printvolt = voltage+13;
+       // uint16_t printvolt = voltage+13;
         LCDstring("Voltage: ");
-        if(printvolt<10) {
+        if(voltage<10) {
             LCDstring("0.");
-            LCDstring(itoa(printvolt, val, 10));
+            LCDstring(itoa(voltage, val, 10));
         } else{
-            uint8_t whole = printvolt/10;
-            uint8_t rest =  printvolt%10;
+            uint8_t whole = voltage/10;
+            uint8_t rest =  voltage%10;
             LCDstring(itoa(whole, val, 10));
             LCDsendChar('.');
             LCDstring(itoa(rest, val, 10));
@@ -140,7 +140,6 @@ void printValue(PrintValues value)
 
     case PRINT_CURRENT:
         LCDstring("Current: ");
-        _delay_ms(1000);
         if(current<10) {
             LCDstring("0.");
             LCDstring(itoa(current, val, 10));
