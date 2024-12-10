@@ -36,8 +36,8 @@ int main(void)
 	senddatetime.minute = 0;
 	senddatetime.second = 10;
 	PCF_SetDateTime(&senddatetime);
-	dac_init(DAC_GND_ADDRESS_WRITE, true);
-	dac_init(DAC_VCC_ADDRESS_WRITE, true);
+	dac_init(DAC_GND_ADDRESS_WRITE, false);
+	dac_init(DAC_VCC_ADDRESS_WRITE, false);
 	//dac_setvoltagefast(DAC_GND_ADDRESS_WRITE, 5, 5);
 	//dac_setvoltagefast(DAC_VCC_ADDRESS_WRITE, 5, 5);
 	
