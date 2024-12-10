@@ -46,8 +46,9 @@ static void Voltage_Select(void)
 static void Current_Select(void)
 {
     viewTimeDate(SHOW_NONE);
+    LCDstring("Cuurrre ... ");
     EEPROM_read_batch(CURRENT_ADDR, &current, 2);
-    printValue(PRINT_CURRENT);
+    //printValue(PRINT_CURRENT);
 }
 
 /** Voltage Setting Up */
@@ -91,7 +92,7 @@ void setCurrentVal(ButtonSet value) {
         break;
     }
     // print value
-    //dac_setvoltage(DAC_GND_ADDRESS_WRITE,current,300,0);
+    dac_setvoltage(DAC_GND_ADDRESS_WRITE,current,300,0);
     printValue(PRINT_CURRENT);
 }
 
