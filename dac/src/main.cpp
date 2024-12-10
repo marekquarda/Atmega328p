@@ -15,7 +15,6 @@
 #include "timer1.h"
 #include "micromenu.h"
 #include "mcp4725.h"
-//#include "test.h"
 
 
 int main(void)
@@ -25,41 +24,24 @@ int main(void)
 	initInterruptSettings();
 	PCF_Init(1);
 	timer1_Init();
-	//dac_init(DAC_GND_ADDRESS, true);
-	//dac_init(DAC_VCC_ADDRESS, true);
 
 	PCF_DateTime senddatetime;
 	senddatetime.day = 10;
 	senddatetime.month = 12;
 	senddatetime.year = 2024;
-	senddatetime.hour = 16;
+	senddatetime.hour = 17;
 	senddatetime.minute = 0;
 	senddatetime.second = 10;
+
 	PCF_SetDateTime(&senddatetime);
 	dac_init(DAC_GND_ADDRESS_WRITE, false);
 	dac_init(DAC_VCC_ADDRESS_WRITE, false);
-	//dac_setvoltagefast(DAC_GND_ADDRESS_WRITE, 5, 5);
-	//dac_setvoltagefast(DAC_VCC_ADDRESS_WRITE, 5, 5);
 	
 	InitMenu();
 	sei();          // Global Interrupts
 
-	// set dac default
-	
-	// for(;;) {
-	// 	for(uint8_t i =0; i < 256; i++) {
-	// 		uint8_t sinval = sine256[i];
-	// 		dac_setvoltagefast(DAC_GND_ADDRESS_WRITE, sinval, 255);
-	// 		_delay_ms(5);
-	// 		dac_setvoltagefast(DAC_VCC_ADDRESS_WRITE, sinval, 255);	
-	// 	}
-	// }
-
 	while (1)
 	{
-		// dac_setvoltage(DAC_GND_ADDRESS, 3, 5, 0);
-		// dac_setvoltage(DAC_VCC_ADDRESS, 2, 5, 0);
-		// _delay_ms(100);
 	}
 }
 
