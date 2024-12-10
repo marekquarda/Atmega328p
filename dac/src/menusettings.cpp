@@ -123,22 +123,24 @@ void printValue(PrintValues value)
     LCDclr();
     switch (value)
     {
-    case PRINT_VOLTAGE:
-       // uint16_t printvolt = voltage+13;
+    case PRINT_VOLTAGE: 
+    {
+        uint16_t printvolt = voltage+13;
         LCDstring("Voltage: ");
-        if(voltage<10) {
+        if(printvolt<10) {
             LCDstring("0.");
-            LCDstring(itoa(voltage, val, 10));
+            LCDstring(itoa(printvolt, val, 10));
         } else{
-            uint8_t whole = voltage/10;
-            uint8_t rest =  voltage%10;
+            uint8_t whole = printvolt/10;
+            uint8_t rest =  printvolt%10;
             LCDstring(itoa(whole, val, 10));
             LCDsendChar('.');
             LCDstring(itoa(rest, val, 10));
         }
-        break;
+    }
+    break;
 
-    case PRINT_CURRENT:
+    case PRINT_CURRENT: {
         LCDstring("Current: ");
         if(current<10) {
             LCDstring("0.");
@@ -150,7 +152,9 @@ void printValue(PrintValues value)
             LCDsendChar('.');
             LCDstring(itoa(rest, val, 10));
         }
-        break;
+    }
+    break;
+
     default:
         LCDstring("Unknown value");
         break;
