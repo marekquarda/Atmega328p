@@ -23,19 +23,19 @@ void LCDinit(void)
 	LCD_DISABLE;
 	//PWR_DISABLE;
 
-	_delay_ms(1);	
+	_delay_ms(10);	
 	LCDsendCommand(LCD_CMD_CURSOR_HOME);			/* send for 4 bit initialization of LCD  */
-	_delay_ms(1);	
+	_delay_ms(10);	
 	//lcd_send_command(LCD_FUNCTION_4BIT_2LINES);     /* Use 2 line and initialize 5*7 matrix in (4-bit mode)*/
 	LCDsendCommand(LCD_FUNCTION_4BIT_1LINE);
-	_delay_ms(1);	
+	_delay_ms(10);	
 	LCDsendCommand(LCD_DISP_ON);    				/* Display on cursor off*/
-	_delay_ms(1);	
+	_delay_ms(10);	
 	LCDsendCommand(LCD_ENTRY_INC_);		    	/* Increment cursor (shift cursor to right)*/
-	_delay_ms(1);	
+	_delay_ms(10);	
 	//lcd_send_command(LCD_ENTRY_INC_SHIFT);     	/* Increment cursor (shift cursor to right)*/
 	LCDsendCommand(LCD_CMD_CLEAR_DISPLAY);      	/* Clear display screen*/
-	_delay_ms(1);
+	_delay_ms(10);
 	//lcd_send_command(0x80);							/* Cursor 1st row 0th position */
 }
 
