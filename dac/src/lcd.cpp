@@ -17,7 +17,7 @@ void LCDinit(void)
 	DATA_BUS = (0<<LCD_D7) | (0<<LCD_D6) | (0<<LCD_D5) | (0<<LCD_D4);
 	CTL_BUS = (1<<LCD_EN) | (0<<LCD_RS);
 
-	_delay_ms(1);
+	_delay_ms(10);
 	K_ENABLE;
 	VCC_ENABLE;
 	LCD_DISABLE;
@@ -35,7 +35,7 @@ void LCDinit(void)
 	_delay_ms(10);	
 	//lcd_send_command(LCD_ENTRY_INC_SHIFT);     	/* Increment cursor (shift cursor to right)*/
 	LCDsendCommand(LCD_CMD_CLEAR_DISPLAY);      	/* Clear display screen*/
-	_delay_ms(10);
+	_delay_ms(50);
 	//lcd_send_command(0x80);							/* Cursor 1st row 0th position */
 }
 
