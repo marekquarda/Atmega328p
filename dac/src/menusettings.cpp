@@ -12,7 +12,8 @@ static bool time = false;
 static uint16_t current = 0;
 static uint16_t voltage = 0;
 static PCF_DateTime senddatetime;
-static bool once = false;
+static bool curonce = false;
+static bool volonce = false;
 char val[10];
 
 void getCurrentTimeDate() {
@@ -75,16 +76,16 @@ static void Current_Setting_Down(void)
 
 /** Change Current value counter */
 void setCurrentVal(ButtonSet value) {
-    once = (once == true)?false:true;
+    curonce = (curonce == true)?false:true;
     switch (value)
     {
     case CURRENT_SET_UP:
-        if(once) {
+        if(curonce) {
             current=((current++)>=300)?300:current;
         }
         break;
     case CURRENT_SET_DOWN:
-        if(once) {
+        if(curonce) {
             current= ((current--)==0)?0:current;
         }
         break;
@@ -96,16 +97,16 @@ void setCurrentVal(ButtonSet value) {
 
 /** Change Voltage value counter */
 void setVoltageVal(ButtonSet value) {
-    once = (once == true)?false:true;
+    volonce = (volonce == true)?false:true;
     switch (value)
     {
     case VOLTAGE_SET_UP:
-        if(once) {
+        if(volonce) {
             voltage=((voltage++)>=300)?300:voltage;
         }
         break;
     case VOLTAGE_SET_DOWN:
-        if(once) {
+        if(volonce) {
             voltage= ((voltage--)==0)?0:voltage;
         }
         break;
