@@ -101,7 +101,7 @@ void setVoltageVal(ButtonSet value) {
     {
     case VOLTAGE_SET_UP:
         if(once) {
-            voltage=((voltage++)>=290)?290:voltage;
+            voltage=((voltage++)>=300)?300:voltage;
         }
         break;
     case VOLTAGE_SET_DOWN:
@@ -111,7 +111,7 @@ void setVoltageVal(ButtonSet value) {
         break;
     }
     // Print value
-    dac_setvoltage(DAC_VCC_ADDRESS_WRITE,voltage,290,0);
+    dac_setvoltage(DAC_VCC_ADDRESS_WRITE,voltage,300,0);
     printValue(PRINT_VOLTAGE);
 }
 
