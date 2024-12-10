@@ -20,6 +20,7 @@
 
 int main(void)
 {
+	_delay_ms(2000);
 	LCDinit(); /* Initialization of LCD*/
 	//LCDclr();
 	initInterruptSettings();
