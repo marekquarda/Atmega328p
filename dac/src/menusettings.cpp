@@ -91,7 +91,7 @@ void setCurrentVal(ButtonSet value) {
         break;
     }
     // print value
-    dac_setvoltage(DAC_GND_ADDRESS_WRITE,current,300,0);
+    //dac_setvoltage(DAC_GND_ADDRESS_WRITE,current,300,0);
     printValue(PRINT_CURRENT);
 }
 
