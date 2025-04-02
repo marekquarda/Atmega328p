@@ -5,7 +5,6 @@
  *  Author: Marek Xara Quarda
  *
  */
-
 #include "eeprom.h"
 
 
